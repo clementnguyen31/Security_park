@@ -20,57 +20,103 @@
       <td>{{engin.TypeEngin}}</td>
       <td>{{engin.TypeBatterie}}</td>
       <td><button class="btn btn-transparent" (click)="populateForm(engin)"><mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon></button></td>
-      <td><button class="btn btn-transparent" (click)="detailsInfo(engin.IdEngin)" data-toggle="modal" data-target="#infoModal"><mat-icon aria-hidden="false" aria-label="Example home icon">view_headline</mat-icon></button></td>
+      <td><button class="btn btn-transparent" (click)="detailsInfo(engin.IdEngin)" data-toggle="modal" data-target="#infoModal"><mat-icon aria-hidden="false" aria-label="Example home icon">visibility</mat-icon></button></td>
   </tr>
   </tbody>
 </table>
 
 <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered mw-100 w-75">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 class="col-12 modal-title text-center" id="exampleModalLabel">Info de l'engin - <span class="font-weight-bold">{{currentEnginInfo.Matricule}}</span></h2>
+        <h1 class="col-12 modal-title text-center font-weight-bold" id="exampleModalLabel">Détails de l'engin</h1>
       </div>
       <div class="modal-body">
         <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-6">
-                <span class="font-weight-bold ">Date entrée : </span>{{currentEnginInfo.DateDeclarationEntree | date:'dd/MM/yyyy'}}
-              </div>
-              <ng-container *ngIf="currentEnginInfo.EstDeclareRentre==true; else second">
-                <div class="col-md-6">
-                  <span class="font-weight-bold ">Déclaré rentré : </span>Oui
-                </div>
-              </ng-container>
-              <ng-template #second>
-                <div class="col-md-6">
-                  <span class="font-weight-bold ">Déclaré rentré : </span>Non
-                </div>
-              </ng-template>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <span class="font-weight-bold ">Date sortie : </span>{{currentEnginInfo.DateDeclarationSortie | date:'dd/MM/yyyy'}}
-              </div>
-              <ng-container *ngIf="currentEnginInfo.EstDeclareSortie==true; else third">
-                <div class="col-md-6">
-                  <span class="font-weight-bold ">Déclaré sortie : </span>Oui
-                </div>
-              </ng-container>
-              <ng-template #third>
-                <div class="col-md-6">
-                  <span class="font-weight-bold ">Déclaré sortie : </span>Non
-                </div>
-              </ng-template>
-            </div>
+          <h2>Caractéristiques</h2>
             <div class="row">
               <div class="col-md-12">
-                <span class="font-weight-bold ">Date de circulation : </span>{{currentEnginInfo.DateCirculation | date:'dd/MM/yyyy'}}
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Matricule</th>
+                      <th>NumSerie</th>
+                      <th>Marque</th>
+                      <th>Contrat</th>
+                      <th>Type</th>
+                      <th>Batterie</th>
+                      <th>Année</th>
+                      <th>Date déclaration entrée</th>
+                      <th>Déclaré rentré ?</th>
+                      <th>Date déclaration sortie</th>
+                      <th>Déclaré sortie ?</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-active">
+                    <tr>
+                      <td>{{currentEnginInfo.Matricule}}</td>
+                      <td>{{currentEnginInfo.NumSerie}}</td>
+                      <td>{{currentEnginInfo.Marque}}</td>
+                      <td>{{currentEnginInfo.TypeContrat}}</td>
+                      <td>{{currentEnginInfo.TypeEngin}}</td>
+                      <td>{{currentEnginInfo.TypeBatterie}}</td>
+                      <td>{{currentEnginInfo.Annee}}</td>
+                      <td>{{currentEnginInfo.DateDeclarationEntree | date:'dd/MM/yyyy'}}</td>
+                      <ng-container *ngIf="currentEnginInfo.EstDeclareRentre==true; else second">
+                        <td>Oui</td>
+                      </ng-container>
+                      <ng-template #second>
+                        <td>Non</td>
+                      </ng-template>
+                      <td>{{currentEnginInfo.DateDeclarationSortie | date:'dd/MM/yyyy'}}</td>
+                      <ng-container *ngIf="currentEnginInfo.EstDeclareSortie==true; else third">
+                        <td>Oui</td>
+                      </ng-container>
+                      <ng-template #third>
+                        <td>Non</td>
+                      </ng-template>
+                  </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
-      </div>
+          <h2>Contrat de location</h2>
+            <div class="row">
+              <div class="col-md-12">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Numéro de contrat</th>
+                      <th>Date de début</th>
+                      <th>Date de fin</th>
+                      <th>Durée du contrat</th>
+                      <th>Lieu d'utilisation</th>
+                      <th>Prestataire de location</th>
+                      <th>Prix du loyer</th>
+                      <th>Date de signature Irrijardin</th>
+                      <th>Date de signature du prestataire</th>
+                      <th>Date de circulation</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-active">
+                      <td>{{currentEnginContrat.NumContrat}}</td>
+                      <td>{{currentEnginContrat.DateEntree | date:'dd/MM/yyyy'}}</td>
+                      <td>{{currentEnginContrat.DateFinContrat | date:'dd/MM/yyyy'}}</td>
+                      <td>{{currentEnginContrat.DureeContrat}}</td>
+                      <td>{{currentEnginContrat.LieuUtilisation}}</td>
+                      <td>{{currentEnginContrat.PrestataireLocation}}</td>
+                      <td>{{currentEnginContrat.PrixLoyer}} €</td>
+                      <td>{{currentEnginContrat.DateSignatureIrrijardin | date:'dd/MM/yyyy'}}</td>
+                      <td>{{currentEnginContrat.DateSignaturePrestataire | date:'dd/MM/yyyy'}}</td>
+                      <td>{{currentEnginContrat.DateCirculation | date:'dd/MM/yyyy'}}</td>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
       </div>
     </div>
   </div>

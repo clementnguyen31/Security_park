@@ -4,6 +4,7 @@ import { Engins } from 'src/app/shared/engins.model';
 import { DatePipe } from '@angular/common';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EnginsCourteDureeFormComponent } from '../engins-courte-duree-form/engins-courte-duree-form.component';
+import { ContratsService } from 'src/app/shared/contrats.service';
 
 @Component({
   selector: 'app-engins-courte-duree-list',
@@ -13,8 +14,9 @@ import { EnginsCourteDureeFormComponent } from '../engins-courte-duree-form/engi
 export class EnginsCourteDureeListComponent implements OnInit {
 
   currentEnginInfo: any = {};
+  currentEnginContrat: any = {};
 
-  constructor(public enginservice: EnginsService,  private dialog: MatDialog) { }
+  constructor(public enginservice: EnginsService, public contratservice: ContratsService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.enginservice.refreshListEngins();
@@ -33,6 +35,10 @@ export class EnginsCourteDureeListComponent implements OnInit {
     this.enginservice.getEngin(id).subscribe(res =>
       {
         this.currentEnginInfo = res;
+      });
+    this.contratservice.getContrat(id).subscribe(res =>
+      {
+        this.currentEnginContrat = res;
       });
   } 
 
