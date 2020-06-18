@@ -10,3 +10,9 @@
 .list-group-item:before{ content: ''; position: absolute; top: 0; height: 100%; width: 3px; left: 0; background-color: #008fcc; opacity: 0; transform: scaleY(0); transition: transform 0.2s, opacity 0.2s;}
 .align-items-center{ -ms-flex-align: center; align-items: center; display: flex;}
 .navbar-brand img{ width: 30%;}
+img{
+    width: 20%;
+}
+.sidebar-heading{
+    margin-top: 1em;
+}

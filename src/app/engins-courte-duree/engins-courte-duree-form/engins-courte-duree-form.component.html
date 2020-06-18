@@ -18,17 +18,48 @@
     <div class="form-row">
         <div class="form-group col-md-4">
             <label for="typeengin">Type de l'engin</label>
-            <input name="TypeEngin" id="typeengin" #TypeEngin="ngModel" [(ngModel)]="enginService.formDataEngins.TypeEngin" class="form-control" placeholder="Type de l'engin" required>
+            <select class="form-control" name="TypeEngin" id="typeengin" #TypeEngin="ngModel" [(ngModel)]="enginService.formDataEngins.TypeEngin" class="form-control" placeholder="Type de l'engin" required>
+                <option value="" disabled>Choisissez un type d'engin</option>
+                <option value="COMPACT10N">COMPACT10N</option>
+                <option value="E 16C (386)">E 16C (386)</option>
+                <option value="E 16C (EVO)">E 16C (EVO)</option>
+                <option value="E 16">E 16</option>
+                <option value="E35L (387)">E35L (387)</option>
+                <option value="L 12 (1172)">L 12 (1172)</option>
+                <option value="L12">L12</option>
+                <option value="L12i">L12i</option>
+                <option value="Nacelle compact 8m">Nacelle compact 8m</option>
+                <option value="Nacelles">Nacelles</option>
+                <option value="R14">R14</option>
+                <option value="R14 HD 1120">R14 HD 1120</option>
+                <option value="R14HD">R14HD</option>
+                <option value="R16 S">R16 S</option>
+                <option value="T 20 SP (131)">T 20 SP (131)</option>
+                <option value="T14">T14</option>
+                <option value="T16">T16</option>
+                <option value="T2 SP">T2 SP</option>
+                <option value="T20">T20</option>
+                <option value="T20 SP">T20 SP</option>
+                <option value="T20 AP">T20 AP</option>
+                <option value="T25 SP">T25 SP</option>
+                <option value="V08 02">V08 02</option>
+            </select>
         </div>
         <div class="form-group col-md-4">
             <label for="typebatterie">Type de batterie</label>
-            <input name="TypeBatterie" id="typebatterie" #TypeBatterie="ngModel" [(ngModel)]="enginService.formDataEngins.TypeBatterie" class="form-control" placeholder="Type de batterie" required>
+            <select name="TypeBatterie" id="typebatterie" #TypeBatterie="ngModel" [(ngModel)]="enginService.formDataEngins.TypeBatterie" class="form-control" placeholder="Type de batterie" required>
+                <option value="" disabled>Choisissez un type de batterie</option>
+                <option value="Plomb">Plomb</option>
+                <option value="Lithium">Lithium</option>
+            </select>
         </div>
         <div class="form-group col-md-4">
             <label for="typecontrat">Type de contrat</label>
-            <select class="form-control" id="typecontrat" #TypeContrat="ngModel" [(ngModel)]="enginService.formDataEngins.TypeContrat" class="form-control">
-                <option>LCD</option>
-                <option>LLD</option>
+            <select class="form-control" id="typecontrat" name="TypeContrat" #TypeContrat="ngModel" [(ngModel)]="enginService.formDataEngins.TypeContrat" class="form-control" required>
+                <option value="" disabled>Choisissez un type de contrat</option>
+                <option value="LCD">LCD</option>
+                <option value="LLD">LLD</option>
+                <option value="Crédit Bail">Crédit Bail</option>
               </select>
         </div>
     </div>

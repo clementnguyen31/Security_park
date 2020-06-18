@@ -23,7 +23,7 @@ export class EnginsCourteDureeFormComponent implements OnInit {
     }
     this.enginService.formDataEngins = {
       IdEngin : 0,
-      Matricule : null,
+      Matricule : 0,
       NumSerie : null,
       EstDeclareRentre : '',
       EstDeclareSortie : '',

@@ -1,26 +1,28 @@
 <table class="table table-striped">
   <thead>
-    <tr>
+    <tr class="text-center">
       <th>Matricule</th>
-      <th>NumSerie</th>
+      <th>Numéro de série</th>
       <th>Marque</th>
-      <th>Contrat</th>
-      <th>Type</th>
-      <th>Batterie</th>
+      <th>Type de contrat</th>
+      <th>Type de l'engin</th>
+      <th>Type de batterie</th>
       <th>Modifier</th>
       <th>Détails</th>
+      <th>Échéancier</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let engin of enginservice.enginsListe; index as i">
+    <tr *ngFor="let engin of enginservice.enginsListe; index as i" class="text-center">
       <td>{{engin.Matricule}}</td>
       <td>{{engin.NumSerie}}</td>
       <td>{{engin.Marque}}</td>
       <td>{{engin.TypeContrat}}</td>
       <td>{{engin.TypeEngin}}</td>
       <td>{{engin.TypeBatterie}}</td>
-      <td><button class="btn btn-transparent" (click)="populateForm(engin)"><mat-icon aria-hidden="false" aria-label="Example home icon">edit</mat-icon></button></td>
-      <td><button class="btn btn-transparent" (click)="detailsInfo(engin.IdEngin)" data-toggle="modal" data-target="#infoModal"><mat-icon aria-hidden="false" aria-label="Example home icon">visibility</mat-icon></button></td>
+      <td><button class="btn btn-transparent" (click)="populateForm(engin)"><mat-icon aria-hidden="false">edit</mat-icon></button></td>
+      <td><button class="btn btn-transparent" (click)="detailsInfo(engin.IdEngin)" data-toggle="modal" data-target="#infoModal"><mat-icon aria-hidden="false">visibility</mat-icon></button></td>
+      <td><button class="btn btn-transparent"><mat-icon aria-hidden="false">attach_money</mat-icon></button></td>
   </tr>
   </tbody>
 </table>
@@ -33,11 +35,11 @@
       </div>
       <div class="modal-body">
         <div class="container-fluid">
-          <h2>Caractéristiques</h2>
+          <h2 class="text-center">Caractéristiques</h2>
             <div class="row">
               <div class="col-md-12">
                 <table class="table">
-                  <thead>
+                  <thead class="text-center">
                     <tr>
                       <th>Matricule</th>
                       <th>NumSerie</th>
@@ -53,7 +55,7 @@
                     </tr>
                   </thead>
                   <tbody class="table-active">
-                    <tr>
+                    <tr class="text-center">
                       <td>{{currentEnginInfo.Matricule}}</td>
                       <td>{{currentEnginInfo.NumSerie}}</td>
                       <td>{{currentEnginInfo.Marque}}</td>
@@ -80,11 +82,11 @@
                 </table>
               </div>
             </div>
-          <h2>Contrat de location</h2>
+          <h2 class="text-center">Contrat de location</h2>
             <div class="row">
               <div class="col-md-12">
                 <table class="table">
-                  <thead>
+                  <thead class="text-center">
                     <tr>
                       <th>Numéro de contrat</th>
                       <th>Date de début</th>
@@ -98,7 +100,7 @@
                       <th>Date de circulation</th>
                     </tr>
                   </thead>
-                  <tbody class="table-active">
+                  <tbody class="table-active" class="text-center">
                       <td>{{currentEnginContrat.NumContrat}}</td>
                       <td>{{currentEnginContrat.DateEntree | date:'dd/MM/yyyy'}}</td>
                       <td>{{currentEnginContrat.DateFinContrat | date:'dd/MM/yyyy'}}</td>
