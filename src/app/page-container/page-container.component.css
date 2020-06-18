@@ -1,0 +1,12 @@
+.page-container{ height: 100%; background: #ffffff; display: flex;}
+.page-content-container{ padding: 1em;}
+.sidebar{ height: 100%; width: 300px; background: #01427c;}
+.sidebar-heading p{ color: #fff; padding: 1.25rem; font-size: 1.2rem; font-weight: bold;}
+.list-group a{ color: white; text-decoration: none;}
+.list-group-item { background-color: transparent; color: rgba(255, 255, 255, 0.85); position: relative; align-items: center; cursor: pointer;}
+.list-group-item i.material-icons{ margin-right: 0.5em; color: rgba(255, 255, 255, 1);} 
+.list-group-item:hover::before{ transform: scaleY(1); opacity: 1;}
+.list-group-item.selected::before{ opacity: 1; transform: scaleY(1);}
+.list-group-item:before{ content: ''; position: absolute; top: 0; height: 100%; width: 3px; left: 0; background-color: #008fcc; opacity: 0; transform: scaleY(0); transition: transform 0.2s, opacity 0.2s;}
+.align-items-center{ -ms-flex-align: center; align-items: center; display: flex;}
+.navbar-brand img{ width: 30%;}
