@@ -1,6 +1,7 @@
 export class Echeanciers {
-    id_echancier : number;
-    mois_echeancier : Date;
+    id_echeancier : number;
+    mois_echeancier : string;
     montant : string;
+    id_engin : number;
 
 }

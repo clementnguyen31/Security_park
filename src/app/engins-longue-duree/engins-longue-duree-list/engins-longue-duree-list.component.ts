@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { ContratVGPService } from 'src/app/shared/contrat-vgp.service';
 import { EnginsService } from 'src/app/shared/engins.service';
-import { Engins } from 'src/app/shared/engins.model';
-import { DatePipe } from '@angular/common';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { EnginsCourteDureeFormComponent } from '../engins-courte-duree-form/engins-courte-duree-form.component';
 import { ContratsService } from 'src/app/shared/contrats.service';
 import { EcheanciersService } from 'src/app/shared/echeanciers.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { EnginsLongueDureeFormComponent } from '../engins-longue-duree-form/engins-longue-duree-form.component';
 
 @Component({
-  selector: 'app-engins-courte-duree-list',
-  templateUrl: './engins-courte-duree-list.component.html',
-  styleUrls: ['./engins-courte-duree-list.component.css']
+  selector: 'app-engins-longue-duree-list',
+  templateUrl: './engins-longue-duree-list.component.html',
+  styleUrls: ['./engins-longue-duree-list.component.css']
 })
-export class EnginsCourteDureeListComponent implements OnInit {
+export class EnginsLongueDureeListComponent implements OnInit {
 
   currentEnginInfo: any = {};
   currentEnginContrat: any = {};
+  currentEnginContratVGP: any = {};
   currentEnginEcheancier : any = {};
 
-  constructor(public enginservice: EnginsService, public contratservice: ContratsService, public echeancierService : EcheanciersService, private dialog: MatDialog) { }
+  constructor(public enginservice: EnginsService, public contratservice: ContratsService, public echeancierService : EcheanciersService, public contratvgpservice : ContratVGPService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.enginservice.refreshListEngins();
@@ -30,7 +30,7 @@ export class EnginsCourteDureeListComponent implements OnInit {
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "70%";
-    this.dialog.open(EnginsCourteDureeFormComponent, dialogConfig);
+    this.dialog.open(EnginsLongueDureeFormComponent, dialogConfig);
   }
 
   detailsInfo(id){
@@ -42,6 +42,10 @@ export class EnginsCourteDureeListComponent implements OnInit {
       {
         this.currentEnginContrat = res;
       });
+    this.contratvgpservice.getContratVGP(id).subscribe(res =>
+      {
+        this.currentEnginContratVGP = res;
+      })
   } 
 
   echeancierInfo(id){
@@ -56,5 +60,7 @@ export class EnginsCourteDureeListComponent implements OnInit {
       this.enginservice.refreshListEngins();
     })
   }
+
+
 
 }
