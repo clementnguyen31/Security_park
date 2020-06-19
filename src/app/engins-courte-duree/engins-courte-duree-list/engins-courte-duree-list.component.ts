@@ -42,4 +42,10 @@ export class EnginsCourteDureeListComponent implements OnInit {
       });
   } 
 
+  onDelete(id){
+    this.enginservice.deleteEngins(id).subscribe(res => {
+      this.enginservice.refreshListEngins();
+    })
+  }
+
 }

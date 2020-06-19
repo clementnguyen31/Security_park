@@ -14,15 +14,15 @@
   </thead>
   <tbody>
     <tr *ngFor="let engin of enginservice.enginsListe; index as i" class="text-center">
-      <td>{{engin.Matricule}}</td>
-      <td>{{engin.NumSerie}}</td>
-      <td>{{engin.Marque}}</td>
-      <td>{{engin.TypeContrat}}</td>
-      <td>{{engin.TypeEngin}}</td>
-      <td>{{engin.TypeBatterie}}</td>
-      <td><button class="btn btn-transparent" (click)="populateForm(engin)"><mat-icon aria-hidden="false">edit</mat-icon></button></td>
-      <td><button class="btn btn-transparent" (click)="detailsInfo(engin.IdEngin)" data-toggle="modal" data-target="#infoModal"><mat-icon aria-hidden="false">visibility</mat-icon></button></td>
-      <td><button class="btn btn-transparent"><mat-icon aria-hidden="false">attach_money</mat-icon></button></td>
+      <td *ngIf="engin.TypeContrat=='LCD'">{{engin.Matricule}}</td>
+      <td *ngIf="engin.TypeContrat=='LCD'">{{engin.NumSerie}}</td>
+      <td *ngIf="engin.TypeContrat=='LCD'">{{engin.Marque}}</td>
+      <td *ngIf="engin.TypeContrat=='LCD'">{{engin.TypeContrat}}</td>
+      <td *ngIf="engin.TypeContrat=='LCD'">{{engin.TypeEngin}}</td>
+      <td *ngIf="engin.TypeContrat=='LCD'">{{engin.TypeBatterie}}</td>
+      <td *ngIf="engin.TypeContrat=='LCD'"><button class="btn btn-transparent" (click)="populateForm(engin)"><mat-icon aria-hidden="false">edit</mat-icon></button></td>
+      <td *ngIf="engin.TypeContrat=='LCD'"><button class="btn btn-transparent" (click)="detailsInfo(engin.IdEngin)" data-toggle="modal" data-target="#infoModal"><mat-icon aria-hidden="false">visibility</mat-icon></button></td>
+      <td *ngIf="engin.TypeContrat=='LCD'"><button class="btn btn-transparent"><mat-icon aria-hidden="false">attach_money</mat-icon></button></td>
   </tr>
   </tbody>
 </table>
