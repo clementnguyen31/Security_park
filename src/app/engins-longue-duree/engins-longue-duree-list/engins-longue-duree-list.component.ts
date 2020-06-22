@@ -23,6 +23,7 @@ export class EnginsLongueDureeListComponent implements OnInit {
 
   ngOnInit(): void {
     this.enginservice.refreshListEngins();
+    this.contratservice.refreshListContrats();
     this.contratvgpservice.refreshListContratsVGP();
   }
 

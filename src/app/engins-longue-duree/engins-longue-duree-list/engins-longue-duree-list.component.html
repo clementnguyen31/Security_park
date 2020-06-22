@@ -18,13 +18,13 @@
         <td *ngIf="engin.TypeContrat=='LLD'">{{engin.Marque}}</td>
         <td *ngIf="engin.TypeContrat=='LLD'">{{engin.TypeEngin}}</td>
         <td *ngIf="engin.TypeContrat=='LLD'">{{engin.TypeBatterie}}</td>
-        <ng-container *ngIf="engin.TypeContrat=='LLD'">
-          <td *ngFor="let contratvgp of contratvgpservice.contratsVGPListe">{{contratvgp.DateProchaineVgp | date:'dd/MM/yyyy'}}</td>
+        <ng-container *ngFor="let contratvgp of contratvgpservice.contratsVGPListe">
+          <td *ngIf="engin.TypeContrat=='LLD' && engin.IdContratVgp == contratvgp.IdContratVgp">{{contratvgp.DateProchaineVgp | date:'dd/MM/yyyy'}}</td>
         </ng-container>
         <td *ngIf="engin.TypeContrat=='LLD' && engin.InterventionEnCours==true">Oui</td>
         <td *ngIf="engin.TypeContrat=='LLD' && engin.InterventionEnCours==false">Non</td>
         <td *ngIf="engin.TypeContrat=='LLD'"><button class="btn btn-transparent" (click)="populateForm(engin)"><mat-icon aria-hidden="false">edit</mat-icon></button></td>
-        <td *ngIf="engin.TypeContrat=='LLD'"><button class="btn btn-transparent" (click)="detailsInfo(engin.IdEngin)" data-toggle="modal" data-target="#infoModal"><mat-icon aria-hidden="false">visibility</mat-icon></button></td>
+        <td *ngIf="engin.TypeContrat=='LLD'"><button class="btn btn-transparent" (click)="detailsInfo(engin.IdContratVgp)" data-toggle="modal" data-target="#infoModal"><mat-icon aria-hidden="false">visibility</mat-icon></button></td>
         <td *ngIf="engin.TypeContrat=='LLD'"><button class="btn btn-transparent" data-toggle="modal" data-target="#infoModal2"><mat-icon aria-hidden="false">attach_money</mat-icon></button></td>
     </tr>
     </tbody>
@@ -34,11 +34,11 @@
     <div class="modal-dialog modal-dialog-centered mw-100 w-80">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="col-12 modal-title text-center font-weight-bold" id="exampleModalLabel">Détails de l'engin (LCD)</h1>
+          <h1 class="col-12 modal-title text-center font-weight-bold" id="exampleModalLabel">Détails de l'engin (LLD)</h1>
         </div>
         <div class="modal-body">
           <div class="container-fluid">
-            <h2 class="text-center">Caractéristiques (LLD)</h2>
+            <h2 class="text-center">Caractéristiques</h2>
                 <div class="row">
                     <div class="col-md-12">
                         <table class="table">
