@@ -22,7 +22,10 @@ export class EnginsService {
     PeriodiciteVgp : null,
     EstVgp : false,
     DateCirculation : '',
-    IdContrat : 0
+    IdContrat : '0',
+    IdEcheancier : 0,
+    IdContratVgp : 0,
+    InterventionEnCours : false
   };
   readonly rootURL = 'https://localhost:44338/api';
   enginsListe : Engins[];

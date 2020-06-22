@@ -21,9 +21,6 @@ import {MatIconModule} from '@angular/material/icon';
 import { ToastrModule } from 'ngx-toastr';
 import { EnginsLongueDureeFormComponent } from './engins-longue-duree/engins-longue-duree-form/engins-longue-duree-form.component';
 import { EnginsLongueDureeListComponent } from './engins-longue-duree/engins-longue-duree-list/engins-longue-duree-list.component';
-import { EcheanciersComponent } from './echeanciers/echeanciers.component';
-import { EcheanciersListComponent } from './echeanciers/echeanciers-list/echeanciers-list.component';
-import { EcheanciersFormComponent } from './echeanciers/echeanciers-form/echeanciers-form.component';
 
 @NgModule({
   declarations: [
@@ -38,10 +35,7 @@ import { EcheanciersFormComponent } from './echeanciers/echeanciers-form/echeanc
     EnginsCourteDureeFormComponent,
     EnginsCourteDureeListComponent,
     EnginsLongueDureeFormComponent,
-    EnginsLongueDureeListComponent,
-    EcheanciersComponent,
-    EcheanciersListComponent,
-    EcheanciersFormComponent
+    EnginsLongueDureeListComponent
   ],
   entryComponents: [EnginsCourteDureeFormComponent],
   imports: [

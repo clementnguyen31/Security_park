@@ -5,6 +5,7 @@ import { ContratsService } from 'src/app/shared/contrats.service';
 import { EcheanciersService } from 'src/app/shared/echeanciers.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EnginsLongueDureeFormComponent } from '../engins-longue-duree-form/engins-longue-duree-form.component';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-engins-longue-duree-list',
@@ -22,6 +23,19 @@ export class EnginsLongueDureeListComponent implements OnInit {
 
   ngOnInit(): void {
     this.enginservice.refreshListEngins();
+    this.contratvgpservice.refreshListContratsVGP();
+  }
+
+  resetFormEcheancier(form?: NgForm){
+    if(form != null){
+      form.form.reset();
+    }
+    this.echeancierService.formDataEcheancier = {
+      IdEcheancier : 0,
+      MoisEcheancier : '',
+      Montant : '',
+      IdEngin : 0
+    }
   }
 
   populateForm(selectedRecord){
@@ -48,19 +62,10 @@ export class EnginsLongueDureeListComponent implements OnInit {
       })
   } 
 
-  echeancierInfo(id){
-    this.echeancierService.getEcheancier(id).subscribe(res =>
-      {
-        this.currentEnginEcheancier = res;
-      });
-  }
-
   onDelete(id){
     this.enginservice.deleteEngins(id).subscribe(res => {
       this.enginservice.refreshListEngins();
     })
   }
-
-
 
 }

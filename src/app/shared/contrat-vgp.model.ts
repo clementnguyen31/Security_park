@@ -1,7 +1,8 @@
 export class ContratVGP {
 
-    IdContratVGP : number;
-    DateDebutVGP : Date;
-    DureeVGP : number;
-    MontantVisite : number
+    IdContratVgp : number;
+    DateDebutVgp : Date;
+    DureeVgp : number;
+    MontantViste : number;
+    DateProchaineVgp : Date
 }

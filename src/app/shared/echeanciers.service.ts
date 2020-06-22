@@ -8,10 +8,10 @@ import { HttpClient } from '@angular/common/http';
 export class EcheanciersService {
 
   formDataEcheancier : Echeanciers = {
-    id_echeancier : 0,
-    mois_echeancier : '',
-    montant : '',
-    id_engin : 0
+    IdEcheancier : 0,
+    MoisEcheancier : '',
+    Montant : '',
+    IdEngin : 0
   }
 
   readonly rootURL = 'https://localhost:44338/api';
@@ -28,7 +28,7 @@ export class EcheanciersService {
   }
 
   putEcheanciers() {
-    return this.http.put(this.rootURL + '/Echeanciers/'+ this.formDataEcheancier.id_echeancier, this.formDataEcheancier);
+    return this.http.put(this.rootURL + '/Echeanciers/'+ this.formDataEcheancier.IdEcheancier, this.formDataEcheancier);
   }
 
   deleteEcheanciers(id) {
@@ -37,6 +37,10 @@ export class EcheanciersService {
 
   refreshListEcheanciers(){
     this.http.get(this.rootURL + '/Echeanciers').toPromise().then(res => this.echeanciersList = res as Echeanciers[]);
+  }
+
+  addEcheanciers(ech: Echeanciers){
+    return this.http.post(this.rootURL+'/Echeanciers',ech);
   }
 
 }

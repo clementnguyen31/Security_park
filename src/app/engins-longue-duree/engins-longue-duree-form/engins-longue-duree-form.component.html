@@ -97,9 +97,16 @@
             </div>
         </div>
     <div class="form-row">
-        <div class="form-group col-md-8">
-            <label for="DateCirculation">Date de circulation</label>
+        <div class="form-group col-md-4">
+            <label for="DateCirculation">Date de 1<sup>ère</sup> circulation</label>
             <input id="DateCirculation" type="datetime-local" name="DateCirculation" #DateCirculation="ngModel" [(ngModel)]="enginService.formDataEngins.DateCirculation" class="form-control" required>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="InterventionEnCours">Intervention en cours ?</label>
+            <select class="form-control" name="InterventionEnCours" #InterventionEnCours="ngModel" [(ngModel)]="enginService.formDataEngins.InterventionEnCours" id="InterventionEnCours" required>
+                <option [ngValue]="true">Oui</option>
+                <option [ngValue]="false">Non</option>
+            </select>
         </div>
         <button class="form-group col-md-2 btn btn-primary" type="submit">Valider</button>
         <button class="form-group col-md-2 btn btn-secondary" (click)="onClose()" type="button">Fermer</button>

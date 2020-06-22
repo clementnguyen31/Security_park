@@ -14,9 +14,7 @@ const routes: Routes = [
     { path: 'page-1', component: EnginsCourteDureeComponent},
     { path: 'page-2', component: EnginsLongueDureeComponent},
     { path: 'page-3', component: ContratsEnCoursComponent},
-    { path: 'page-4', component: ContratsCompletComponent},
-    { path: 'page-5', component: InterventionsComponent},
-    { path: 'page-6', component: AdministrationComponent},
+    { path: 'page-4', component: AdministrationComponent},
   ]}
 ];
 

@@ -8,10 +8,11 @@ import { HttpClient } from '@angular/common/http';
 export class ContratVGPService {
 
   formDataContratVGP : ContratVGP = {
-    IdContratVGP : 0,
-    DateDebutVGP : null,
-    DureeVGP : 0,
-    MontantVisite : 0
+    IdContratVgp : 0,
+    DateDebutVgp : null,
+    DureeVgp : 0,
+    MontantViste : 0,
+    DateProchaineVgp : null
   }
 
   
@@ -29,7 +30,7 @@ export class ContratVGPService {
   }
 
   putContratsVGP() {
-    return this.http.put(this.rootURL + '/ContratVgps/'+ this.formDataContratVGP.IdContratVGP, this.formDataContratVGP);
+    return this.http.put(this.rootURL + '/ContratVgps/'+ this.formDataContratVGP.IdContratVgp, this.formDataContratVGP);
   }
 
   deleteContratsVGP(id) {

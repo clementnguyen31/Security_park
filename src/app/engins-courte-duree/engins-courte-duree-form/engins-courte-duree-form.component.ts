@@ -36,7 +36,10 @@ export class EnginsCourteDureeFormComponent implements OnInit {
       PeriodiciteVgp : null,
       EstVgp : false,
       DateCirculation : null,
-      IdContrat : 0
+      IdContrat : '0',
+      IdEcheancier : 0,
+      IdContratVgp : 0,
+      InterventionEnCours : false
     }
   }
 
