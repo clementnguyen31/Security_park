@@ -76,16 +76,17 @@ export class EnginsCourteDureeListComponent implements OnInit {
   }
 
   insertEcheancier(form: NgForm){
-    this.echeancierService.addEcheanciers(form.value).subscribe(res=>
-      {
-        this.resetFormEcheancier(form)
-      })
+    this.echeancierService.postEcheanciers().subscribe(
+      res => {
+        this.resetFormEcheancier(form);
+        this.echeancierService.refreshListEcheanciers();
+      },
+      err => { console.log(err);}
+    )
   }
 
   onSubmitEcheancier(form: NgForm){
-    if(this.echeancierService.formDataEcheancier.IdEcheancier == 0){
-      this.insertEcheancier(form);
-    }
+    this.insertEcheancier(form);
   }
 
 }

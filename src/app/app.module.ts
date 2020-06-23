@@ -4,9 +4,7 @@ import { RouterModule } from '@angular/router'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageContainerComponent } from './page-container/page-container.component';
-import { AdministrationComponent } from './administration/administration.component';
-import { ContratsCompletComponent } from './contrats-complet/contrats-complet.component';
-import { ContratsEnCoursComponent } from './contrats-en-cours/contrats-en-cours.component';
+import { AdministrationComponent } from './administration/administration.component'
 import { EnginsCourteDureeComponent } from './engins-courte-duree/engins-courte-duree.component';
 import { EnginsLongueDureeComponent } from './engins-longue-duree/engins-longue-duree.component';
 import { InterventionsComponent } from './interventions/interventions.component';
@@ -21,23 +19,28 @@ import {MatIconModule} from '@angular/material/icon';
 import { ToastrModule } from 'ngx-toastr';
 import { EnginsLongueDureeFormComponent } from './engins-longue-duree/engins-longue-duree-form/engins-longue-duree-form.component';
 import { EnginsLongueDureeListComponent } from './engins-longue-duree/engins-longue-duree-list/engins-longue-duree-list.component';
+import { ContratsComponent } from './contrats/contrats.component';
+import { ContratsListComponent } from './contrats/contrats-list/contrats-list.component';
+import { ContratsFormComponent } from './contrats/contrats-form/contrats-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageContainerComponent,
     AdministrationComponent,
-    ContratsCompletComponent,
-    ContratsEnCoursComponent,
     EnginsCourteDureeComponent,
     EnginsLongueDureeComponent,
     InterventionsComponent,
     EnginsCourteDureeFormComponent,
     EnginsCourteDureeListComponent,
     EnginsLongueDureeFormComponent,
-    EnginsLongueDureeListComponent
+    EnginsLongueDureeListComponent,
+    ContratsComponent,
+    ContratsListComponent,
+    ContratsFormComponent
   ],
-  entryComponents: [EnginsCourteDureeFormComponent],
+  entryComponents: [EnginsCourteDureeFormComponent,
+    ContratsFormComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -134,13 +134,7 @@
           <div class="row">
             <div class="col-md-6">
               <form #formEcheancier="ngForm" (submit)="onSubmitEcheancier(formEcheancier)">
-              
-                <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <label for="idecheancier">Id_Echeancier</label>
-                    <input name="IdEcheancier" [value]="echeancierService.formDataEcheancier.IdEcheancier" class="form-control" placeholder="Mois" required>
-                  </div>
-                </div>
+                <input type="hidden" name="IdEcheancier" [value]="echeancierService.formDataEcheancier.IdEcheancier">
                 <div class="form-row">
                   <div class="form-group col-md-4">
                     <label for="moisecheancier">Mois</label>

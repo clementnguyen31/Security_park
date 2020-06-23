@@ -1,0 +1,36 @@
+<table class="table table-borderless">
+    <thead class="thead-light">
+        <th>IdContrat</th>
+        <th>DureeContrat</th>
+        <th>DateFinContrat</th>
+        <th>DateEntree</th>
+        <th>PrixLoyer</th>
+        <th>LieuUtilisation</th>
+        <th>DateSignatureIrrijardin</th>
+        <th>NumContrat</th>
+        <th>PrestataireLocation</th>
+        <th>TypeEngin</th>
+        <th>DateSignaturePrestataire</th>
+        <th>DateCirculation</th>
+        <th>
+            <button class="btn btn-sm btn-success" (click)="AddContrat()">Ajouter</button>
+        </th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let contrat of service.contratsListe; let i=index">
+            <td>{{contrat.IdContrat}}</td>
+            <td>{{contrat.DureeContrat}}</td>
+            <td>{{contrat.DateFinContrat | date:'dd/MM/yyyy'}}</td>
+            <td>{{contrat.DateEntree | date:'dd/MM/yyyy'}}</td>
+            <td>{{contrat.PrixLoyer}}</td>
+            <td>{{contrat.LieuUtilisation}}</td>
+            <td>{{contrat.DateSignatureIrrijardin | date:'dd/MM/yyyy'}}</td>
+            <td>{{contrat.NumContrat}}</td>
+            <td>{{contrat.PrestataireLocation}}</td>
+            <td>{{contrat.TypeEngin}}</td>
+            <td>{{contrat.DateSignaturePrestataire | date:'dd/MM/yyyy'}}</td>
+            <td>{{contrat.DateCirculation | date:'dd/MM/yyyy'}}</td>
+            <td><button class="btn btn-sm btn-success" (click)="editContrat(contrat)">Modifier</button></td>
+        </tr>
+    </tbody>
+</table>

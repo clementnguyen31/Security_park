@@ -27,12 +27,20 @@ export class ContratsService {
 
   constructor(public http: HttpClient) { }
 
+  getContrats(){
+    return this.http.get(this.rootURL + "/Contrats").toPromise();
+  }
+
   getContrat(id){
     return this.http.get(this.rootURL + "/Contrats/" + id);
   }
 
   postContrats() {
-    return this.http.post(this.rootURL + '/Contrats', this.formDataContrat);
+    var body = {
+      ...this.formDataContrat,
+      Contrats: this.contratsListe
+    };
+    return this.http.post(this.rootURL + '/Contrats', body);
   }
 
   putContrats() {
