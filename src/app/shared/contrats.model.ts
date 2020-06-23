@@ -1,5 +1,5 @@
 export class Contrats {
-    IdContrat : string;
+    IdContrat : number;
     DureeContrat : string;
     DateFinContrat : string;
     DateEntree : string;

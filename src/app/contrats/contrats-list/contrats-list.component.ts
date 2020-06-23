@@ -15,23 +15,24 @@ export class ContratsListComponent implements OnInit {
     public dialog:MatDialog) { }
 
   ngOnInit(): void {
-    this.service.refreshListContrats();
+    this.service.refreshContratListe();
+  }
+
+  populateForm(IdContrat){
+    this.service.formDataContrat = Object.assign({}, IdContrat)
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "70%";
+    this.dialog.open(ContratsFormComponent, dialogConfig);
   }
 
   AddContrat(){
     const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "50%";
+    dialogConfig.width = "70%";
     this.dialog.open(ContratsFormComponent, dialogConfig);
-  }
-
-  editContrat(IdContrat){
-    this.service.formDataContrat = Object.assign({}, IdContrat)
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "50%";
-    this.dialog.open(ContratsFormComponent, dialogConfig);
-
   }
 
 }

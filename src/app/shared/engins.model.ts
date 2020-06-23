@@ -2,7 +2,7 @@ export class Engins {
 
     IdEngin : number;
     Matricule : number;
-    NumSerie : number;
+    NumSerie : String;
     EstDeclareRentre : String;
     EstDeclareSortie : String;
     DateDeclarationEntree : String;
@@ -18,8 +18,6 @@ export class Engins {
     IdEcheancier : number;
     IdContratVgp : number;
     InterventionEnCours : boolean;
-
-
 
     /*public string Matricule1 { get; set; }
     public string NumSerie1 { get; set; }

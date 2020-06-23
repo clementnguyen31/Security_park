@@ -12,29 +12,13 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ContratsFormComponent implements OnInit {
 
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
     public dialogRef: MatDialogRef<ContratsFormComponent>,
     public service: ContratsService) { }
 
   ngOnInit(): void {
-    if(this.data.IdContrat == null)
-      this.service.formDataContrat = {
-        IdContrat : this.data.IdContrat,
-        DureeContrat : '',
-        DateFinContrat : '',
-        DateEntree : '',
-        PrixLoyer : 0,
-        LieuUtilisation : '',
-        DateSignatureIrrijardin : null,
-        NumContrat : '',
-        PrestataireLocation : '',
-        TypeEngin : '',
-        DateSignaturePrestataire : null,
-        DateCirculation : null
-      }
-      else
-      this.service.formDataContrat = Object.assign({}, this.data.IdContrat);
   }
 
   resetForm(form? : NgForm){
@@ -42,7 +26,7 @@ export class ContratsFormComponent implements OnInit {
       form.resetForm();
     }
     this.service.formDataContrat = {
-      IdContrat : null,
+      IdContrat : 0,
       DureeContrat : '',
       DateFinContrat : '',
       DateEntree : '',
@@ -57,28 +41,38 @@ export class ContratsFormComponent implements OnInit {
     }
   }
 
-  updateForm(form: NgForm){
-    this.service.putContrats().subscribe(
-      res => {
-        this.resetForm(form);
-        this.service.refreshListContrats();
-      }
-    );
+
+  onSubmit(form : NgForm){
+    if(this.service.formDataContrat.IdContrat == 0){
+      this.insertRecord(form);
+    } else {
+      this.updateRecord(form);
+    }
   }
 
-  insertForm(form: NgForm){
+  insertRecord(form: NgForm){
     this.service.postContrats().subscribe(
       res => {
+        debugger;
         this.resetForm(form);
-        this.service.refreshListContrats();
+        this.service.refreshContratListe();
+      },
+      err => {
+        debugger;
+        console.log(err);
       }
     )
   }
 
-  onSubmit(form : NgForm){
-   if(this.service.formDataContrat.IdContrat == null)
-      this.insertForm(form);
-    else
-      this.updateForm(form);
+  updateRecord(form: NgForm){
+    this.service.putContrats().subscribe(
+      res => {
+        this.resetForm(form);
+        this.service.refreshContratListe();
+      },
+      err => {
+        console.log(err);
+      }
+    )
   }
 }

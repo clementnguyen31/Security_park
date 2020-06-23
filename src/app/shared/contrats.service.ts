@@ -7,20 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ContratsService {
 
-  formDataContrat : Contrats = {
-    IdContrat : '0',
-    DureeContrat : '',
-    DateFinContrat : '',
-    DateEntree : '',
-    PrixLoyer : 0,
-    LieuUtilisation : '',
-    DateSignatureIrrijardin : null,
-    NumContrat : '',
-    PrestataireLocation : '',
-    TypeEngin : '',
-    DateSignaturePrestataire : null,
-    DateCirculation : null
-  }
+  formDataContrat : Contrats;
 
   readonly rootURL = 'https://localhost:44338/api';
   contratsListe : Contrats[];
@@ -28,7 +15,7 @@ export class ContratsService {
   constructor(public http: HttpClient) { }
 
   getContrats(){
-    return this.http.get(this.rootURL + "/Contrats").toPromise();
+    return this.http.get(this.rootURL + "/Contrats");
   }
 
   getContrat(id){
@@ -36,11 +23,7 @@ export class ContratsService {
   }
 
   postContrats() {
-    var body = {
-      ...this.formDataContrat,
-      Contrats: this.contratsListe
-    };
-    return this.http.post(this.rootURL + '/Contrats', body);
+    return this.http.post(this.rootURL + '/Contrats', this.formDataContrat);
   }
 
   putContrats() {
@@ -51,7 +34,7 @@ export class ContratsService {
     return this.http.delete(this.rootURL + '/Contrats/'+ id);
   }
 
-  refreshListContrats(){
+  refreshContratListe(){
     this.http.get(this.rootURL + '/Contrats').toPromise().then(res => this.contratsListe = res as Contrats[]);
   }
 }

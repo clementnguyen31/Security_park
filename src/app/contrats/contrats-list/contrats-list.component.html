@@ -30,7 +30,7 @@
             <td>{{contrat.TypeEngin}}</td>
             <td>{{contrat.DateSignaturePrestataire | date:'dd/MM/yyyy'}}</td>
             <td>{{contrat.DateCirculation | date:'dd/MM/yyyy'}}</td>
-            <td><button class="btn btn-sm btn-success" (click)="editContrat(contrat)">Modifier</button></td>
+            <td><button class="btn btn-sm btn-success" (click)="populateForm(contrat)"><mat-icon aria-hidden="false">edit</mat-icon></button></td>
         </tr>
     </tbody>
 </table>
