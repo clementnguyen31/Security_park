@@ -20,8 +20,21 @@ export class ContratsListComponent implements OnInit {
     this.service.refreshContratListe();
   }
 
-  editForm(IdContrat){
-    this.service.formDataContrat = Object.assign({}, IdContrat)
+  editForm(selectedRecord){
+    this.service.formDataContrat = Object.assign({}, selectedRecord);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "70%";
+    this.dialog.open(ContratsFormComponent, dialogConfig);
+  }
+
+  ajouterContrat(){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "70%";
+    this.dialog.open(ContratsFormComponent, dialogConfig);
   }
 
   detailsContrat(id){

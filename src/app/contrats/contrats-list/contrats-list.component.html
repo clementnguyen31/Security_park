@@ -1,14 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="text-center">
+        <button class="btn btn-primary" (click)="ajouterContrat()">Ajouter</button>
+      </div>
+    </div>
+  </div>
+</div>
 <table class="table table-striped">
     <thead class="text-center">
-        <th>Durée du contrat</th>
-        <th>Date de fin</th>
-        <th>Date d'entrée</th>
-        <th>Date de 1 <sup>ère</sup> circulation</th>
-        <th>Modifier</th>
-        <th>Détails</th>
+      <th>N° de contrat</th>
+      <th>Durée du contrat</th>
+      <th>Date de fin</th>
+      <th>Date d'entrée</th>
+      <th>Date de 1 <sup>ère</sup> circulation</th>
+      <th>Modifier</th>
+      <th>Détails</th>
     </thead>
     <tbody class="text-center">
         <tr *ngFor="let contrat of service.contratsListe; let i=index">
+          <td>{{contrat.NumContrat}}</td>
             <td>{{contrat.DureeContrat}}</td>
             <td>{{contrat.DateFinContrat | date:'dd/MM/yyyy'}}</td>
             <td>{{contrat.DateEntree | date:'dd/MM/yyyy'}}</td>

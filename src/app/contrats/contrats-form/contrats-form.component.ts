@@ -20,7 +20,6 @@ export class ContratsFormComponent implements OnInit {
     private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.resetForm();
   }
 
   resetForm(form? : NgForm){
@@ -70,15 +69,13 @@ export class ContratsFormComponent implements OnInit {
   }
 
   onSubmit(form : NgForm){
-    if(form.value.IdContrat == 0){
+    if(this.service.formDataContrat.IdContrat == 0){
       this.insertRecord(form);
     } else {
       this.updateRecord(form);
     }
   }
 
-
-  
   onClose(){
     this.dialogbox.close();
   }
