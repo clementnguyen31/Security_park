@@ -7,7 +7,20 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ContratsService {
 
-  formDataContrat : Contrats;
+  formDataContrat : Contrats = {
+    IdContrat : 0,
+    DureeContrat : '',
+    DateFinContrat : '',
+    DateEntree : '',
+    PrixLoyer : 0,
+    LieuUtilisation : '',
+    DateSignatureIrrijardin : null,
+    NumContrat : '',
+    PrestataireLocation : '',
+    TypeEngin : '',
+    DateSignaturePrestataire : null,
+    DateCirculation : null
+  }
 
   readonly rootURL = 'https://localhost:44338/api';
   contratsListe : Contrats[];

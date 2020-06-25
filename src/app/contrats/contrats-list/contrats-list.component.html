@@ -1,36 +1,72 @@
-<table class="table table-borderless">
-    <thead class="thead-light">
-        <th>IdContrat</th>
-        <th>DureeContrat</th>
-        <th>DateFinContrat</th>
-        <th>DateEntree</th>
-        <th>PrixLoyer</th>
-        <th>LieuUtilisation</th>
-        <th>DateSignatureIrrijardin</th>
-        <th>NumContrat</th>
-        <th>PrestataireLocation</th>
-        <th>TypeEngin</th>
-        <th>DateSignaturePrestataire</th>
-        <th>DateCirculation</th>
-        <th>
-            <button class="btn btn-sm btn-success" (click)="AddContrat()">Ajouter</button>
-        </th>
+<table class="table table-striped">
+    <thead class="text-center">
+        <th>Durée du contrat</th>
+        <th>Date de fin</th>
+        <th>Date d'entrée</th>
+        <th>Date de 1 <sup>ère</sup> circulation</th>
+        <th>Modifier</th>
+        <th>Détails</th>
     </thead>
-    <tbody>
+    <tbody class="text-center">
         <tr *ngFor="let contrat of service.contratsListe; let i=index">
-            <td>{{contrat.IdContrat}}</td>
             <td>{{contrat.DureeContrat}}</td>
             <td>{{contrat.DateFinContrat | date:'dd/MM/yyyy'}}</td>
             <td>{{contrat.DateEntree | date:'dd/MM/yyyy'}}</td>
-            <td>{{contrat.PrixLoyer}}</td>
-            <td>{{contrat.LieuUtilisation}}</td>
-            <td>{{contrat.DateSignatureIrrijardin | date:'dd/MM/yyyy'}}</td>
-            <td>{{contrat.NumContrat}}</td>
-            <td>{{contrat.PrestataireLocation}}</td>
-            <td>{{contrat.TypeEngin}}</td>
-            <td>{{contrat.DateSignaturePrestataire | date:'dd/MM/yyyy'}}</td>
             <td>{{contrat.DateCirculation | date:'dd/MM/yyyy'}}</td>
-            <td><button class="btn btn-sm btn-success" (click)="populateForm(contrat)"><mat-icon aria-hidden="false">edit</mat-icon></button></td>
+            <td><button class="btn btn-transparent" (click)="editForm(contrat)"><mat-icon aria-hidden="false">edit</mat-icon></button></td>
+            <td><button class="btn btn-transparent" (click)="detailsContrat(contrat.IdContrat)" data-toggle="modal" data-target="#infoModal"><mat-icon aria-hidden="false">visibility</mat-icon></button></td>
         </tr>
     </tbody>
 </table>
+
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered mw-100 w-80">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="col-12 modal-title text-center font-weight-bold" id="exampleModalLabel">Détails du contrat</h1>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <h2 class="text-center">Caractéristiques</h2>
+              <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                        <thead class="text-center">
+                            <tr>
+                                <th>Durée</th>
+                                <th>Date de fin</th>
+                                <th>Date d'entrée</th>
+                                <th>Prix du loyer</th>
+                                <th>Lieu d'utilisation</th>
+                                <th>Date de signature Irrijardin</th>
+                                <th>N° de contrat</th>
+                                <th>Prestataire</th>
+                                <th>Type de l'engin</th>
+                                <th>Date de signature Prestataire</th>
+                                <th>Date de 1 <sup>ère</sup> circulation</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <td>{{currentContratInfo.DureeContrat}}</td>
+                                <td>{{currentContratInfo.DateFinContrat | date:'dd/MM/yyyy'}}</td>
+                                <td>{{currentContratInfo.DateEntree | date:'dd/MM/yyyy'}}</td>
+                                <td>{{currentContratInfo.PrixLoyer}} €</td>
+                                <td>{{currentContratInfo.LieuUtilisation}}</td>
+                                <td>{{currentContratInfo.DateSignatureIrrijardin | date:'dd/MM/yyyy'}}</td>
+                                <td>{{currentContratInfo.NumContrat}}</td>
+                                <td>{{currentContratInfo.PrestataireLocation}}</td>
+                                <td>{{currentContratInfo.TypeEngin}}</td>
+                                <td>{{currentContratInfo.DateSignaturePrestataire | date:'dd/MM/yyyy'}}</td>
+                                <td>{{currentContratInfo.DateCirculation | date:'dd/MM/yyyy'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>

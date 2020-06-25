@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Echeanciers } from './echeanciers.model';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { throwError, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -20,6 +20,15 @@ export class EcheanciersService {
   echeanciersList : Echeanciers[];
 
   constructor(public http: HttpClient) { }
+
+  getEcheanciersByIdEngin(idEngin){
+    let param1 = new HttpParams().set('IdEngin', idEngin);
+    return this.http.get(this.rootURL + "/Echeanciers", {params:param1});
+  }
+
+  getEcheanciers(){
+    return this.http.get(this.rootURL + "/Echeanciers");
+  }
 
   getEcheancier(id){
     return this.http.get(this.rootURL + "/Echeanciers/" + id);

@@ -14,7 +14,7 @@ export class Engins {
     PeriodiciteVgp : String;
     EstVgp : boolean;
     DateCirculation : String;
-    IdContrat : String;
+    IdContrat : number;
     IdEcheancier : number;
     IdContratVgp : number;
     InterventionEnCours : boolean;

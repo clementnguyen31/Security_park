@@ -59,14 +59,10 @@ export class EnginsCourteDureeListComponent implements OnInit {
   } 
 
   echeancierInfo(id){
-    this.enginservice.getEngin(id).subscribe(res =>
-      {
-        this.currentEnginInfo = res;
-      });
-    this.echeancierService.getEcheancier(id).subscribe(res =>
+    this.echeancierService.getEcheanciersByIdEngin(id).subscribe(res =>
       {
         this.currentEnginEcheancier = res;
-      });
+      })
   }
 
   onDelete(id){

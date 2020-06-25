@@ -1,9 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ContratsService } from 'src/app/shared/contrats.service';
 import { NgForm } from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MatDialogRef} from "@angular/material/dialog";
 import { Contrats } from 'src/app/shared/contrats.model';
 import { ToastrService } from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
 
 @Component({
   selector: 'app-contrats-form',
@@ -14,11 +15,12 @@ export class ContratsFormComponent implements OnInit {
 
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data,
-    public dialogRef: MatDialogRef<ContratsFormComponent>,
-    public service: ContratsService) { }
+    public dialogbox: MatDialogRef<ContratsFormComponent>,
+    public service: ContratsService,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.resetForm();
   }
 
   resetForm(form? : NgForm){
@@ -41,24 +43,14 @@ export class ContratsFormComponent implements OnInit {
     }
   }
 
-
-  onSubmit(form : NgForm){
-    if(this.service.formDataContrat.IdContrat == 0){
-      this.insertRecord(form);
-    } else {
-      this.updateRecord(form);
-    }
-  }
-
   insertRecord(form: NgForm){
     this.service.postContrats().subscribe(
       res => {
-        debugger;
         this.resetForm(form);
+        this.toastr.success('Le contrat a été ajouté', 'Security Park');
         this.service.refreshContratListe();
       },
       err => {
-        debugger;
         console.log(err);
       }
     )
@@ -68,11 +60,26 @@ export class ContratsFormComponent implements OnInit {
     this.service.putContrats().subscribe(
       res => {
         this.resetForm(form);
+        this.toastr.success('Le contrat a été modifié', 'Security Park');
         this.service.refreshContratListe();
       },
       err => {
         console.log(err);
       }
     )
+  }
+
+  onSubmit(form : NgForm){
+    if(form.value.IdContrat == 0){
+      this.insertRecord(form);
+    } else {
+      this.updateRecord(form);
+    }
+  }
+
+
+  
+  onClose(){
+    this.dialogbox.close();
   }
 }

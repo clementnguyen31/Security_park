@@ -11,6 +11,8 @@ import { Contrats } from 'src/app/shared/contrats.model';
 })
 export class ContratsListComponent implements OnInit {
 
+  currentContratInfo: any = {};
+
   constructor(public service: ContratsService,
     public dialog:MatDialog) { }
 
@@ -18,21 +20,15 @@ export class ContratsListComponent implements OnInit {
     this.service.refreshContratListe();
   }
 
-  populateForm(IdContrat){
+  editForm(IdContrat){
     this.service.formDataContrat = Object.assign({}, IdContrat)
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "70%";
-    this.dialog.open(ContratsFormComponent, dialogConfig);
   }
 
-  AddContrat(){
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "70%";
-    this.dialog.open(ContratsFormComponent, dialogConfig);
+  detailsContrat(id){
+    this.service.getContrat(id).subscribe(res =>
+      {
+        this.currentContratInfo = res;
+      })
   }
 
 }
