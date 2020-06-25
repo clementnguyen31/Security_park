@@ -1,7 +1,7 @@
 export class Echeanciers {
     IdEcheancier : number;
     MoisEcheancier : string;
-    Montant : string;
+    Montant : number;
     IdEngin : number;
 
 }

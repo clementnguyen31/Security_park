@@ -34,7 +34,7 @@ export class EnginsLongueDureeListComponent implements OnInit {
     this.echeancierService.formDataEcheancier = {
       IdEcheancier : 0,
       MoisEcheancier : '',
-      Montant : '',
+      Montant : 0,
       IdEngin : 0
     }
   }

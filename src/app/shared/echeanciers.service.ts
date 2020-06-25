@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Echeanciers } from './echeanciers.model';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
-import { throwError, of } from 'rxjs';
+import { throwError, of, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class EcheanciersService {
   formDataEcheancier : Echeanciers = {
     IdEcheancier : 0,
     MoisEcheancier : '',
-    Montant : '',
+    Montant : 0,
     IdEngin : 0
   }
 
@@ -21,8 +21,9 @@ export class EcheanciersService {
 
   constructor(public http: HttpClient) { }
 
-  getEcheanciersByIdEngin(id){
-    return this.http.get(this.rootURL + "/Echeanciers?IdEngin=" + id);
+  getEcheanciersByIdEngin(idEngin): Observable<any>{
+    let params = new HttpParams().set('IdEngin', idEngin);
+    return this.http.get(this.rootURL + "/Echeanciers", {params:params});
   }
 
   getEcheanciers(){
@@ -36,10 +37,6 @@ export class EcheanciersService {
   postEcheanciers() {
     var headers = new HttpHeaders({"Content-Type": "application/json"});
     return this.http.post<any>(this.rootURL + '/Echeanciers', this.formDataEcheancier, {headers});
-  }
-
-  errorHandler(error: HttpErrorResponse){
-    console.log(error);
   }
 
   putEcheanciers() {

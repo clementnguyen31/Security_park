@@ -9,6 +9,7 @@ import { EcheanciersService } from 'src/app/shared/echeanciers.service';
 import { ContratVGPService } from 'src/app/shared/contrat-vgp.service';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { Echeanciers } from 'src/app/shared/echeanciers.model';
 
 @Component({
   selector: 'app-engins-courte-duree-list',
@@ -20,11 +21,14 @@ export class EnginsCourteDureeListComponent implements OnInit {
   currentEnginInfo: any = {};
   currentEnginContrat: any = {};
   currentEnginEcheancier : any = {};
+  echeanciersByIdEngin : Echeanciers[];
+  echancierId : any = {};
 
   constructor(public enginservice: EnginsService, public contratservice: ContratsService, public echeancierService : EcheanciersService, private dialog: MatDialog, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.enginservice.refreshListEngins();
+    this.echeancierService.refreshListEcheanciers();
   }
 
   resetFormEcheancier(form?: NgForm){
@@ -34,8 +38,8 @@ export class EnginsCourteDureeListComponent implements OnInit {
     this.echeancierService.formDataEcheancier = {
       IdEcheancier : 0,
       MoisEcheancier : '',
-      Montant : '',
-      IdEngin : 0
+      Montant : 0,
+      IdEngin : this.currentEnginInfo.IdInfo
     }
   }
 
@@ -60,9 +64,13 @@ export class EnginsCourteDureeListComponent implements OnInit {
   } 
 
   echeancierInfo(id){
+    this.enginservice.getEngin(id).subscribe(res =>
+      {
+        this.currentEnginInfo = res;
+      });
     this.echeancierService.getEcheanciersByIdEngin(id).subscribe(res =>
       {
-        this.currentEnginEcheancier = res;
+        this.echeanciersByIdEngin = res;
       })
   }
 
