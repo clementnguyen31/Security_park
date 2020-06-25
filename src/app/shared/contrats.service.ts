@@ -18,6 +18,7 @@ export class ContratsService {
     NumContrat : '',
     PrestataireLocation : '',
     TypeEngin : '',
+    TypeContrat : '',
     DateSignaturePrestataire : null,
     DateCirculation : null
   }

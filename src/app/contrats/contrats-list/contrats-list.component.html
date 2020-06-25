@@ -8,22 +8,22 @@
         <table class="table table-striped">
           <thead class="text-center">
             <th>N° de contrat</th>
-            <th>Durée du contrat</th>
-            <th>Date de fin</th>
+            <th>Type de contrat</th>
             <th>Date d'entrée</th>
-            <th>Date de 1 <sup>ère</sup> circulation</th>
+            <th>Durée de location</th>
+            <th>Date de fin</th>
             <th>Modifier</th>
             <th>Détails</th>
           </thead>
           <tbody class="text-center">
               <tr *ngFor="let contrat of service.contratsListe; let i=index">
                 <td>{{contrat.NumContrat}}</td>
-                  <td>{{contrat.DureeContrat}}</td>
-                  <td>{{contrat.DateFinContrat | date:'dd/MM/yyyy'}}</td>
-                  <td>{{contrat.DateEntree | date:'dd/MM/yyyy'}}</td>
-                  <td>{{contrat.DateCirculation | date:'dd/MM/yyyy'}}</td>
-                  <td><button class="btn btn-transparent" (click)="editForm(contrat)"><mat-icon aria-hidden="false">edit</mat-icon></button></td>
-                  <td><button class="btn btn-transparent" (click)="detailsContrat(contrat.IdContrat)" data-toggle="modal" data-target="#infoModal"><mat-icon aria-hidden="false">visibility</mat-icon></button></td>
+                <td>{{contrat.TypeContrat}}</td>
+                <td>{{contrat.DateEntree | date:'dd/MM/yyyy'}}</td>
+                <td>{{contrat.DureeContrat}}</td>
+                <td>{{contrat.DateFinContrat | date:'dd/MM/yyyy'}}</td>
+                <td><button class="btn btn-transparent" (click)="editForm(contrat)"><mat-icon aria-hidden="false">edit</mat-icon></button></td>
+                <td><button class="btn btn-transparent" (click)="detailsContrat(contrat.IdContrat)" data-toggle="modal" data-target="#infoModal"><mat-icon aria-hidden="false">visibility</mat-icon></button></td>
               </tr>
           </tbody>
       </table>

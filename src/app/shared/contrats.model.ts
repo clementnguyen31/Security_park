@@ -9,6 +9,7 @@ export class Contrats {
     NumContrat : string;
     PrestataireLocation : string;
     TypeEngin : string;
+    TypeContrat : string;
     DateSignaturePrestataire : Date;
     DateCirculation : Date; 
 }

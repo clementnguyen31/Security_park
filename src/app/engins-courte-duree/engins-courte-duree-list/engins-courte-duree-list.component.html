@@ -136,8 +136,22 @@
               <form #formEcheancier="ngForm" (submit)="onSubmitEcheancier(formEcheancier)">
                 <div class="form-row">
                   <div class="form-group col-md-4">
-                    <label for="moisecheancier">Mois</label>
-                    <input name="MoisEcheancier" id="moisecheancier" #MoisEcheancier="ngModel" [(ngModel)]="echeancierService.formDataEcheancier.MoisEcheancier" class="form-control" placeholder="Mois" required>
+                    <label for="MoisEcheancier">Mois</label>
+                    <select class="form-control" id="MoisEcheancier" name="MoisEcheancier" #MoisEcheancier="ngModel" [(ngModel)]="echeancierService.formDataEcheancier.MoisEcheancier" class="form-control" required>
+                      <option value="" disabled>Choisissez un mois</option>
+                      <option value="Janvier">Janvier</option>
+                      <option value="Février">Février</option>
+                      <option value="Mars">Mars</option>
+                      <option value="Avril">Avril</option>
+                      <option value="Mai">Mai</option>
+                      <option value="Juin">Juin</option>
+                      <option value="Juillet">Juillet</option>
+                      <option value="Aout">Août</option>
+                      <option value="Septembre">Septembre</option>
+                      <option value="Octobre">Octobre</option>
+                      <option value="Novembre">Novembre</option>
+                      <option value="Décembre">Décembre</option>
+                    </select>
                   </div>
                 </div>
                 <div class="form-row">
