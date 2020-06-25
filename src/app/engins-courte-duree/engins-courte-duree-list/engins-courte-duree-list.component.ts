@@ -8,6 +8,7 @@ import { ContratsService } from 'src/app/shared/contrats.service';
 import { EcheanciersService } from 'src/app/shared/echeanciers.service';
 import { ContratVGPService } from 'src/app/shared/contrat-vgp.service';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-engins-courte-duree-list',
@@ -20,7 +21,7 @@ export class EnginsCourteDureeListComponent implements OnInit {
   currentEnginContrat: any = {};
   currentEnginEcheancier : any = {};
 
-  constructor(public enginservice: EnginsService, public contratservice: ContratsService, public echeancierService : EcheanciersService, private dialog: MatDialog) { }
+  constructor(public enginservice: EnginsService, public contratservice: ContratsService, public echeancierService : EcheanciersService, private dialog: MatDialog, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.enginservice.refreshListEngins();
@@ -75,6 +76,7 @@ export class EnginsCourteDureeListComponent implements OnInit {
     this.echeancierService.postEcheanciers().subscribe(
       res => {
         this.resetFormEcheancier(form);
+        this.toastr.success("Ajout réussi", 'Security Park');
         this.echeancierService.refreshListEcheanciers();
       },
       err => { console.log(err);}

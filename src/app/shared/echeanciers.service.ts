@@ -21,9 +21,8 @@ export class EcheanciersService {
 
   constructor(public http: HttpClient) { }
 
-  getEcheanciersByIdEngin(idEngin){
-    let param1 = new HttpParams().set('IdEngin', idEngin);
-    return this.http.get(this.rootURL + "/Echeanciers", {params:param1});
+  getEcheanciersByIdEngin(id){
+    return this.http.get(this.rootURL + "/Echeanciers?IdEngin=" + id);
   }
 
   getEcheanciers(){

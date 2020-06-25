@@ -11,6 +11,15 @@ table {
     margin-top: 1em;
 }
 
-.btn{
+.btn-add{
     margin-bottom: 1em;
+    color: white;
+}
+
+.btn-customcolor{
+    background-color: #01427c;
+}
+
+button{
+    transition-duration: 0.4s;
 }
