@@ -5,6 +5,7 @@ import {MatDialogRef} from "@angular/material/dialog";
 import { Contrats } from 'src/app/shared/contrats.model';
 import { ToastrService } from 'ngx-toastr';
 import { ToastrModule } from 'ngx-toastr';
+import { EnginsService } from 'src/app/shared/engins.service';
 
 @Component({
   selector: 'app-contrats-form',
@@ -17,6 +18,7 @@ export class ContratsFormComponent implements OnInit {
   constructor(
     public dialogbox: MatDialogRef<ContratsFormComponent>,
     public service: ContratsService,
+    public enginservice: EnginsService,
     private toastr: ToastrService) { }
 
   ngOnInit(): void {

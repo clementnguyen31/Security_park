@@ -27,6 +27,8 @@ export class EnginsCourteDureeListComponent implements OnInit {
   constructor(public enginservice: EnginsService, public contratservice: ContratsService, public echeancierService : EcheanciersService, private dialog: MatDialog, private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.echeancierService.refreshListEcheanciers();
+    this.enginservice.refreshListEngins();
   }
 
   resetFormEcheancier(form?: NgForm){
@@ -37,7 +39,7 @@ export class EnginsCourteDureeListComponent implements OnInit {
       IdEcheancier : 0,
       MoisEcheancier : '',
       Montant : 0,
-      IdEngin : this.currentEnginInfo.IdInfo
+      IdEngin : this.echancierId
     }
   }
 
@@ -69,7 +71,8 @@ export class EnginsCourteDureeListComponent implements OnInit {
     this.echeancierService.getEcheanciersByIdEngin(id).subscribe(res =>
       {
         this.echeanciersByIdEngin = res;
-      })
+      });
+      this.echancierId = id;
   }
 
   onDelete(id){
