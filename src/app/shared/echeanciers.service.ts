@@ -3,6 +3,7 @@ import { Echeanciers } from './echeanciers.model';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 import { throwError, of, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { EnginsService } from './engins.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class EcheanciersService {
 
   formDataEcheancier : Echeanciers = {
     IdEcheancier : 0,
-    MoisEcheancier : '',
+    DateEcheancier : null,
     Montant : 0,
     IdEngin : 0
   }
@@ -19,7 +20,7 @@ export class EcheanciersService {
   readonly rootURL = 'https://localhost:44338/api';
   echeanciersList : Echeanciers[];
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient, public enginservice: EnginsService) { }
 
   getEcheanciersByIdEngin(idEngin): Observable<any>{
     let params = new HttpParams().set('IdEngin', idEngin);

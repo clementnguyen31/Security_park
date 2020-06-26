@@ -1,6 +1,6 @@
 export class Echeanciers {
     IdEcheancier : number;
-    MoisEcheancier : string;
+    DateEcheancier : Date;
     Montant : number;
     IdEngin : number;
 

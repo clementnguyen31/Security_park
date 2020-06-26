@@ -175,22 +175,8 @@
                 <form #formEcheancier="ngForm" (submit)="onSubmitEcheancier(formEcheancier)">
                   <div class="form-row">
                     <div class="form-group col-md-4">
-                      <label for="MoisEcheancier">Mois</label>
-                      <select class="form-control" id="MoisEcheancier" name="MoisEcheancier" #MoisEcheancier="ngModel" [(ngModel)]="echeancierService.formDataEcheancier.MoisEcheancier" class="form-control" required>
-                        <option value="" disabled>Choisissez un mois</option>
-                        <option value="Janvier">Janvier</option>
-                        <option value="Février">Février</option>
-                        <option value="Mars">Mars</option>
-                        <option value="Avril">Avril</option>
-                        <option value="Mai">Mai</option>
-                        <option value="Juin">Juin</option>
-                        <option value="Juillet">Juillet</option>
-                        <option value="Aout">Août</option>
-                        <option value="Septembre">Septembre</option>
-                        <option value="Octobre">Octobre</option>
-                        <option value="Novembre">Novembre</option>
-                        <option value="Décembre">Décembre</option>
-                      </select>
+                      <label for="dateecheancier">Date</label>
+                      <input type="datetime-local" id="dateecheancier" name="DateEcheancier" #DateEcheancier="ngModel" [(ngModel)]="echeancierService.formDataEcheancier.DateEcheancier" class="form-control" required>
                     </div>
                   </div>
                   <div class="form-row">
@@ -214,13 +200,13 @@
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <td>Mois</td>
+                      <td>Date</td>
                       <td>Montant</td>
                     </tr>
                   </thead>
                   <tbody>
                     <tr *ngFor="let ech of echeanciersByIdEngin">
-                      <td>{{ech.MoisEcheancier}}</td>
+                      <td>{{ech.DateEcheancier | date:'MM/yyyy'}}</td>
                       <td>{{ech.Montant}} €</td>
                     </tr>
                   </tbody>
