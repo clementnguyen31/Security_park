@@ -27,8 +27,6 @@ export class EnginsCourteDureeListComponent implements OnInit {
   constructor(public enginservice: EnginsService, public contratservice: ContratsService, public echeancierService : EcheanciersService, private dialog: MatDialog, private toastr: ToastrService) { }
 
   ngOnInit(): void {
-    this.enginservice.refreshListEngins();
-    this.echeancierService.refreshListEcheanciers();
   }
 
   resetFormEcheancier(form?: NgForm){

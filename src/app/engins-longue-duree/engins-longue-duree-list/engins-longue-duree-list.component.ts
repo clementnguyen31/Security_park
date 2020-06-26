@@ -6,6 +6,8 @@ import { EcheanciersService } from 'src/app/shared/echeanciers.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EnginsLongueDureeFormComponent } from '../engins-longue-duree-form/engins-longue-duree-form.component';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { Echeanciers } from 'src/app/shared/echeanciers.model';
 
 @Component({
   selector: 'app-engins-longue-duree-list',
@@ -18,8 +20,9 @@ export class EnginsLongueDureeListComponent implements OnInit {
   currentEnginContrat: any = {};
   currentEnginContratVGP: any = {};
   currentEnginEcheancier : any = {};
+  echeanciersByIdEngin : Echeanciers[];
 
-  constructor(public enginservice: EnginsService, public contratservice: ContratsService, public echeancierService : EcheanciersService, public contratvgpservice : ContratVGPService, private dialog: MatDialog) { }
+  constructor(public enginservice: EnginsService, public contratservice: ContratsService, public echeancierService : EcheanciersService, public contratvgpservice : ContratVGPService, private dialog: MatDialog, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.enginservice.refreshListEngins();
@@ -63,10 +66,36 @@ export class EnginsLongueDureeListComponent implements OnInit {
       })
   } 
 
+  echeancierInfo(id){
+    this.enginservice.getEngin(id).subscribe(res =>
+      {
+        this.currentEnginInfo = res;
+      });
+    this.echeancierService.getEcheanciersByIdEngin(id).subscribe(res =>
+      {
+        this.echeanciersByIdEngin = res;
+      })
+  }
+
   onDelete(id){
     this.enginservice.deleteEngins(id).subscribe(res => {
       this.enginservice.refreshListEngins();
     })
+  }
+
+  insertEcheancier(form: NgForm){
+    this.echeancierService.postEcheanciers().subscribe(
+      res => {
+        this.resetFormEcheancier(form);
+        this.toastr.success("Ajout réussi", 'Security Park');
+        this.echeancierService.refreshListEcheanciers();
+      },
+      err => { console.log(err);}
+    )
+  }
+
+  onSubmitEcheancier(form: NgForm){
+    this.insertEcheancier(form);
   }
 
 }

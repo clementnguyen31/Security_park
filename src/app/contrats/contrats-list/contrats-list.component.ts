@@ -3,6 +3,7 @@ import { ContratsService } from 'src/app/shared/contrats.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ContratsFormComponent } from '../contrats-form/contrats-form.component';
 import { Contrats } from 'src/app/shared/contrats.model';
+import { EnginsService } from 'src/app/shared/engins.service';
 
 @Component({
   selector: 'app-contrats-list',
@@ -14,6 +15,7 @@ export class ContratsListComponent implements OnInit {
   currentContratInfo: any = {};
 
   constructor(public service: ContratsService,
+    public enginservice: EnginsService,
     public dialog:MatDialog) { }
 
   ngOnInit(): void {
