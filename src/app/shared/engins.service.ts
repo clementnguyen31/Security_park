@@ -25,7 +25,8 @@ export class EnginsService {
     IdContrat : 0,
     IdEcheancier : 0,
     IdContratVgp : 0,
-    InterventionEnCours : false
+    InterventionEnCours : false,
+    EstArret : false
   };
   readonly rootURL = 'https://localhost:44338/api';
   enginsListe : Engins[];

@@ -56,6 +56,7 @@
                                     <th>Déclaré rentré ? (assurance)</th>
                                     <th>Date déclaration sortie</th>
                                     <th>Déclaré sortie ? (assurance)</th>
+                                    <th>A l'arrêt ?</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -86,6 +87,12 @@
                                     </ng-container>
                                     <ng-template #third>
                                     <td>Non</td>
+                                    </ng-template>
+                                    <ng-container *ngIf="currentEnginInfo.EstArret==true; else fourth">
+                                      <td>Oui</td>
+                                    </ng-container>
+                                    <ng-template #fourth>
+                                      <td>Non</td>
                                     </ng-template>
                                 </tr>
                             </tbody>

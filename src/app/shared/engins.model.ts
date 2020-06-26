@@ -17,7 +17,8 @@ export class Engins {
     IdContrat : number;
     IdEcheancier : number;
     IdContratVgp : number;
-    InterventionEnCours : boolean;
+    InterventionEnCours : boolean; 
+    EstArret : boolean;
 
     /*public string Matricule1 { get; set; }
     public string NumSerie1 { get; set; }

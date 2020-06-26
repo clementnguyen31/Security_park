@@ -39,7 +39,8 @@ export class EnginsCourteDureeFormComponent implements OnInit {
       IdContrat : 0,
       IdEcheancier : 0,
       IdContratVgp : 0,
-      InterventionEnCours : false
+      InterventionEnCours : false,
+      EstArret : false
     }
   }
 
