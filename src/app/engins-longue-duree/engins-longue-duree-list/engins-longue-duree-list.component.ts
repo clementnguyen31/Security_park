@@ -19,10 +19,10 @@ export class EnginsLongueDureeListComponent implements OnInit {
   currentEnginInfo: any = {};
   currentEnginContrat: any = {};
   currentEnginContratVGP: any = {};
-  currentEnginEcheancier : any = {};
-  echeanciersByIdEngin : Echeanciers[];
+  currentEnginEcheancier: any = {};
+  echeanciersByIdEngin: Echeanciers[];
 
-  constructor(public enginservice: EnginsService, public contratservice: ContratsService, public echeancierService : EcheanciersService, public contratvgpservice : ContratVGPService, private dialog: MatDialog, private toastr: ToastrService) { }
+  constructor(public enginservice: EnginsService, public contratservice: ContratsService, public contratVGPService: ContratVGPService, public echeancierService: EcheanciersService, public contratvgpservice: ContratVGPService, private dialog: MatDialog, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.enginservice.refreshListEngins();
@@ -30,19 +30,19 @@ export class EnginsLongueDureeListComponent implements OnInit {
     this.contratvgpservice.refreshListContratsVGP();
   }
 
-  resetFormEcheancier(form?: NgForm){
-    if(form != null){
+  resetFormEcheancier(form?: NgForm) {
+    if (form != null) {
       form.form.reset();
     }
     this.echeancierService.formDataEcheancier = {
-      IdEcheancier : 0,
-      DateEcheancier : null,
-      Montant : 0,
-      IdEngin : 0
+      IdEcheancier: 0,
+      DateEcheancier: null,
+      Montant: 0,
+      IdEngin: 0
     }
   }
 
-  populateForm(selectedRecord){
+  populateForm(selectedRecord) {
     this.enginservice.formDataEngins = Object.assign({}, selectedRecord);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
@@ -51,50 +51,55 @@ export class EnginsLongueDureeListComponent implements OnInit {
     this.dialog.open(EnginsLongueDureeFormComponent, dialogConfig);
   }
 
-  detailsInfo(id){
-    this.enginservice.getEngin(id).subscribe(res =>
-      {
-        this.currentEnginInfo = res;
-      });
-    this.contratservice.getContrat(id).subscribe(res =>
-      {
-        this.currentEnginContrat = res;
-      });
-    this.contratvgpservice.getContratVGP(id).subscribe(res =>
-      {
-        this.currentEnginContratVGP = res;
-      })
-  } 
-
-  echeancierInfo(id){
-    this.enginservice.getEngin(id).subscribe(res =>
-      {
-        this.currentEnginInfo = res;
-      });
-    this.echeancierService.getEcheanciersByIdEngin(id).subscribe(res =>
-      {
-        this.echeanciersByIdEngin = res;
-      })
+  ajouterEngin() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "70%";
+    this.dialog.open(EnginsLongueDureeFormComponent, dialogConfig);
   }
 
-  onDelete(id){
+
+  detailsInfo(id, idcontrat, idcontratvgp) {
+    var param;
+    this.enginservice.getEngin(id).subscribe(res => {
+      this.currentEnginInfo = res;
+    });
+    this.contratservice.getContrat(idcontrat).subscribe(res => {
+      this.currentEnginContrat = res;
+    });
+    this.contratvgpservice.getContratVGP(idcontratvgp).subscribe(res => {
+      this.currentEnginContratVGP = res;
+    })
+  }
+
+  echeancierInfo(id) {
+    this.enginservice.getEngin(id).subscribe(res => {
+      this.currentEnginInfo = res;
+    });
+    this.echeancierService.getEcheanciersByIdEngin(id).subscribe(res => {
+      this.echeanciersByIdEngin = res;
+    })
+  }
+
+  onDelete(id) {
     this.enginservice.deleteEngins(id).subscribe(res => {
       this.enginservice.refreshListEngins();
     })
   }
 
-  insertEcheancier(form: NgForm){
+  insertEcheancier(form: NgForm) {
     this.echeancierService.postEcheanciers().subscribe(
       res => {
         this.resetFormEcheancier(form);
         this.toastr.success("Ajout réussi", 'Security Park');
         this.echeancierService.refreshListEcheanciers();
       },
-      err => { console.log(err);}
+      err => { console.log(err); }
     )
   }
 
-  onSubmitEcheancier(form: NgForm){
+  onSubmitEcheancier(form: NgForm) {
     this.insertEcheancier(form);
   }
 

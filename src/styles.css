@@ -7,3 +7,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 #toast-container > div{
     opacity: 1;
 }
+
+.btn-customcolor{
+    background-color: #01427c;
+}
+
+.btn-add{
+    margin-bottom: 1em;
+    color: white;
+}

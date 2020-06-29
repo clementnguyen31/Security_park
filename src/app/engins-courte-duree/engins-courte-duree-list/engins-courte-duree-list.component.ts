@@ -20,30 +20,30 @@ export class EnginsCourteDureeListComponent implements OnInit {
 
   currentEnginInfo: any = {};
   currentEnginContrat: any = {};
-  currentEnginEcheancier : any = {};
-  echeanciersByIdEngin : Echeanciers[];
-  echancierId : any = {};
+  currentEnginEcheancier: any = {};
+  echeanciersByIdEngin: Echeanciers[];
+  echancierId: any = {};
 
-  constructor(public enginservice: EnginsService, public contratservice: ContratsService, public echeancierService : EcheanciersService, private dialog: MatDialog, private toastr: ToastrService) { }
+  constructor(public enginservice: EnginsService, public contratservice: ContratsService, public contratVGPService: ContratVGPService, public echeancierService: EcheanciersService, private dialog: MatDialog, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.echeancierService.refreshListEcheanciers();
     this.enginservice.refreshListEngins();
   }
 
-  resetFormEcheancier(form?: NgForm){
-    if(form != null){
+  resetFormEcheancier(form?: NgForm) {
+    if (form != null) {
       form.form.reset();
     }
     this.echeancierService.formDataEcheancier = {
-      IdEcheancier : 0,
-      DateEcheancier : null,
-      Montant : 0,
-      IdEngin : this.echancierId
+      IdEcheancier: 0,
+      DateEcheancier: null,
+      Montant: 0,
+      IdEngin: this.echancierId
     }
   }
 
-  populateForm(selectedRecord){
+  populateForm(selectedRecord) {
     this.enginservice.formDataEngins = Object.assign({}, selectedRecord);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
@@ -52,47 +52,51 @@ export class EnginsCourteDureeListComponent implements OnInit {
     this.dialog.open(EnginsCourteDureeFormComponent, dialogConfig);
   }
 
-  detailsInfo(id){
-    this.enginservice.getEngin(id).subscribe(res =>
-      {
-        this.currentEnginInfo = res;
-      });
-    this.contratservice.getContrat(id).subscribe(res =>
-      {
-        this.currentEnginContrat = res;
-      });
-  } 
-
-  echeancierInfo(id){
-    this.enginservice.getEngin(id).subscribe(res =>
-      {
-        this.currentEnginInfo = res;
-      });
-    this.echeancierService.getEcheanciersByIdEngin(id).subscribe(res =>
-      {
-        this.echeanciersByIdEngin = res;
-      });
-      this.echancierId = id;
+  ajouterEngin() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "70%";
+    this.dialog.open(EnginsCourteDureeFormComponent, dialogConfig);
   }
 
-  onDelete(id){
+  detailsInfo(id, idcontrat) {
+    this.enginservice.getEngin(id).subscribe(res => {
+      this.currentEnginInfo = res;
+    });
+    this.contratservice.getContrat(idcontrat).subscribe(res => {
+      this.currentEnginContrat = res;
+    });
+  }
+
+  echeancierInfo(id) {
+    this.enginservice.getEngin(id).subscribe(res => {
+      this.currentEnginInfo = res;
+    });
+    this.echeancierService.getEcheanciersByIdEngin(id).subscribe(res => {
+      this.echeanciersByIdEngin = res;
+    });
+    this.echancierId = id;
+  }
+
+  onDelete(id) {
     this.enginservice.deleteEngins(id).subscribe(res => {
       this.enginservice.refreshListEngins();
     })
   }
 
-  insertEcheancier(form: NgForm){
+  insertEcheancier(form: NgForm) {
     this.echeancierService.postEcheanciers().subscribe(
       res => {
         this.resetFormEcheancier(form);
         this.toastr.success("Ajout réussi", 'Security Park');
         this.echeancierService.refreshListEcheanciers();
       },
-      err => { console.log(err);}
+      err => { console.log(err); }
     )
   }
 
-  onSubmitEcheancier(form: NgForm){
+  onSubmitEcheancier(form: NgForm) {
     this.insertEcheancier(form);
   }
 

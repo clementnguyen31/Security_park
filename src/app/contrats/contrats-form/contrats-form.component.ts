@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ContratsService } from 'src/app/shared/contrats.service';
 import { NgForm } from '@angular/forms';
-import {MatDialogRef} from "@angular/material/dialog";
+import { MatDialogRef } from "@angular/material/dialog";
 import { Contrats } from 'src/app/shared/contrats.model';
 import { ToastrService } from 'ngx-toastr';
 import { ToastrModule } from 'ngx-toastr';
@@ -24,28 +24,28 @@ export class ContratsFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  resetForm(form? : NgForm){
-    if(form = null){
+  resetForm(form?: NgForm) {
+    if (form != null) {
       form.resetForm();
     }
     this.service.formDataContrat = {
-      IdContrat : 0,
-      DureeContrat : '',
-      DateFinContrat : '',
-      DateEntree : '',
-      PrixLoyer : 0,
-      LieuUtilisation : '',
-      DateSignatureIrrijardin : null,
-      NumContrat : '',
-      PrestataireLocation : '',
-      TypeEngin : '',
-      TypeContrat : '',
-      DateSignaturePrestataire : null,
-      DateCirculation : null
+      IdContrat: 0,
+      DureeContrat: '',
+      DateFinContrat: '',
+      DateEntree: '',
+      PrixLoyer: 0,
+      LieuUtilisation: '',
+      DateSignatureIrrijardin: null,
+      NumContrat: '',
+      PrestataireLocation: '',
+      TypeEngin: '',
+      TypeContrat: '',
+      DateSignaturePrestataire: null,
+      DateCirculation: null
     }
   }
 
-  insertRecord(form: NgForm){
+  insertRecord(form: NgForm) {
     this.service.postContrats().subscribe(
       res => {
         this.resetForm(form);
@@ -58,7 +58,7 @@ export class ContratsFormComponent implements OnInit {
     )
   }
 
-  updateRecord(form: NgForm){
+  updateRecord(form: NgForm) {
     this.service.putContrats().subscribe(
       res => {
         this.resetForm(form);
@@ -71,15 +71,15 @@ export class ContratsFormComponent implements OnInit {
     )
   }
 
-  onSubmit(form : NgForm){
-    if(this.service.formDataContrat.IdContrat == 0){
+  onSubmit(form: NgForm) {
+    if (this.service.formDataContrat.IdContrat == 0) {
       this.insertRecord(form);
     } else {
       this.updateRecord(form);
     }
   }
 
-  onClose(){
+  onClose() {
     this.dialogbox.close();
   }
 }

@@ -16,13 +16,13 @@ export class ContratsListComponent implements OnInit {
 
   constructor(public service: ContratsService,
     public enginservice: EnginsService,
-    public dialog:MatDialog) { }
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.service.refreshContratListe();
   }
 
-  editForm(selectedRecord){
+  editForm(selectedRecord) {
     this.service.formDataContrat = Object.assign({}, selectedRecord);
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
@@ -31,7 +31,7 @@ export class ContratsListComponent implements OnInit {
     this.dialog.open(ContratsFormComponent, dialogConfig);
   }
 
-  ajouterContrat(){
+  ajouterContrat() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
@@ -39,11 +39,10 @@ export class ContratsListComponent implements OnInit {
     this.dialog.open(ContratsFormComponent, dialogConfig);
   }
 
-  detailsContrat(id){
-    this.service.getContrat(id).subscribe(res =>
-      {
-        this.currentContratInfo = res;
-      })
+  detailsContrat(id) {
+    this.service.getContrat(id).subscribe(res => {
+      this.currentContratInfo = res;
+    })
   }
 
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Engins } from './engins.model';
 
 @Injectable({
@@ -7,33 +7,33 @@ import { Engins } from './engins.model';
 })
 export class EnginsService {
 
-  formDataEngins : Engins = {
-    IdEngin : 0,
-    Matricule : null,
-    NumSerie : null,
-    EstDeclareRentre : '',
-    EstDeclareSortie : '',
-    DateDeclarationEntree : '',
-    DateDeclarationSortie : '',
-    Marque : '',
-    TypeContrat : '',
-    TypeEngin : '',
-    TypeBatterie : '',
-    PeriodiciteVgp : null,
-    EstVgp : false,
-    DateCirculation : '',
-    IdContrat : 0,
-    IdEcheancier : 0,
-    IdContratVgp : 0,
-    InterventionEnCours : false,
-    EstArret : false
+  formDataEngins: Engins = {
+    IdEngin: 0,
+    Matricule: null,
+    NumSerie: null,
+    EstDeclareRentre: '',
+    EstDeclareSortie: '',
+    DateDeclarationEntree: '',
+    DateDeclarationSortie: '',
+    Marque: '',
+    TypeContrat: '',
+    TypeEngin: '',
+    TypeBatterie: '',
+    PeriodiciteVgp: null,
+    EstVgp: false,
+    DateCirculation: '',
+    IdContrat: 0,
+    IdEcheancier: 0,
+    IdContratVgp: 0,
+    InterventionEnCours: false,
+    EstArret: false
   };
   readonly rootURL = 'https://localhost:44338/api';
-  enginsListe : Engins[];
+  enginsListe: Engins[];
 
-  constructor(public http : HttpClient) { }
+  constructor(public http: HttpClient) { }
 
-  getEngin(id){
+  getEngin(id) {
     return this.http.get(this.rootURL + "/Engins/" + id);
   }
 
@@ -42,14 +42,14 @@ export class EnginsService {
   }
 
   putEngins() {
-    return this.http.put(this.rootURL + '/Engins/'+ this.formDataEngins.IdEngin, this.formDataEngins);
+    return this.http.put(this.rootURL + '/Engins/' + this.formDataEngins.IdEngin, this.formDataEngins);
   }
 
   deleteEngins(id) {
-    return this.http.delete(this.rootURL + '/Engins/'+ id);
+    return this.http.delete(this.rootURL + '/Engins/' + id);
   }
 
-  refreshListEngins(){
+  refreshListEngins() {
     this.http.get(this.rootURL + '/Engins').toPromise().then(res => this.enginsListe = res as Engins[]);
   }
 

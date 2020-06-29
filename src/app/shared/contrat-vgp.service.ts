@@ -7,21 +7,21 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ContratVGPService {
 
-  formDataContratVGP : ContratVGP = {
-    IdContratVgp : 0,
-    DateDebutVgp : null,
-    DureeVgp : 0,
-    MontantViste : 0,
-    DateProchaineVgp : null
+  formDataContratVGP: ContratVGP = {
+    IdContratVgp: 0,
+    DateDebutVgp: null,
+    DureeVgp: 0,
+    MontantViste: 0,
+    DateProchaineVgp: null
   }
 
-  
+
   readonly rootURL = 'https://localhost:44338/api';
-  contratsVGPListe : ContratVGP[];
+  contratsVGPListe: ContratVGP[];
 
   constructor(public http: HttpClient) { }
 
-  getContratVGP(id){
+  getContratVGP(id) {
     return this.http.get(this.rootURL + "/ContratVgps/" + id);
   }
 
@@ -30,14 +30,14 @@ export class ContratVGPService {
   }
 
   putContratsVGP() {
-    return this.http.put(this.rootURL + '/ContratVgps/'+ this.formDataContratVGP.IdContratVgp, this.formDataContratVGP);
+    return this.http.put(this.rootURL + '/ContratVgps/' + this.formDataContratVGP.IdContratVgp, this.formDataContratVGP);
   }
 
   deleteContratsVGP(id) {
-    return this.http.delete(this.rootURL + '/ContratVgps/'+ id);
+    return this.http.delete(this.rootURL + '/ContratVgps/' + id);
   }
 
-  refreshListContratsVGP(){
+  refreshListContratsVGP() {
     this.http.get(this.rootURL + '/ContratVgps').toPromise().then(res => this.contratsVGPListe = res as ContratVGP[]);
   }
 }

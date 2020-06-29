@@ -1,113 +1,167 @@
-<h1 class="text-center font-weight-bold">Modifier un engin</h1>
+<h1 class="text-center font-weight-bold">Ajouter / Modifier un engin</h1>
 <form #form="ngForm" (submit)="onSubmit(form)">
-<input type="hidden" name="IdEngin" [value]="enginService.formDataEngins.IdEngin">
-<div class="form-row">
-   <div class="form-group col-md-4">
-      <label for="matricule">Matricule</label>
-      <input name="Matricule" id="matricule" #Matricule="ngModel" [(ngModel)]="enginService.formDataEngins.Matricule" class="form-control" placeholder="Matricule" required>
+   <div class="form-row">
+      <div class="form-group col-md-4">
+         <label for="matricule">Matricule</label>
+         <input name="Matricule" id="matricule" #Matricule="ngModel" [(ngModel)]="enginService.formDataEngins.Matricule"
+            class="form-control" placeholder="Matricule" required>
+      </div>
+      <div class="form-group col-md-4">
+         <label for="numeroserie">Numéro de série</label>
+         <input name="NumSerie" id="numeroserie" #NumSerie="ngModel" [(ngModel)]="enginService.formDataEngins.NumSerie"
+            class="form-control" placeholder="Numéro de série" required>
+      </div>
+      <div class="form-group col-md-4">
+         <label for="marque">Marque</label>
+         <input name="Marque" id="marque" #Marque="ngModel" [(ngModel)]="enginService.formDataEngins.Marque"
+            class="form-control" placeholder="Marque" required>
+      </div>
    </div>
-   <div class="form-group col-md-4">
-      <label for="numeroserie">Numéro de série</label>
-      <input name="NumSerie" id="numeroserie" #NumSerie="ngModel" [(ngModel)]="enginService.formDataEngins.NumSerie" class="form-control" placeholder="Numéro de série" required>
-   </div>
-   <div class="form-group col-md-4">
-      <label for="marque">Marque</label>
-      <input name="Marque" id="marque" #Marque="ngModel" [(ngModel)]="enginService.formDataEngins.Marque" class="form-control" placeholder="Marque" required>
-   </div>
-</div>
-<div class="form-row">
-   <div class="form-group col-md-4">
-      <label for="typeengin">Type de l'engin</label>
-      <select class="form-control" name="TypeEngin" id="typeengin" #TypeEngin="ngModel" [(ngModel)]="enginService.formDataEngins.TypeEngin" class="form-control" placeholder="Type de l'engin" required>
-      <option value="" disabled>Choisissez un type d'engin</option>
-      <option value="COMPACT10N">COMPACT10N</option>
-      <option value="E 16C (386)">E 16C (386)</option>
-      <option value="E 16C (EVO)">E 16C (EVO)</option>
-      <option value="E 16">E 16</option>
-      <option value="E35L (387)">E35L (387)</option>
-      <option value="L 12 (1172)">L 12 (1172)</option>
-      <option value="L12">L12</option>
-      <option value="L12i">L12i</option>
-      <option value="Nacelle compact 8m">Nacelle compact 8m</option>
-      <option value="Nacelles">Nacelles</option>
-      <option value="R14">R14</option>
-      <option value="R14 HD 1120">R14 HD 1120</option>
-      <option value="R14HD">R14HD</option>
-      <option value="R16 S">R16 S</option>
-      <option value="T 20 SP (131)">T 20 SP (131)</option>
-      <option value="T14">T14</option>
-      <option value="T16">T16</option>
-      <option value="T2 SP">T2 SP</option>
-      <option value="T20">T20</option>
-      <option value="T20 SP">T20 SP</option>
-      <option value="T20 AP">T20 AP</option>
-      <option value="T25 SP">T25 SP</option>
-      <option value="V08 02">V08 02</option>
-      </select>
-   </div>
-   <div class="form-group col-md-4">
-      <label for="typebatterie">Type de batterie</label>
-      <select name="TypeBatterie" id="typebatterie" #TypeBatterie="ngModel" [(ngModel)]="enginService.formDataEngins.TypeBatterie" class="form-control" placeholder="Type de batterie" required>
-      <option value="" disabled>Choisissez un type de batterie</option>
-      <option value="Plomb">Plomb</option>
-      <option value="Lithium">Lithium</option>
-      </select>
-   </div>
-   <div class="form-group col-md-4">
-      <label for="typecontrat">Type de contrat</label>
-      <select class="form-control" id="typecontrat" name="TypeContrat" #TypeContrat="ngModel" [(ngModel)]="enginService.formDataEngins.TypeContrat" class="form-control" required>
-      <option value="" disabled>Choisissez un type de contrat</option>
-      <option value="LCD">LCD</option>
-      <option value="LLD">LLD</option>
-      <option value="Crédit Bail">Crédit Bail</option>
-      </select>
-   </div>
-</div>
-<div class="form-row">
-</div>
-<div class="form-row">
-   <div class="form-group col-md-6">
-      <div class="form-group">
-         <label for="declarerentrerSelect">Déclaré rentré ?</label>
-         <select class="form-control" name="EstDeclareRentre" #EstDeclareRentre="ngModel" [(ngModel)]="enginService.formDataEngins.EstDeclareRentre" id="declarerentrerSelect">
-         <option [ngValue]="true">Oui</option>
-         <option [ngValue]="false">Non</option>
+   <div class="form-row">
+      <div class="form-group col-md-4">
+         <label for="typeengin">Type de l'engin</label>
+         <select class="form-control" name="TypeEngin" id="typeengin" #TypeEngin="ngModel"
+            [(ngModel)]="enginService.formDataEngins.TypeEngin" class="form-control" placeholder="Type de l'engin"
+            required>
+            <option value="" disabled>Choisissez un type d'engin</option>
+            <option value="COMPACT10N">COMPACT10N</option>
+            <option value="E 16C (386)">E 16C (386)</option>
+            <option value="E 16C (EVO)">E 16C (EVO)</option>
+            <option value="E 16">E 16</option>
+            <option value="E35L (387)">E35L (387)</option>
+            <option value="L 12 (1172)">L 12 (1172)</option>
+            <option value="L12">L12</option>
+            <option value="L12i">L12i</option>
+            <option value="Nacelle compact 8m">Nacelle compact 8m</option>
+            <option value="Nacelles">Nacelles</option>
+            <option value="R14">R14</option>
+            <option value="R14 HD 1120">R14 HD 1120</option>
+            <option value="R14HD">R14HD</option>
+            <option value="R16 S">R16 S</option>
+            <option value="T 20 SP (131)">T 20 SP (131)</option>
+            <option value="T14">T14</option>
+            <option value="T16">T16</option>
+            <option value="T2 SP">T2 SP</option>
+            <option value="T20">T20</option>
+            <option value="T20 SP">T20 SP</option>
+            <option value="T20 AP">T20 AP</option>
+            <option value="T25 SP">T25 SP</option>
+            <option value="V08 02">V08 02</option>
+         </select>
+      </div>
+      <div class="form-group col-md-4">
+         <label for="typebatterie">Type de batterie</label>
+         <select name="TypeBatterie" id="typebatterie" #TypeBatterie="ngModel"
+            [(ngModel)]="enginService.formDataEngins.TypeBatterie" class="form-control" placeholder="Type de batterie"
+            required>
+            <option value="" disabled>Choisissez un type de batterie</option>
+            <option value="Plomb">Plomb</option>
+            <option value="Lithium">Lithium</option>
+         </select>
+      </div>
+      <div class="form-group col-md-4">
+         <label for="typecontrat">Type de contrat</label>
+         <select class="form-control" id="typecontrat" name="TypeContrat" #TypeContrat="ngModel"
+            [(ngModel)]="enginService.formDataEngins.TypeContrat" class="form-control" required>
+            <option value="" disabled>Choisissez un type de contrat</option>
+            <option value="LCD">LCD</option>
+            <option value="LLD">LLD</option>
+            <option value="Crédit Bail">Crédit Bail</option>
          </select>
       </div>
    </div>
-   <div class="form-group col-md-6">
-      <label for="DateDeclarationEntree">Date déclaration entrée</label>
-      <input id="DateDeclarationEntree" type="datetime-local" name="DateDeclarationEntree" #DateDeclarationEntree="ngModel" [(ngModel)]="enginService.formDataEngins.DateDeclarationEntree" class="form-control" required>
+   <div class="form-row">
    </div>
-</div>
-<div class="form-row">
-   <div class="form-group col-md-6">
-      <div class="form-group">
-         <label for="declarersortieSelect">Déclaré sortie ?</label>
-         <select class="form-control" name="EstDeclareSortie" #EstDeclareSortie="ngModel" [(ngModel)]="enginService.formDataEngins.EstDeclareSortie" id="declarersortieSelect">
-         <option [ngValue]="true">Oui</option>
-         <option [ngValue]="false">Non</option>
-         </select>
+   <div class="form-row">
+      <div class="form-group col-md-6">
+         <div class="form-group">
+            <label for="declarerentrerSelect">Déclaré rentré ?</label>
+            <select class="form-control" name="EstDeclareRentre" #EstDeclareRentre="ngModel"
+               [(ngModel)]="enginService.formDataEngins.EstDeclareRentre" id="declarerentrerSelect">
+               <option value="" disabled>Déclaré entré ?</option>
+               <option [ngValue]="true">Oui</option>
+               <option [ngValue]="false">Non</option>
+            </select>
+         </div>
+      </div>
+      <div class="form-group col-md-6">
+         <label for="DateDeclarationEntree">Date déclaration entrée</label>
+         <input id="DateDeclarationEntree" type="datetime-local" name="DateDeclarationEntree"
+            #DateDeclarationEntree="ngModel" [(ngModel)]="enginService.formDataEngins.DateDeclarationEntree"
+            class="form-control" required>
       </div>
    </div>
-   <div class="form-group col-md-6">
-      <label for="DateDeclarationSortie">Date déclaration sortie</label>
-      <input id="DateDeclarationSortie" type="datetime-local" name="DateDeclarationEntree" #DateDeclarationSortie="ngModel" [(ngModel)]="enginService.formDataEngins.DateDeclarationSortie" class="form-control" required>
+   <div class="form-row">
+      <div class="form-group col-md-6">
+         <div class="form-group">
+            <label for="declarersortieSelect">Déclaré sortie ?</label>
+            <select class="form-control" name="EstDeclareSortie" #EstDeclareSortie="ngModel"
+               [(ngModel)]="enginService.formDataEngins.EstDeclareSortie" id="declarersortieSelect" required>
+               <option value="" disabled>Déclaré sortie ?</option>
+               <option [ngValue]="true">Oui</option>
+               <option [ngValue]="false">Non</option>
+            </select>
+         </div>
+      </div>
+      <div class="form-group col-md-6">
+         <label for="DateDeclarationSortie">Date déclaration sortie</label>
+         <input id="DateDeclarationSortie" type="datetime-local" name="DateDeclarationEntree"
+            #DateDeclarationSortie="ngModel" [(ngModel)]="enginService.formDataEngins.DateDeclarationSortie"
+            class="form-control" required>
+      </div>
    </div>
-</div>
-<div class="form-row">
-   <div class="form-group col-md-4">
-      <label for="DateCirculation">Date de 1<sup>ère</sup> circulation</label>
-      <input id="DateCirculation" type="datetime-local" name="DateCirculation" #DateCirculation="ngModel" [(ngModel)]="enginService.formDataEngins.DateCirculation" class="form-control" required>
+   <div class="form-row">
+      <div class="form-group col-md-3">
+         <label for="DateCirculation">Date de 1<sup>ère</sup> circulation</label>
+         <input id="DateCirculation" type="datetime-local" name="DateCirculation" #DateCirculation="ngModel"
+            [(ngModel)]="enginService.formDataEngins.DateCirculation" class="form-control" required>
+      </div>
+      <div class="form-group col-md-3">
+         <label for="InterventionEnCours">Intervention en cours ?</label>
+         <select class="form-control" name="InterventionEnCours" #InterventionEnCours="ngModel"
+            [(ngModel)]="enginService.formDataEngins.InterventionEnCours" id="InterventionEnCours" required>
+            <option value="" disabled>Intervention en cours ?</option>
+            <option [ngValue]="true">Oui</option>
+            <option [ngValue]="false">Non</option>
+         </select>
+      </div>
+      <div class="form-group col-md-3">
+         <label for="contrat">Contrat</label>
+         <select class="form-control" name="IdContrat" #IdContrat="ngModel"
+            [(ngModel)]="enginService.formDataEngins.IdContrat" id="contrat" required>
+            <option value="" disabled>Choisissez un contrat</option>
+            <option *ngFor="let contrat of contratService.contratsListe" [ngValue]="contrat.IdContrat">
+               {{contrat.NumContrat}}</option>
+         </select>
+      </div>
+      <div class="form-group col-md-3">
+         <label for="contratVGP">Contrat VGP</label>
+         <ng-container *ngIf="enginService.formDataEngins.TypeContrat=='LCD'; else second">
+            <select class="form-control" name="IdContratVgp" #IdContrat="ngModel"
+               [(ngModel)]="enginService.formDataEngins.IdContratVgp" id="contratVGP" required>
+               <option selected="selected" [ngValue]="null">Pas de VGP</option>
+            </select>
+         </ng-container>
+         <ng-template #second>
+            <select class="form-control" name="IdContratVgp" #IdContrat="ngModel"
+               [(ngModel)]="enginService.formDataEngins.IdContratVgp" id="contratVGP" required>
+               <option value="" disabled>Choisissez un contrat VGP</option>
+               <option *ngFor="let contratvgp of contratVGPService.contratsVGPListe"
+                  [ngValue]="contratvgp.IdContratVgp">{{contratvgp.IdContratVgp}}</option>
+            </select>
+         </ng-template>
+      </div>
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12">
+               <div class="text-center">
+                  <button class="form-group col-md-2 btn btn-primary" style="margin-right: 0.5em;"
+                     type="submit">Valider</button>
+                  <button class="form-group col-md-2 btn btn-secondary" (click)="onClose()"
+                     type="button">Fermer</button>
+               </div>
+            </div>
+         </div>
+      </div>
    </div>
-   <div class="form-group col-md-4">
-      <label for="InterventionEnCours">Intervention en cours ?</label>
-      <select class="form-control" name="InterventionEnCours" #InterventionEnCours="ngModel" [(ngModel)]="enginService.formDataEngins.InterventionEnCours" id="InterventionEnCours" required>
-      <option [ngValue]="true">Oui</option>
-      <option [ngValue]="false">Non</option>
-      </select>
-   </div>
-   <button class="form-group col-md-2 btn btn-primary" type="submit">Valider</button>
-   <button class="form-group col-md-2 btn btn-secondary" (click)="onClose()" type="button">Fermer</button>
-</div>
 </form>
