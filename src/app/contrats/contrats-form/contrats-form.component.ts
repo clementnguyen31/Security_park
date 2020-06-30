@@ -41,7 +41,8 @@ export class ContratsFormComponent implements OnInit {
       TypeEngin: '',
       TypeContrat: '',
       DateSignaturePrestataire: null,
-      DateCirculation: null
+      DateCirculation: null,
+      Commentaire: ''
     }
   }
 

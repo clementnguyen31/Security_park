@@ -28,6 +28,7 @@ export class EnginsLongueDureeListComponent implements OnInit {
     this.enginservice.refreshListEngins();
     this.contratservice.refreshContratListe();
     this.contratvgpservice.refreshListContratsVGP();
+    this.echeancierService.refreshListEcheanciers();
   }
 
   resetFormEcheancier(form?: NgForm) {

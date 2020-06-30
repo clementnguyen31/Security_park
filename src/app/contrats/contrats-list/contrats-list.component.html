@@ -20,16 +20,16 @@
    </thead>
    <tbody class="text-center">
       <tr *ngFor="let contrat of service.contratsListe; let i=index">
-         <td>{{contrat.NumContrat}}</td>
-         <td>{{contrat.DateEntree | date:'dd/MM/yyyy'}}</td>
-         <td>{{contrat.DureeContrat}}</td>
-         <td>{{contrat.DateFinContrat | date:'dd/MM/yyyy'}}</td>
-         <td>
+         <td *ngIf="!contrat.DateSignaturePrestataire">{{contrat.NumContrat}}</td>
+         <td *ngIf="!contrat.DateSignaturePrestataire">{{contrat.DateEntree | date:'dd/MM/yyyy'}}</td>
+         <td *ngIf="!contrat.DateSignaturePrestataire">{{contrat.DureeContrat}}</td>
+         <td *ngIf="!contrat.DateSignaturePrestataire">{{contrat.DateFinContrat | date:'dd/MM/yyyy'}}</td>
+         <td *ngIf="!contrat.DateSignaturePrestataire">
             <button class="btn btn-transparent" (click)="editForm(contrat)">
                <mat-icon aria-hidden="false">edit</mat-icon>
             </button>
          </td>
-         <td>
+         <td *ngIf="!contrat.DateSignaturePrestataire">
             <button class="btn btn-transparent" (click)="detailsContrat(contrat.IdContrat)" data-toggle="modal"
                data-target="#infoModal">
                <mat-icon aria-hidden="false">visibility</mat-icon>
@@ -62,6 +62,7 @@
                               <th>Prestataire</th>
                               <th>Date de signature Prestataire</th>
                               <th>Date de 1 <sup>ère</sup> circulation</th>
+                              <th>Commentaires</th>
                            </tr>
                         </thead>
                         <tbody class="text-center">
@@ -76,6 +77,7 @@
                               <td>{{currentContratInfo.PrestataireLocation}}</td>
                               <td>{{currentContratInfo.DateSignaturePrestataire | date:'dd/MM/yyyy'}}</td>
                               <td>{{currentContratInfo.DateCirculation | date:'dd/MM/yyyy'}}</td>
+                              <td>{{currentContratInfo.Commentaires}}</td>
                            </tr>
                         </tbody>
                      </table>

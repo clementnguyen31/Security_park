@@ -1,107 +1,112 @@
 <h1 class="text-center font-weight-bold">Ajouter/Modifier un contrat</h1>
 <form #form="ngForm" (submit)="onSubmit(form)">
-   <div class="row">
-      <div class="col-md-6">
-         <div class="form-group">
-            <label for="dureecontrat">Durée du contrat</label>
-            <input id="dureecontrat" name="DureeContrat" #DureeContrat="ngModel"
-               [(ngModel)]="service.formDataContrat.DureeContrat" class="form-control" placeholder="Durée du contrat">
-         </div>
-         <div class="form-group">
-            <label for="datefincontrat">Date de fin de contrat</label>
-            <input id="datefincontrat" name="DateFinContrat" type="datetime-local" #DateFinContrat="ngModel"
-               [(ngModel)]="service.formDataContrat.DateFinContrat" class="form-control"
-               placeholder="Date de fin de contrat">
-         </div>
+   <div class="form-row">
+      <div class="form-group col-md-4">
+         <label for="numcontrat">N° de contrat</label>
+         <input id="numcontrat" name="NumContrat" #NumContrat="ngModel" [(ngModel)]="service.formDataContrat.NumContrat"
+            class="form-control" placeholder="Numéro de contrat">
       </div>
-      <div class="col-md-6">
-         <div class="form-group">
-            <label for="dateentree">Date d'entrée</label>
-            <input id="dateentree" name="DateEntree" type="datetime-local" #DateEntree="ngModel"
-               [(ngModel)]="service.formDataContrat.DateEntree" class="form-control" placeholder="Date d'entrée">
-         </div>
-         <div class="form-group">
-            <label for="prixloyer">Prix du loyer</label>
-            <input id="prixloyer" name="PrixLoyer" #PrixLoyer="ngModel" [(ngModel)]="service.formDataContrat.PrixLoyer"
-               class="form-control" placeholder="Prix du loyer">
-         </div>
+      <div class="form-group col-md-4">
+         <label for="typeengin">Type d'engin</label>
+         <select id="typeengin" name="TypeEngin" #TypeEngin="ngModel" [(ngModel)]="service.formDataContrat.TypeEngin"
+            class="form-control" placeholder="Type d'engin">
+            <option value="" disabled>Choisissez un type d'engin</option>
+            <option value="COMPACT10N">COMPACT10N</option>
+            <option value="E 16C (386)">E 16C (386)</option>
+            <option value="E 16C (EVO)">E 16C (EVO)</option>
+            <option value="E 16">E 16</option>
+            <option value="E35L (387)">E35L (387)</option>
+            <option value="L 12 (1172)">L 12 (1172)</option>
+            <option value="L12">L12</option>
+            <option value="L12i">L12i</option>
+            <option value="Nacelle compact 8m">Nacelle compact 8m</option>
+            <option value="Nacelles">Nacelles</option>
+            <option value="R14">R14</option>
+            <option value="R14 HD 1120">R14 HD 1120</option>
+            <option value="R14HD">R14HD</option>
+            <option value="R16 S">R16 S</option>
+            <option value="T 20 SP (131)">T 20 SP (131)</option>
+            <option value="T14">T14</option>
+            <option value="T16">T16</option>
+            <option value="T2 SP">T2 SP</option>
+            <option value="T20">T20</option>
+            <option value="T20 SP">T20 SP</option>
+            <option value="T20 AP">T20 AP</option>
+            <option value="T25 SP">T25 SP</option>
+            <option value="V08 02">V08 02</option>
+         </select>
       </div>
-      <div class="col-md-6">
-         <div class="form-group">
-            <label for="lieu">Lieu d'utilisation</label>
-            <input id="lieu" name="LieuUtilisation" #LieuUtilisation="ngModel"
-               [(ngModel)]="service.formDataContrat.LieuUtilisation" class="form-control"
-               placeholder="Lieu d'utilisation">
-         </div>
-         <div class="form-group">
-            <label for="datesignatureirrijardin">Date de signature Irrijardin</label>
-            <input id="datesignatureirrijardin" name="DateSignatureIrrijardin" type="datetime-local"
-               #DateSignatureIrrijardin="ngModel" [(ngModel)]="service.formDataContrat.DateSignatureIrrijardin"
-               class="form-control" placeholder="Date de signature Irrijardin">
-         </div>
+      <div class="form-group col-md-4">
+         <label for="prixloyer">Prix du loyer</label>
+         <input id="prixloyer" name="PrixLoyer" #PrixLoyer="ngModel" [(ngModel)]="service.formDataContrat.PrixLoyer"
+            class="form-control" placeholder="Prix du loyer">
       </div>
-      <div class="col-md-6">
-         <div class="form-group">
-            <label for="numcontrat">N° de contrat</label>
-            <input id="numcontrat" name="NumContrat" #NumContrat="ngModel"
-               [(ngModel)]="service.formDataContrat.NumContrat" class="form-control" placeholder="Numéro de contrat">
-         </div>
-         <div class="form-group">
-            <label for="prestataire">Prestataire de location</label>
-            <input id="prestataire" name="PrestataireLocation" #PrestataireLocation="ngModel"
-               [(ngModel)]="service.formDataContrat.PrestataireLocation" class="form-control"
-               placeholder="Prestataire de location">
-         </div>
+   </div>
+   <div class="form-row">
+      <div class="form-group col-md-4">
+         <label for="dateentree">Date d'entrée</label>
+         <input id="dateentree" name="DateEntree" type="datetime-local" #DateEntree="ngModel"
+            [(ngModel)]="service.formDataContrat.DateEntree" class="form-control" placeholder="Date d'entrée">
       </div>
-      <div class="col-md-6">
-         <div class="form-group">
-            <label for="typeengin">Type d'engin</label>
-            <select id="typeengin" name="TypeEngin" #TypeEngin="ngModel" [(ngModel)]="service.formDataContrat.TypeEngin"
-               class="form-control" placeholder="Type d'engin">
-               <option value="" disabled>Choisissez un type d'engin</option>
-               <option value="COMPACT10N">COMPACT10N</option>
-               <option value="E 16C (386)">E 16C (386)</option>
-               <option value="E 16C (EVO)">E 16C (EVO)</option>
-               <option value="E 16">E 16</option>
-               <option value="E35L (387)">E35L (387)</option>
-               <option value="L 12 (1172)">L 12 (1172)</option>
-               <option value="L12">L12</option>
-               <option value="L12i">L12i</option>
-               <option value="Nacelle compact 8m">Nacelle compact 8m</option>
-               <option value="Nacelles">Nacelles</option>
-               <option value="R14">R14</option>
-               <option value="R14 HD 1120">R14 HD 1120</option>
-               <option value="R14HD">R14HD</option>
-               <option value="R16 S">R16 S</option>
-               <option value="T 20 SP (131)">T 20 SP (131)</option>
-               <option value="T14">T14</option>
-               <option value="T16">T16</option>
-               <option value="T2 SP">T2 SP</option>
-               <option value="T20">T20</option>
-               <option value="T20 SP">T20 SP</option>
-               <option value="T20 AP">T20 AP</option>
-               <option value="T25 SP">T25 SP</option>
-               <option value="V08 02">V08 02</option>
-            </select>
-         </div>
-         <div class="form-group">
-            <label for="datesignatureprestataire">Date de signature du prestataire</label>
-            <input id="datesignatureprestataire" name="DateSignaturePrestataire" type="datetime-local"
-               #DateSignaturePrestataire="ngModel" [(ngModel)]="service.formDataContrat.DateSignaturePrestataire"
-               class="form-control" placeholder="Date de signature prestataire">
-         </div>
+      <div class="form-group col-md-4">
+         <label for="dureecontrat">Durée du contrat</label>
+         <input id="dureecontrat" name="DureeContrat" #DureeContrat="ngModel"
+            [(ngModel)]="service.formDataContrat.DureeContrat" class="form-control" placeholder="Durée du contrat">
       </div>
-      <div class="col-md-6">
-         <div class="form-group">
+      <div class="form-group col-md-4">
+         <label for="datefincontrat">Date de fin de contrat</label>
+         <input id="datefincontrat" name="DateFinContrat" type="datetime-local" #DateFinContrat="ngModel"
+            [(ngModel)]="service.formDataContrat.DateFinContrat" class="form-control"
+            placeholder="Date de fin de contrat">
+      </div>
+   </div>
+   <div class="form-row">
+      <div class="form-group col-md-6">
+         <label for="datesignatureirrijardin">Date de signature Irrijardin</label>
+         <input id="datesignatureirrijardin" name="DateSignatureIrrijardin" type="datetime-local"
+            #DateSignatureIrrijardin="ngModel" [(ngModel)]="service.formDataContrat.DateSignatureIrrijardin"
+            class="form-control" placeholder="Date de signature Irrijardin">
+      </div>
+      <div class="form-group col-md-6">
+         <label for="prestataire">Prestataire de location</label>
+         <input id="prestataire" name="PrestataireLocation" #PrestataireLocation="ngModel"
+            [(ngModel)]="service.formDataContrat.PrestataireLocation" class="form-control"
+            placeholder="Prestataire de location">
+      </div>
+   </div>
+   <div class="form-row">
+      <div class="form-group col-md-6">
+         <div>
+            <label for="datesignatureprestataire">Date de signature Prestataire</label>
+         <input id="datesignatureprestataire" name="DateSignaturePrestataire" type="datetime-local"
+            #DateSignaturePrestataire="ngModel" [(ngModel)]="service.formDataContrat.DateSignaturePrestataire"
+            class="form-control" placeholder="Date de signature Prestataire">
+         </div>
+         <div>
             <label for="datecirculation">Date de 1 <sup>ère</sup> circulation</label>
             <input id="datecirculation" name="DateCirculation" type="datetime-local" #DateCirculation="ngModel"
                [(ngModel)]="service.formDataContrat.DateCirculation" class="form-control"
                placeholder="Date de 1ère circulation">
          </div>
-         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Valider</button>
-            <button type="button" class="btn btn-secondary" (click)="onClose()">Fermer</button>
+      </div>
+      <div class="form-group col-md-6">
+         <div>
+            <label for="lieu">Lieu d'utilisation</label>
+            <input id="lieu" name="LieuUtilisation" #LieuUtilisation="ngModel"
+               [(ngModel)]="service.formDataContrat.LieuUtilisation" class="form-control"
+               placeholder="Lieu d'utilisation">
+         </div>
+         <div>
+            <label for="commentaire">Commentaires</label>
+            <textarea id="commentaire" name="Commentaire" #Commentaire="ngModel"
+               [(ngModel)]="service.formDataContrat.Commentaire" class="form-control"
+               placeholder="Commentaires"></textarea>
          </div>
       </div>
+   </div>
+
+   <div class="form-group text-center">
+      <button type="submit" class="btn btn-primary" style="margin-right: 0.5em;">Valider</button>
+      <button type="button" class="btn btn-secondary" (click)="onClose()">Fermer</button>
    </div>
 </form>

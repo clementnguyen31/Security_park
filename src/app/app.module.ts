@@ -14,8 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
-import { MatDialogModule, MatDialogRef} from '@angular/material/dialog';
-import {MatIconModule} from '@angular/material/icon';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 import { ToastrModule } from 'ngx-toastr';
 import { EnginsLongueDureeFormComponent } from './engins-longue-duree/engins-longue-duree-form/engins-longue-duree-form.component';
 import { EnginsLongueDureeListComponent } from './engins-longue-duree/engins-longue-duree-list/engins-longue-duree-list.component';
@@ -37,7 +37,7 @@ import { ContratsFormComponent } from './contrats/contrats-form/contrats-form.co
     EnginsLongueDureeListComponent,
     ContratsComponent,
     ContratsListComponent,
-    ContratsFormComponent
+    ContratsFormComponent,
   ],
   entryComponents: [EnginsCourteDureeFormComponent,
     ContratsFormComponent],
@@ -54,8 +54,10 @@ import { ContratsFormComponent } from './contrats/contrats-form/contrats-form.co
     ToastrModule.forRoot()
   ],
   providers: [
-    {provide: MatDialogRef,
-    useValue: {}}
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    }
   ],
   bootstrap: [AppComponent]
 })
