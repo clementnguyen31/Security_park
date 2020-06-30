@@ -33,6 +33,10 @@ export class EnginsService {
 
   constructor(public http: HttpClient) { }
 
+  getEngins(){
+    return this.http.get(this.rootURL + "/Engins");
+  }
+
   getEngin(id) {
     return this.http.get(this.rootURL + "/Engins/" + id);
   }

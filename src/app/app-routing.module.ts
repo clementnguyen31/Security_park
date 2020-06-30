@@ -6,6 +6,7 @@ import { EnginsLongueDureeComponent } from './engins-longue-duree/engins-longue-
 import { InterventionsComponent } from './interventions/interventions.component';
 import { AdministrationComponent } from './administration/administration.component';
 import { ContratsComponent } from './contrats/contrats.component';
+import { ExportXmlComponent } from './export-xml/export-xml.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
     { path: 'page-2', component: EnginsLongueDureeComponent},
     { path: 'page-3', component: ContratsComponent},
     { path: 'page-4', component: AdministrationComponent},
+    { path: 'page-5', component: ExportXmlComponent}
   ]}
 ];
 

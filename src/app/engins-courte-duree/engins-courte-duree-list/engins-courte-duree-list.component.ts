@@ -24,7 +24,12 @@ export class EnginsCourteDureeListComponent implements OnInit {
   echeanciersByIdEngin: Echeanciers[];
   echancierId: any = {};
 
-  constructor(public enginservice: EnginsService, public contratservice: ContratsService, public contratVGPService: ContratVGPService, public echeancierService: EcheanciersService, private dialog: MatDialog, private toastr: ToastrService) { }
+  constructor(public enginservice: EnginsService, 
+    public contratservice: ContratsService, 
+    public contratVGPService: ContratVGPService, 
+    public echeancierService: EcheanciersService, 
+    private dialog: MatDialog, 
+    private toastr: ToastrService,) { }
 
   ngOnInit(): void {
     this.echeancierService.refreshListEcheanciers();
@@ -39,7 +44,8 @@ export class EnginsCourteDureeListComponent implements OnInit {
       IdEcheancier: 0,
       DateEcheancier: null,
       Montant: 0,
-      IdEngin: this.echancierId
+      IdEngin: this.echancierId,
+      Matricule: 0
     }
   }
 

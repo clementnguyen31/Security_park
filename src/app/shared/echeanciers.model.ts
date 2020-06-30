@@ -3,5 +3,6 @@ export class Echeanciers {
     DateEcheancier: Date;
     Montant: number;
     IdEngin: number;
+    Matricule: number;
 
 }

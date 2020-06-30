@@ -39,7 +39,8 @@ export class EnginsLongueDureeListComponent implements OnInit {
       IdEcheancier: 0,
       DateEcheancier: null,
       Montant: 0,
-      IdEngin: 0
+      IdEngin: 0,
+      Matricule: 0
     }
   }
 

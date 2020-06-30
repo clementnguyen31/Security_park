@@ -163,6 +163,13 @@
               <form #formEcheancier="ngForm" (submit)="onSubmitEcheancier(formEcheancier)">
                 <div class="form-row">
                   <div class="form-group col-md-4">
+                    <label for="matricule">Matricule</label>
+                    <input id="matricule" name="Matricule" #Matricule="ngModel"
+                      [(ngModel)]="echeancierService.formDataEcheancier.Matricule" [value]="currentEnginInfo.Matricule" class="form-control" required>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
                     <label for="dateecheancier">Date</label>
                     <input type="datetime-local" id="dateecheancier" name="DateEcheancier" #DateEcheancier="ngModel"
                       [(ngModel)]="echeancierService.formDataEcheancier.DateEcheancier" class="form-control" required>
@@ -193,12 +200,14 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
+                    <td>Matricule</td>
                     <td>Date</td>
                     <td>Montant</td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let ech of echeanciersByIdEngin">
+                    <td>{{ech.Matricule}}</td>
                     <td>{{ech.DateEcheancier | date:'MM/yyyy' }}</td>
                     <td>{{ech.Montant}} €</td>
                   </tr>

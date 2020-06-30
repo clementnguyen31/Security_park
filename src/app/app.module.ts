@@ -22,6 +22,8 @@ import { EnginsLongueDureeListComponent } from './engins-longue-duree/engins-lon
 import { ContratsComponent } from './contrats/contrats.component';
 import { ContratsListComponent } from './contrats/contrats-list/contrats-list.component';
 import { ContratsFormComponent } from './contrats/contrats-form/contrats-form.component';
+import { EcheanciersService } from './shared/echeanciers.service';
+import { ExportXmlComponent } from './export-xml/export-xml.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { ContratsFormComponent } from './contrats/contrats-form/contrats-form.co
     ContratsComponent,
     ContratsListComponent,
     ContratsFormComponent,
+    ExportXmlComponent,
   ],
   entryComponents: [EnginsCourteDureeFormComponent,
     ContratsFormComponent],
@@ -54,6 +57,7 @@ import { ContratsFormComponent } from './contrats/contrats-form/contrats-form.co
     ToastrModule.forRoot()
   ],
   providers: [
+    EcheanciersService,
     {
       provide: MatDialogRef,
       useValue: {}

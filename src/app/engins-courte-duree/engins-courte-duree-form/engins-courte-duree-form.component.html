@@ -132,7 +132,8 @@
             <option value="" disabled>Choisissez un contrat</option>
             <option *ngFor="let contrat of contratService.contratsListe" [ngValue]="contrat.IdContrat">
                <ng-container *ngIf="contrat.DateSignaturePrestataire">
-               {{contrat.NumContrat}} </ng-container></option>
+                  {{contrat.NumContrat}} </ng-container>
+            </option>
          </select>
       </div>
       <div class="form-group col-md-3">
