@@ -165,7 +165,8 @@
                   <div class="form-group col-md-4">
                     <label for="matricule">Matricule</label>
                     <input id="matricule" name="Matricule" #Matricule="ngModel"
-                      [(ngModel)]="echeancierService.formDataEcheancier.Matricule" [value]="currentEnginInfo.Matricule" class="form-control" required>
+                      [(ngModel)]="echeancierService.formDataEcheancier.Matricule"
+                      value="{{ currentEnginInfo.Matricule }}" class="form-control" required>
                   </div>
                 </div>
                 <div class="form-row">
@@ -187,8 +188,8 @@
                   <div class="form-group col-md-4">
                     <label for="idengin">Id Engin</label>
                     <input name="IdEngin" id="moisecheancier" #IdEngin="ngModel"
-                      [(ngModel)]="echeancierService.formDataEcheancier.IdEngin" [value]="currentEnginInfo.IdEngin" class="form-control"
-                      placeholder="IdEngin" required>
+                      [(ngModel)]="echeancierService.formDataEcheancier.IdEngin" [value]="currentEnginInfo.IdEngin"
+                      class="form-control" placeholder="IdEngin" required>
                   </div>
                 </div>
                 <div class="form-row">
