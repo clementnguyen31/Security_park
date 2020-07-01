@@ -9,9 +9,9 @@ export class ContratsService {
 
   formDataContrat: Contrats = {
     IdContrat: 0,
-    DureeContrat: '',
-    DateFinContrat: '',
-    DateEntree: '',
+    DureeContrat: 0,
+    DateFinContrat: null,
+    DateEntree: null,
     PrixLoyer: 0,
     LieuUtilisation: '',
     DateSignatureIrrijardin: null,

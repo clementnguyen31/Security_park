@@ -22,7 +22,6 @@ export class EnginsCourteDureeListComponent implements OnInit {
   currentEnginContrat: any = {};
   currentEnginEcheancier: any = {};
   echeanciersByIdEngin: Echeanciers[];
-  echancierId: any = {};
 
   constructor(public enginservice: EnginsService, 
     public contratservice: ContratsService, 
@@ -44,7 +43,7 @@ export class EnginsCourteDureeListComponent implements OnInit {
       IdEcheancier: 0,
       DateEcheancier: null,
       Montant: 0,
-      IdEngin: this.echancierId,
+      IdEngin: 0,
       Matricule: 0
     }
   }
@@ -81,8 +80,8 @@ export class EnginsCourteDureeListComponent implements OnInit {
     });
     this.echeancierService.getEcheanciersByIdEngin(id).subscribe(res => {
       this.echeanciersByIdEngin = res;
+      
     });
-    this.echancierId = id;
   }
 
   onDelete(id) {

@@ -11,7 +11,7 @@ export class ContratVGPService {
     IdContratVgp: 0,
     DateDebutVgp: null,
     DureeVgp: 0,
-    MontantViste: 0,
+    MontantVisite: 0,
     DateProchaineVgp: null
   }
 

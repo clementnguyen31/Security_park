@@ -1,8 +1,8 @@
 export class Contrats {
     IdContrat: number;
-    DureeContrat: string;
-    DateFinContrat: string;
-    DateEntree: string;
+    DureeContrat: number;
+    DateFinContrat: Date;
+    DateEntree: Date;
     PrixLoyer: number;
     LieuUtilisation: string;
     DateSignatureIrrijardin: Date;

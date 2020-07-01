@@ -128,7 +128,7 @@
                   <td>{{currentEnginContrat.NumContrat}}</td>
                   <td>{{currentEnginContrat.DateEntree | date:'dd/MM/yyyy'}}</td>
                   <td>{{currentEnginContrat.DateFinContrat | date:'dd/MM/yyyy'}}</td>
-                  <td>{{currentEnginContrat.DureeContrat}}</td>
+                  <td>{{currentEnginContrat.DureeContrat}} mois</td>
                   <td>{{currentEnginContrat.LieuUtilisation}}</td>
                   <td>{{currentEnginContrat.PrestataireLocation}}</td>
                   <td>{{currentEnginContrat.PrixLoyer}} €</td>
@@ -166,7 +166,7 @@
                     <label for="matricule">Matricule</label>
                     <input id="matricule" name="Matricule" #Matricule="ngModel"
                       [(ngModel)]="echeancierService.formDataEcheancier.Matricule"
-                      value="{{ currentEnginInfo.Matricule }}" class="form-control" required>
+                      [value]="currentEnginInfo.Matricule" class="form-control" required>
                   </div>
                 </div>
                 <div class="form-row">

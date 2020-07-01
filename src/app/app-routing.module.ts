@@ -7,6 +7,7 @@ import { InterventionsComponent } from './interventions/interventions.component'
 import { AdministrationComponent } from './administration/administration.component';
 import { ContratsComponent } from './contrats/contrats.component';
 import { ExportXmlComponent } from './export-xml/export-xml.component';
+import { ContratVGPService } from './shared/contrat-vgp.service';
 
 
 const routes: Routes = [
