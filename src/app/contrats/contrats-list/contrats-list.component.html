@@ -62,7 +62,6 @@
                               <th>Prestataire</th>
                               <th>Date de signature Prestataire</th>
                               <th>Date de 1 <sup>ère</sup> circulation</th>
-                              <th>Commentaires</th>
                            </tr>
                         </thead>
                         <tbody class="text-center">
@@ -77,15 +76,18 @@
                               <td>{{currentContratInfo.PrestataireLocation}}</td>
                               <td>{{currentContratInfo.DateSignaturePrestataire | date:'dd/MM/yyyy'}}</td>
                               <td>{{currentContratInfo.DateCirculation | date:'dd/MM/yyyy'}}</td>
-                              <td>{{currentContratInfo.Commentaires}}</td>
                            </tr>
                         </tbody>
                      </table>
                   </div>
                </div>
-               <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+               <div class="col-md-12">
+                  <h2>Commentaires : </h2>
+                  <textarea class="form-control" readonly>{{currentContratInfo.Commentaire}}</textarea>
                </div>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
             </div>
          </div>
       </div>

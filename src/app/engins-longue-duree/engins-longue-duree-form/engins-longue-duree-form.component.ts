@@ -61,6 +61,7 @@ export class EnginsLongueDureeFormComponent implements OnInit {
     this.enginService.postEngins().subscribe(
       res => {
         this.resetForm(form);
+        this.toastr.success("L'engin a été correctement ajouté", 'Security Park');
         this.enginService.refreshListEngins();
       }
     )
