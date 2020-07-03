@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ContratVGPService } from 'src/app/shared/contrat-vgp.service';
 import { EnginsService } from 'src/app/shared/engins.service';
 import { ContratsService } from 'src/app/shared/contrats.service';
@@ -8,6 +8,9 @@ import { EnginsLongueDureeFormComponent } from '../engins-longue-duree-form/engi
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Echeanciers } from 'src/app/shared/echeanciers.model';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { Engins } from 'src/app/shared/engins.model';
 
 @Component({
   selector: 'app-engins-longue-duree-list',
@@ -15,6 +18,12 @@ import { Echeanciers } from 'src/app/shared/echeanciers.model';
   styleUrls: ['./engins-longue-duree-list.component.css']
 })
 export class EnginsLongueDureeListComponent implements OnInit {
+
+  ELEMENT_DATA: Engins[];
+  displayedColumns = ['Matricule', 'TypeEngin', 'LieuUtilisation', 'DateProchaineVgp', 'InterventionEnCours', 'EstArret', 'Modifier', 'Details', 'Echeancier'];
+  dataSource = new MatTableDataSource<Engins>(this.ELEMENT_DATA);
+
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   currentEnginInfo: any = {};
   currentEnginContrat: any = {};
@@ -29,6 +38,12 @@ export class EnginsLongueDureeListComponent implements OnInit {
     this.contratservice.refreshContratListe();
     this.contratvgpservice.refreshListContratsVGP();
     this.echeancierService.refreshListEcheanciers();
+    this.getAllData();
+    this.dataSource.sort = this.sort;
+  }
+
+  getAllData() {
+    let resp = this.enginservice.getEngins().subscribe(report => this.dataSource.data = report as Engins[]);
   }
 
   resetFormEcheancier(form?: NgForm) {

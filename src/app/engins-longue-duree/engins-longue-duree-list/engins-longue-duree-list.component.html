@@ -10,7 +10,111 @@
   </div>
 </div>
 
-<table class="table table-striped">
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="Matricule">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Matricule </th>
+    <ng-container mat-cell *matCellDef="let element">
+      <td *ngIf="element.TypeContrat=='LLD'">
+        {{element.Matricule}} </td>
+    </ng-container>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="TypeEngin">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Type de l'engin </th>
+    <ng-container mat-cell *matCellDef="let element">
+      <td *ngIf="element.TypeContrat=='LLD'">
+        {{element.TypeEngin}} </td>
+    </ng-container>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="LieuUtilisation">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Lieu d'utilisation </th>
+
+    <td mat-cell *matCellDef="let element">
+      <ng-container *ngFor="let contrat of contratservice.contratsListe">
+    <td *ngIf="element.TypeContrat=='LLD' && element.IdContrat == contrat.IdContrat">
+      {{contrat.LieuUtilisation}}</td>
+  </ng-container>
+  </td>
+  </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="DateProchaineVgp">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date de la prochaine VGP</th>
+  
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngFor="let contratvgp of contratvgpservice.contratsVGPListe">
+      <td *ngIf="element.TypeContrat=='LLD' && element.IdContratVgp == contratvgp.IdContratVgp">
+        {{contratvgp.DateProchaineVgp | date:'dd/MM/yyyy'}}</td>
+    </ng-container>
+    </td>
+    </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="InterventionEnCours">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Intervention en cours ? </th>
+    <ng-container mat-cell *matCellDef="let element">
+      <td *ngIf="element.TypeContrat=='LLD' && element.InterventionEnCours==true">Oui</td>
+      <td *ngIf="element.TypeContrat=='LLD' && element.InterventionEnCours==false">Non</td>
+    </ng-container>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="EstArret">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> A l'arrêt ? </th>
+    <ng-container mat-cell *matCellDef="let element">
+      <td *ngIf="element.TypeContrat=='LLD' && element.EstArret==true">Oui</td>
+      <td *ngIf="element.TypeContrat=='LLD' && element.EstArret==false">Non</td>
+    </ng-container>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Modifier">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Modifier </th>
+    <ng-container mat-cell *matCellDef="let element">
+      <td *ngIf="element.TypeContrat=='LLD'">
+        <button class="btn btn-transparent" (click)="populateForm(element)">
+          <mat-icon aria-hidden="false">edit</mat-icon>
+        </button> </td>
+    </ng-container>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Details">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Détails </th>
+    <ng-container mat-cell *matCellDef="let element">
+      <td *ngIf="element.TypeContrat=='LLD'">
+        <button class="btn btn-transparent" (click)="detailsInfo(element.IdEngin, element.IdContrat, element.IdContratVgp)"
+          data-toggle="modal" data-target="#infoModal">
+          <mat-icon aria-hidden="false">visibility</mat-icon>
+        </button> </td>
+    </ng-container>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Echeancier">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Echeancier </th>
+    <ng-container mat-cell *matCellDef="let element">
+      <td *ngIf="element.TypeContrat=='LLD'">
+        <button class="btn btn-transparent" (click)="echeancierInfo(element.IdEngin)" data-toggle="modal"
+          data-target="#infoModal2">
+          <mat-icon aria-hidden="false">attach_money</mat-icon>
+        </button> </td>
+    </ng-container>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<!--<table class="table table-striped">
   <thead>
     <tr class="text-center">
       <th>Matricule</th>
@@ -50,7 +154,7 @@
         </button></td>
     </tr>
   </tbody>
-</table>
+</table> -->
 
 <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered mw-100 w-80">
@@ -73,10 +177,8 @@
                     <th>Type</th>
                     <th>Batterie</th>
                     <th>Intervention en cours</th>
-                    <th>Date déclaration entrée</th>
-                    <th>Déclaré rentré ? (assurance)</th>
-                    <th>Date déclaration sortie</th>
-                    <th>Déclaré sortie ? (assurance)</th>
+                    <th>Date déclaration entrée (assurance)</th>
+                    <th>Date déclaration sortie (assurance)</th>
                     <th>A l'arrêt ?</th>
                   </tr>
                 </thead>
@@ -94,19 +196,17 @@
                     <ng-template #fourth>
                       <td>Non</td>
                     </ng-template>
-                    <td>{{currentEnginInfo.DateDeclarationEntree | date:'dd/MM/yyyy'}}</td>
                     <ng-container *ngIf="currentEnginInfo.EstDeclareRentre==true; else second">
-                      <td>Oui</td>
+                      <td>{{currentEnginInfo.DateDeclarationEntree | date:'dd/MM/yyyy'}}</td>
                     </ng-container>
                     <ng-template #second>
-                      <td>Non</td>
+                      <td>Pas de date</td>
                     </ng-template>
-                    <td>{{currentEnginInfo.DateDeclarationSortie | date:'dd/MM/yyyy'}}</td>
                     <ng-container *ngIf="currentEnginInfo.EstDeclareSortie==true; else third">
-                      <td>Oui</td>
+                      <td>{{currentEnginInfo.DateDeclarationSortie | date:'dd/MM/yyyy'}}</td>
                     </ng-container>
                     <ng-template #third>
-                      <td>Non</td>
+                      <td>Pas de date</td>
                     </ng-template>
                     <ng-container *ngIf="currentEnginInfo.EstArret==true; else fourth">
                       <td>Oui</td>

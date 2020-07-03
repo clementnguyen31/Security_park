@@ -42,7 +42,8 @@ export class ContratsFormComponent implements OnInit {
       TypeContrat: '',
       DateSignaturePrestataire: null,
       DateCirculation: null,
-      Commentaire: ''
+      Commentaire: '',
+      DateSortie : null
     }
   }
 

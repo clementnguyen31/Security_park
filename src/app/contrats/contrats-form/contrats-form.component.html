@@ -57,30 +57,36 @@
          <label for="datefincontrat">Date de fin de contrat</label>
          <input id="datefincontrat" name="DateFinContrat" type="date" #DateFinContrat="ngModel"
             [(ngModel)]="service.formDataContrat.DateFinContrat" class="form-control"
-            placeholder="Date de fin de contrat" (click)="calculDateFin(service.formDataContrat.DateEntree,service.formDataContrat.DureeContrat)">
+            placeholder="Date de fin de contrat"
+            (click)="calculDateFin(service.formDataContrat.DateEntree,service.formDataContrat.DureeContrat)">
       </div>
    </div>
    <div class="form-row">
-      <div class="form-group col-md-6">
+      <div class="form-group col-md-4">
          <label for="datesignatureirrijardin">Date de signature Irrijardin</label>
          <input id="datesignatureirrijardin" name="DateSignatureIrrijardin" type="date"
             #DateSignatureIrrijardin="ngModel" [(ngModel)]="service.formDataContrat.DateSignatureIrrijardin"
             class="form-control" placeholder="Date de signature Irrijardin">
       </div>
-      <div class="form-group col-md-6">
+      <div class="form-group col-md-4">
          <label for="prestataire">Prestataire de location</label>
          <input id="prestataire" name="PrestataireLocation" #PrestataireLocation="ngModel"
             [(ngModel)]="service.formDataContrat.PrestataireLocation" class="form-control"
             placeholder="Prestataire de location">
+      </div>
+      <div class="form-group col-md-4">
+         <label for="DateSortie">Date de sortie</label>
+         <input id="DateSortie" name="DateSortie" type="date" #DateSortie="ngModel"
+            [(ngModel)]="service.formDataContrat.DateSortie" class="form-control" placeholder="DateSortie">
       </div>
    </div>
    <div class="form-row">
       <div class="form-group col-md-6">
          <div>
             <label for="datesignatureprestataire">Date de signature Prestataire</label>
-         <input id="datesignatureprestataire" name="DateSignaturePrestataire" type="date"
-            #DateSignaturePrestataire="ngModel" [(ngModel)]="service.formDataContrat.DateSignaturePrestataire"
-            class="form-control" placeholder="Date de signature Prestataire">
+            <input id="datesignatureprestataire" name="DateSignaturePrestataire" type="date"
+               #DateSignaturePrestataire="ngModel" [(ngModel)]="service.formDataContrat.DateSignaturePrestataire"
+               class="form-control" placeholder="Date de signature Prestataire">
          </div>
          <div>
             <label for="datecirculation">Date de 1 <sup>ère</sup> circulation</label>

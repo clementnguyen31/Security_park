@@ -24,6 +24,11 @@ import { ContratsListComponent } from './contrats/contrats-list/contrats-list.co
 import { ContratsFormComponent } from './contrats/contrats-form/contrats-form.component';
 import { EcheanciersService } from './shared/echeanciers.service';
 import { ExportXmlComponent } from './export-xml/export-xml.component';
+import { ContratValideComponent } from './contrat-valide/contrat-valide.component';
+import { ContratValideListComponent } from './contrat-valide/contrat-valide-list/contrat-valide-list.component';
+import { MatSortModule } from '@angular/material/sort';
+import { ContratArchiveComponent } from './contrat-archive/contrat-archive.component';
+import { ContratArchiveListComponent } from './contrat-archive/contrat-archive-list/contrat-archive-list.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +46,10 @@ import { ExportXmlComponent } from './export-xml/export-xml.component';
     ContratsListComponent,
     ContratsFormComponent,
     ExportXmlComponent,
+    ContratValideComponent,
+    ContratValideListComponent,
+    ContratArchiveComponent,
+    ContratArchiveListComponent,
   ],
   entryComponents: [EnginsCourteDureeFormComponent,
     ContratsFormComponent],
@@ -49,6 +58,7 @@ import { ExportXmlComponent } from './export-xml/export-xml.component';
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
+    MatSortModule,
     BrowserAnimationsModule,
     MatTableModule,
     MatDialogModule,

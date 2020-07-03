@@ -1,4 +1,73 @@
-<div class="container">
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+   <!--- Note that these columns can be defined in any order.
+         The actual rendered columns are set as a property on the row definition" -->
+
+   <!-- Position Column -->
+   <ng-container matColumnDef="NumContrat">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Numéro de contrat </th>
+      <ng-container mat-cell *matCellDef="let element">
+         <td *ngIf="element.DateSignaturePrestataire == null">
+            {{element.NumContrat}} </td>
+      </ng-container>
+   </ng-container>
+
+   <!-- Name Column -->
+   <ng-container matColumnDef="DateEntree">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date d'entrée </th>
+      <ng-container mat-cell *matCellDef="let element">
+         <td *ngIf="element.DateSignaturePrestataire == null">
+            {{element.DateEntree | date:'dd/MM/yyyy'}} </td>
+      </ng-container>
+   </ng-container>
+
+   <!-- Weight Column -->
+   <ng-container matColumnDef="DureeContrat">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Duree du contrat </th>
+      <ng-container mat-cell *matCellDef="let element">
+         <td *ngIf="element.DateSignaturePrestataire == null">
+            {{element.DureeContrat}} </td>
+      </ng-container>
+   </ng-container>
+
+   <!-- Symbol Column -->
+   <ng-container matColumnDef="DateFinContrat">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date de fin de contrat </th>
+      <ng-container mat-cell *matCellDef="let element">
+         <td *ngIf="element.DateSignaturePrestataire == null">
+            {{element.DateFinContrat | date:'dd/MM/yyyy'}} </td>
+      </ng-container>
+   </ng-container>
+
+   <!-- Symbol Column -->
+   <ng-container matColumnDef="Modifier">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Modifier </th>
+      <ng-container mat-cell *matCellDef="let element">
+         <td *ngIf="element.DateSignaturePrestataire == null">
+            <button class="btn btn-transparent" (click)="editForm(element)">
+               <mat-icon aria-hidden="false">edit</mat-icon>
+            </button> </td>
+      </ng-container>
+   </ng-container>
+
+   <!-- Symbol Column -->
+   <ng-container matColumnDef="Details">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Détails </th>
+      <ng-container mat-cell *matCellDef="let element">
+         <td *ngIf="element.DateSignaturePrestataire == null">
+            <button class="btn btn-transparent" (click)="detailsContrat(element.IdContrat)" data-toggle="modal"
+               data-target="#infoModal">
+               <mat-icon aria-hidden="false">visibility</mat-icon>
+            </button> </td>
+      </ng-container>
+   </ng-container>
+
+   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+<!--<div class="container">
    <div class="row">
       <div class="col-md-12">
          <div class="text-center">
@@ -22,7 +91,7 @@
       <tr *ngFor="let contrat of service.contratsListe; let i=index">
          <td *ngIf="!contrat.DateSignaturePrestataire">{{contrat.NumContrat}}</td>
          <td *ngIf="!contrat.DateSignaturePrestataire">{{contrat.DateEntree | date:'dd/MM/yyyy'}}</td>
-         <td *ngIf="!contrat.DateSignaturePrestataire">{{contrat.DureeContrat}}</td>
+         <td *ngIf="!contrat.DateSignaturePrestataire">{{contrat.DureeContrat}} mois</td>
          <td *ngIf="!contrat.DateSignaturePrestataire">{{contrat.DateFinContrat | date:'dd/MM/yyyy'}}</td>
          <td *ngIf="!contrat.DateSignaturePrestataire">
             <button class="btn btn-transparent" (click)="editForm(contrat)">
@@ -37,7 +106,7 @@
          </td>
       </tr>
    </tbody>
-</table>
+</table> -->
 <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
    <div class="modal-dialog modal-dialog-centered mw-100 w-80">
       <div class="modal-content">
@@ -81,15 +150,15 @@
                      </table>
                   </div>
                </div>
-               <div class="col-md-12">
-                  <h2>Commentaires : </h2>
+               <div class="col-md-12 text-center">
+                  <h2>Commentaires</h2>
                   <textarea class="form-control" readonly>{{currentContratInfo.Commentaire}}</textarea>
                </div>
             </div>
-            <div class="modal-footer">
+         </div>
+         <div class="modal-footer">
                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
             </div>
-         </div>
       </div>
    </div>
 </div>

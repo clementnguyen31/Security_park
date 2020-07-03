@@ -1,0 +1,194 @@
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="NumContrat">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Numéro de contrat </th>
+        <ng-container mat-cell *matCellDef="let element">
+            <td
+                *ngIf="element.DureeContrat && element.DateFinContrat && element.DateEntree && element.LieuUtilisation && element.DateSignatureIrrijardin && element.NumContrat && element.PrestataireLocation && element.TypeEngin && element.DateSignaturePrestataire && element.DateCirculation && element.PrixLoyer && element.DateSortie == null">
+                {{element.NumContrat}} </td>
+        </ng-container>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="DateEntree">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date d'entrée </th>
+        <ng-container mat-cell *matCellDef="let element">
+            <td
+                *ngIf="element.DureeContrat && element.DateFinContrat && element.DateEntree && element.LieuUtilisation && element.DateSignatureIrrijardin && element.NumContrat && element.PrestataireLocation && element.TypeEngin && element.DateSignaturePrestataire && element.DateCirculation && element.PrixLoyer && element.DateSortie == null">
+                {{element.DateEntree | date:'dd/MM/yyyy'}} </td>
+        </ng-container>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="DureeContrat">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Duree du contrat </th>
+        <ng-container mat-cell *matCellDef="let element">
+            <td
+                *ngIf="element.DureeContrat && element.DateFinContrat && element.DateEntree && element.LieuUtilisation && element.DateSignatureIrrijardin && element.NumContrat && element.PrestataireLocation && element.TypeEngin && element.DateSignaturePrestataire && element.DateCirculation && element.PrixLoyer && element.DateSortie == null">
+                {{element.DureeContrat}} </td>
+        </ng-container>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="DateFinContrat">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date de fin de contrat </th>
+        <ng-container mat-cell *matCellDef="let element">
+            <td
+                *ngIf="element.DureeContrat && element.DateFinContrat && element.DateEntree && element.LieuUtilisation && element.DateSignatureIrrijardin && element.NumContrat && element.PrestataireLocation && element.TypeEngin && element.DateSignaturePrestataire && element.DateCirculation && element.PrixLoyer && element.DateSortie == null">
+                {{element.DateFinContrat | date:'dd/MM/yyyy'}} </td>
+        </ng-container>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Matricule">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Matricule </th>
+
+        <td mat-cell *matCellDef="let element">
+            <ng-container *ngFor="let engin of enginservice.enginsListe">
+        <td
+            *ngIf="element.DureeContrat && element.DateFinContrat && element.DateEntree && element.LieuUtilisation && element.DateSignatureIrrijardin && element.NumContrat && element.PrestataireLocation && element.TypeEngin && element.DateSignaturePrestataire && element.DateCirculation && element.PrixLoyer && engin.IdContrat == element.IdContrat && element.DateSortie == null">
+            {{engin.Matricule}}</td>
+    </ng-container>
+    </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Modifier">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Modifier </th>
+        <ng-container mat-cell *matCellDef="let element">
+            <td
+                *ngIf="element.DureeContrat && element.DateFinContrat && element.DateEntree && element.LieuUtilisation && element.DateSignatureIrrijardin && element.NumContrat && element.PrestataireLocation && element.TypeEngin && element.DateSignaturePrestataire && element.DateCirculation && element.PrixLoyer && element.DateSortie == null">
+                <button class="btn btn-transparent" (click)="editForm(element)">
+                    <mat-icon aria-hidden="false">edit</mat-icon>
+                </button> </td>
+        </ng-container>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Details">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Détails </th>
+        <ng-container mat-cell *matCellDef="let element">
+            <td
+                *ngIf="element.DureeContrat && element.DateFinContrat && element.DateEntree && element.LieuUtilisation && element.DateSignatureIrrijardin && element.NumContrat && element.PrestataireLocation && element.TypeEngin && element.DateSignaturePrestataire && element.DateCirculation && element.PrixLoyer && element.DateSortie == null">
+                <button class="btn btn-transparent" (click)="detailsContrat(element.IdContrat)" data-toggle="modal"
+                    data-target="#infoModal">
+                    <mat-icon aria-hidden="false">visibility</mat-icon>
+                </button> </td>
+        </ng-container>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<!--<input type="text" class="form-control" placeholder="Rechercher">
+<table class="table table-striped">
+    <thead class="text-center">
+        <th>N° de contrat</th>
+        <th>Date d'entrée</th>
+        <th>Durée de location</th>
+        <th>Date de fin</th>
+        <th>Matricule</th>
+        <th>Modifier</th>
+        <th>Détails</th>
+    </thead>
+    <tbody class="text-center">
+        <tr *ngFor="let contrat of service.contratsListe">
+            <td
+                *ngIf="contrat.DureeContrat && contrat.DateFinContrat && contrat.DateEntree && contrat.LieuUtilisation && contrat.DateSignatureIrrijardin && contrat.NumContrat && contrat.PrestataireLocation && contrat.TypeEngin && contrat.DateSignaturePrestataire && contrat.DateCirculation && contrat.PrixLoyer">
+                {{contrat.NumContrat}}</td>
+            <td
+                *ngIf="contrat.DureeContrat && contrat.DateFinContrat && contrat.DateEntree && contrat.LieuUtilisation && contrat.DateSignatureIrrijardin && contrat.NumContrat && contrat.PrestataireLocation && contrat.TypeEngin && contrat.DateSignaturePrestataire && contrat.DateCirculation && contrat.PrixLoyer">
+                {{contrat.DateEntree | date:'dd/MM/yyyy'}}</td>
+            <td
+                *ngIf="contrat.DureeContrat && contrat.DateFinContrat && contrat.DateEntree && contrat.LieuUtilisation && contrat.DateSignatureIrrijardin && contrat.NumContrat && contrat.PrestataireLocation && contrat.TypeEngin && contrat.DateSignaturePrestataire && contrat.DateCirculation && contrat.PrixLoyer">
+                {{contrat.DureeContrat}} mois</td>
+            <td
+                *ngIf="contrat.DureeContrat && contrat.DateFinContrat && contrat.DateEntree && contrat.LieuUtilisation && contrat.DateSignatureIrrijardin && contrat.NumContrat && contrat.PrestataireLocation && contrat.TypeEngin && contrat.DateSignaturePrestataire && contrat.DateCirculation && contrat.PrixLoyer">
+                {{contrat.DateFinContrat | date:'dd/MM/yyyy'}}</td>
+
+            <ng-container *ngFor="let engin of enginservice.enginsListe">
+                <td
+                    *ngIf="contrat.DureeContrat && contrat.DateFinContrat && contrat.DateEntree && contrat.LieuUtilisation && contrat.DateSignatureIrrijardin && contrat.NumContrat && contrat.PrestataireLocation && contrat.TypeEngin && contrat.DateSignaturePrestataire && contrat.DateCirculation && contrat.PrixLoyer && engin.IdContrat == contrat.IdContrat; else second">
+                    {{engin.Matricule}}</td>
+            </ng-container>
+            <ng-template #second>
+
+            </ng-template>
+            <td
+                *ngIf="contrat.DureeContrat && contrat.DateFinContrat && contrat.DateEntree && contrat.LieuUtilisation && contrat.DateSignatureIrrijardin && contrat.NumContrat && contrat.PrestataireLocation && contrat.TypeEngin && contrat.DateSignaturePrestataire && contrat.DateCirculation && contrat.PrixLoyer">
+                <button class="btn btn-transparent" (click)="editForm(contrat)">
+                    <mat-icon aria-hidden="false">edit</mat-icon>
+                </button>
+            </td>
+            <td
+                *ngIf="contrat.DureeContrat && contrat.DateFinContrat && contrat.DateEntree && contrat.LieuUtilisation && contrat.DateSignatureIrrijardin && contrat.NumContrat && contrat.PrestataireLocation && contrat.TypeEngin && contrat.DateSignaturePrestataire && contrat.DateCirculation && contrat.PrixLoyer">
+                <button class="btn btn-transparent" (click)="detailsContrat(contrat.IdContrat)" data-toggle="modal"
+                    data-target="#infoModal">
+                    <mat-icon aria-hidden="false">visibility</mat-icon>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table> -->
+
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered mw-100 w-80">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="col-12 modal-title text-center font-weight-bold" id="exampleModalLabel">Détails du contrat
+                </h1>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <h2 class="text-center">Caractéristiques</h2>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-striped">
+                                <thead class="text-center">
+                                    <tr>
+                                        <th>N° de contrat</th>
+                                        <th>Date d'entrée</th>
+                                        <th>Durée</th>
+                                        <th>Date de fin</th>
+                                        <th>Lieu d'utilisation</th>
+                                        <th>Prix du loyer</th>
+                                        <th>Date de signature Irrijardin</th>
+                                        <th>Prestataire</th>
+                                        <th>Date de signature Prestataire</th>
+                                        <th>Date de 1 <sup>ère</sup> circulation</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                    <tr>
+                                        <td>{{currentContratInfo.NumContrat}}</td>
+                                        <td>{{currentContratInfo.DateEntree | date:'dd/MM/yyyy'}}</td>
+                                        <td>{{currentContratInfo.DureeContrat}} mois</td>
+                                        <td>{{currentContratInfo.DateFinContrat | date:'dd/MM/yyyy'}}</td>
+                                        <td>{{currentContratInfo.LieuUtilisation}}</td>
+                                        <td>{{currentContratInfo.PrixLoyer}} €</td>
+                                        <td>{{currentContratInfo.DateSignatureIrrijardin | date:'dd/MM/yyyy'}}</td>
+                                        <td>{{currentContratInfo.PrestataireLocation}}</td>
+                                        <td>{{currentContratInfo.DateSignaturePrestataire | date:'dd/MM/yyyy'}}</td>
+                                        <td>{{currentContratInfo.DateCirculation | date:'dd/MM/yyyy'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <h2>Commentaires</h2>
+                        <textarea class="form-control" readonly>{{currentContratInfo.Commentaire}}</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+    </div>
+</div>

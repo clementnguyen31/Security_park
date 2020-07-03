@@ -12,5 +12,6 @@ export class Contrats {
     TypeContrat: string;
     DateSignaturePrestataire: Date;
     DateCirculation: Date;
-    Commentaire : string;
+    Commentaire: string;
+    DateSortie: Date;
 }
