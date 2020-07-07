@@ -29,6 +29,11 @@ import { ContratValideListComponent } from './contrat-valide/contrat-valide-list
 import { MatSortModule } from '@angular/material/sort';
 import { ContratArchiveComponent } from './contrat-archive/contrat-archive.component';
 import { ContratArchiveListComponent } from './contrat-archive/contrat-archive-list/contrat-archive-list.component';
+import { InterventionsFormComponent } from './interventions/interventions-form/interventions-form.component';
+import { ContratVgpComponent } from './contrat-vgp/contrat-vgp.component';
+import { ContratVgpFormComponent } from './contrat-vgp/contrat-vgp-form/contrat-vgp-form.component';
+import { ContratVGPService } from './shared/contrat-vgp.service';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -50,11 +55,14 @@ import { ContratArchiveListComponent } from './contrat-archive/contrat-archive-l
     ContratValideListComponent,
     ContratArchiveComponent,
     ContratArchiveListComponent,
+    InterventionsFormComponent,
+    ContratVgpComponent,
+    ContratVgpFormComponent
   ],
   entryComponents: [EnginsCourteDureeFormComponent,
-    ContratsFormComponent],
+    ContratsFormComponent, ContratVGPService],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     RouterModule,
     HttpClientModule,

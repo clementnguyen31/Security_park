@@ -6,6 +6,9 @@ import { Contrats } from 'src/app/shared/contrats.model';
 import { EnginsService } from 'src/app/shared/engins.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { filter } from 'rxjs/operators';
+import { response } from 'express';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-contrats-list',
@@ -14,11 +17,11 @@ import { MatSort } from '@angular/material/sort';
 })
 export class ContratsListComponent implements OnInit {
 
-  ELEMENT_DATA : Contrats[]
-  displayedColumns: string[] = ['NumContrat', 'DateEntree', 'DureeContrat', 'DateFinContrat', 'Modifier', 'Details'];
+  ELEMENT_DATA: Contrats[]
+  displayedColumns = ['NumContrat', 'DateEntree', 'DureeContrat', 'DateFinContrat', 'Modifier', 'Details'];
   dataSource = new MatTableDataSource<Contrats>(this.ELEMENT_DATA);
 
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   currentContratInfo: any = {};
 
@@ -27,12 +30,13 @@ export class ContratsListComponent implements OnInit {
     public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.dataSource.filterPredicate = (data: Contrats, filter: string) => data.NumContrat.indexOf(filter) == null;
     this.service.refreshContratListe();
     this.getAllData();
     this.dataSource.sort = this.sort;
   }
 
-  getAllData(){
+  getAllData() {
     let resp = this.service.getContrats().subscribe(report => this.dataSource.data = report as Contrats[]);
   }
 

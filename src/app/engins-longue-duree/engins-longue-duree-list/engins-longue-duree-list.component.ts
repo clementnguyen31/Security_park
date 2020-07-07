@@ -1,9 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { ContratVGPService } from 'src/app/shared/contrat-vgp.service';
 import { EnginsService } from 'src/app/shared/engins.service';
 import { ContratsService } from 'src/app/shared/contrats.service';
 import { EcheanciersService } from 'src/app/shared/echeanciers.service';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EnginsLongueDureeFormComponent } from '../engins-longue-duree-form/engins-longue-duree-form.component';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -11,6 +11,7 @@ import { Echeanciers } from 'src/app/shared/echeanciers.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { Engins } from 'src/app/shared/engins.model';
+import { InterventionsFormComponent } from 'src/app/interventions/interventions-form/interventions-form.component';
 
 @Component({
   selector: 'app-engins-longue-duree-list',
@@ -20,7 +21,7 @@ import { Engins } from 'src/app/shared/engins.model';
 export class EnginsLongueDureeListComponent implements OnInit {
 
   ELEMENT_DATA: Engins[];
-  displayedColumns = ['Matricule', 'TypeEngin', 'LieuUtilisation', 'DateProchaineVgp', 'InterventionEnCours', 'EstArret', 'Modifier', 'Details', 'Echeancier'];
+  displayedColumns = ['Matricule', 'TypeEngin', 'LieuUtilisation', 'DateProchaineVgp', 'InterventionEnCours', 'EstArret', 'Modifier', 'Details', 'Echeancier', 'Intervention'];
   dataSource = new MatTableDataSource<Engins>(this.ELEMENT_DATA);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -40,6 +41,11 @@ export class EnginsLongueDureeListComponent implements OnInit {
     this.echeancierService.refreshListEcheanciers();
     this.getAllData();
     this.dataSource.sort = this.sort;
+    this.applyFilter('LLD');
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   getAllData() {
@@ -74,6 +80,14 @@ export class EnginsLongueDureeListComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "70%";
     this.dialog.open(EnginsLongueDureeFormComponent, dialogConfig);
+  }
+  addIntervention(idEngin){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "70%";
+    dialogConfig.data = {idEngin};
+    this.dialog.open(InterventionsFormComponent, dialogConfig);
   }
 
 

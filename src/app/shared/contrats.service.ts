@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Contrats } from './contrats.model';
 import { HttpClient } from '@angular/common/http';
+import { Engins } from './engins.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,7 @@ export class ContratsService {
 
   readonly rootURL = 'https://localhost:44338/api';
   contratsListe: Contrats[];
+  engins : Engins[];
 
   constructor(public http: HttpClient) { }
 
@@ -39,7 +41,11 @@ export class ContratsService {
   }
 
   postContrats() {
-    return this.http.post(this.rootURL + '/Contrats', this.formDataContrat);
+    var body = {
+      ...this.formDataContrat,
+      Engins : this.engins
+    }
+    return this.http.post(this.rootURL + '/Contrats', body);
   }
 
   putContrats() {

@@ -20,11 +20,11 @@ import { MatSort } from '@angular/material/sort';
 })
 export class EnginsCourteDureeListComponent implements OnInit {
 
-  ELEMENT_DATA : Engins[];
-  displayedColumns: string[] = ['Matricule', 'TypeEngin', 'LieuUtilisation', 'InterventionEnCours','EstArret' , 'Modifier', 'Details', 'Echeancier'];
+  ELEMENT_DATA: Engins[];
+  displayedColumns: string[] = ['Matricule', 'TypeEngin', 'LieuUtilisation', 'InterventionEnCours', 'EstArret', 'Modifier', 'Details', 'Echeancier'];
   dataSource = new MatTableDataSource<Engins>(this.ELEMENT_DATA);
 
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   currentContratInfo: any = {};
 
@@ -33,11 +33,11 @@ export class EnginsCourteDureeListComponent implements OnInit {
   currentEnginEcheancier: any = {};
   echeanciersByIdEngin: Echeanciers[];
 
-  constructor(public enginservice: EnginsService, 
-    public contratservice: ContratsService, 
-    public contratVGPService: ContratVGPService, 
-    public echeancierService: EcheanciersService, 
-    private dialog: MatDialog, 
+  constructor(public enginservice: EnginsService,
+    public contratservice: ContratsService,
+    public contratVGPService: ContratVGPService,
+    public echeancierService: EcheanciersService,
+    private dialog: MatDialog,
     private toastr: ToastrService,) { }
 
   ngOnInit(): void {
@@ -46,10 +46,17 @@ export class EnginsCourteDureeListComponent implements OnInit {
     this.contratservice.refreshContratListe();
     this.getAllData();
     this.dataSource.sort = this.sort;
+    this.applyFilter('LCD');
   }
 
-  getAllData(){
-    let resp = this.enginservice.getEngins().subscribe(report => this.dataSource.data = report as Engins[]);
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  getAllData() {
+    let resp = this.enginservice.getEngins().subscribe(report =>
+      this.dataSource.data = report as Engins[]);
+
   }
 
   resetFormEcheancier(form?: NgForm) {
@@ -97,7 +104,7 @@ export class EnginsCourteDureeListComponent implements OnInit {
     });
     this.echeancierService.getEcheanciersByIdEngin(id).subscribe(res => {
       this.echeanciersByIdEngin = res;
-      
+
     });
   }
 

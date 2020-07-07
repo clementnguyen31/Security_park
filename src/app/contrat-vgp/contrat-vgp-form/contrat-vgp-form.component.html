@@ -1,0 +1,29 @@
+<h1>Ajouter un contrat VGP</h1>
+<form #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" name="IdEngin" #IdEngin="ngModel" [(ngModel)]="contratvgpservice.formDataContratVGP.IdEngin">
+    <input type="hidden" name="IdContratVgp" #IdContratVgp="ngModel"
+        [(ngModel)]="contratvgpservice.formDataContratVGP.IdContratVgp">
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="DateDebutVgp">Date de début VGP</label>
+            <input id="DateDebutVgp" type="date" name="DateDebutVgp" #DateDebutVgp="ngModel"
+                [(ngModel)]="contratvgpservice.formDataContratVGP.DateDebutVgp" class="form-control" required>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="DureeVgp">Durée de la VGP</label>
+            <input id="DureeVgp" name="DureeVgp" #DureeVgp="ngModel"
+                [(ngModel)]="contratvgpservice.formDataContratVGP.DureeVgp" class="form-control" required>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="MontantViste">Montant de la visite</label>
+            <input id="MontantViste" name="MontantViste" #MontantViste="ngModel"
+                [(ngModel)]="contratvgpservice.formDataContratVGP.MontantVisite" class="form-control" required>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="DateProchaineVgp">Date de la prochaine VGP</label>
+            <input id="DateProchaineVgp" type="date" name="DateProchaineVgp" #DateProchaineVgp="ngModel"
+                [(ngModel)]="contratvgpservice.formDataContratVGP.DateProchaineVgp" class="form-control" required>
+        </div>
+    </div>
+    <button class="form-group col-md-2 btn btn-primary" type="submit">Valider</button>
+</form>

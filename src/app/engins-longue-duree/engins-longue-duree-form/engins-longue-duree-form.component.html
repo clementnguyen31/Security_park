@@ -1,10 +1,11 @@
 <h1 class="text-center font-weight-bold">Ajouter / Modifier un engin</h1>
 <form #form="ngForm" (submit)="onSubmit(form)">
     <input type="hidden" name="IdEngin" [value]="enginService.formDataEngins.IdEngin">
+    <input type="hidden" name="IdContratVgp" [value]="contratVGPService.formDataContratVGP.IdContratVgp">
     <div class="form-row">
         <div class="form-group col-md-4">
             <label for="matricule">Matricule</label>
-            <input name="Matricule" id="matricule" #Matricule="ngModel"
+            <input name="Matricule" id="matricule" #Matricule="ngModel"     
                 [(ngModel)]="enginService.formDataEngins.Matricule" class="form-control" placeholder="Matricule"
                 required>
         </div>
@@ -136,6 +137,28 @@
                 </option>
             </select>
         </div>
+        <!--<div class="form-row">
+            <div class="form-group-3">
+                <label for="DateDebutVgp">Date de début VGP</label>
+                <input id="DateDebutVgp" type="date" name="DateDebutVgp" #DateDebutVgp="ngModel"
+                [(ngModel)]="contratVGPService.formDataContratVGP.DateDebutVgp" class="form-control" required>
+            </div>
+            <div class="form-group-3">
+                <label for="DureeVgp">Durée de la VGP</label>
+                <input id="DureeVgp" name="DureeVgp" #DureeVgp="ngModel"
+                [(ngModel)]="contratVGPService.formDataContratVGP.DureeVgp" class="form-control" required>
+            </div>
+            <div class="form-group-3">
+                <label for="MontantVisite">Montant de la visite</label>
+                <input id="MontantVisite" name="MontantVisite" #MontantVisite="ngModel"
+                [(ngModel)]="contratVGPService.formDataContratVGP.MontantVisite" class="form-control" required>
+            </div>
+            <div class="form-group-3">
+                <label for="DateProchaineVgp">Date de la prochaine VGP</label>
+                <input id="DateProchaineVgp" type="date" name="DateProchaineVgp" #DateProchaineVgp="ngModel"
+                [(ngModel)]="contratVGPService.formDataContratVGP.DateProchaineVgp" class="form-control" required>
+            </div>
+        </div> -->
         <div class="form-group col-md-3">
             <label for="contratVGP">Contrat VGP</label>
             <ng-container *ngIf="enginService.formDataEngins.TypeContrat=='LCD'; else second">
@@ -152,6 +175,13 @@
                         [ngValue]="contratvgp.IdContratVgp">{{contratvgp.IdContratVgp}}</option>
                 </select>
             </ng-template>
+        </div>
+
+        <div class="form-group col-md-3">
+            <select class="form-control" name="IdInterventionVgp" #IdContrat="ngModel"
+                    [(ngModel)]="enginService.formDataEngins.IdInterventionVgp" id="IdInterventionVgp" required>
+                    <option selected="selected" [ngValue]="null">Pas d'intervention</option>
+                </select>
         </div>
 
         <!--<div class="form-row">

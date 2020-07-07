@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ContratVGP } from './contrat-vgp.model';
 import { HttpClient } from '@angular/common/http';
+import { Engins } from './engins.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +13,14 @@ export class ContratVGPService {
     DateDebutVgp: null,
     DureeVgp: 0,
     MontantVisite: 0,
-    DateProchaineVgp: null
+    DateProchaineVgp: null,
+    IdEngin: 0
   }
 
 
   readonly rootURL = 'https://localhost:44338/api';
   contratsVGPListe: ContratVGP[];
+  engins: Engins[];
 
   constructor(public http: HttpClient) { }
 
@@ -26,7 +29,11 @@ export class ContratVGPService {
   }
 
   postContratsVGP() {
-    return this.http.post(this.rootURL + '/ContratVgps', this.formDataContratVGP);
+    var body = {
+      ...this.formDataContratVGP,
+      Engins: this.engins
+    }
+    return this.http.post(this.rootURL + '/ContratVgps', body);
   }
 
   putContratsVGP() {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Engins } from './engins.model';
+import { Echeanciers } from './echeanciers.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,10 +27,12 @@ export class EnginsService {
     IdEcheancier: 0,
     IdContratVgp: 0,
     InterventionEnCours: false,
-    EstArret: false
+    EstArret: false,
+    IdInterventionVgp : 0
   };
   readonly rootURL = 'https://localhost:44338/api';
   enginsListe: Engins[];
+  echeancier: Echeanciers[];
 
   constructor(public http: HttpClient) { }
 
@@ -42,7 +45,11 @@ export class EnginsService {
   }
 
   postEngins() {
-    return this.http.post(this.rootURL + '/Engins', this.formDataEngins);
+    var body = {
+      ...this.formDataEngins,
+      Echeanciers : this.echeancier
+    }
+    return this.http.post(this.rootURL + '/Engins', body);
   }
 
   putEngins() {

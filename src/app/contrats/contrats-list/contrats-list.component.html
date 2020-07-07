@@ -1,3 +1,15 @@
+<div class="container">
+   <div class="row">
+      <div class="col-md-12">
+         <div class="text-center">
+            <button class="btn btn-customcolor btn-add btn-sm" (click)="ajouterContrat()">
+               <mat-icon aria-hidden="false">add</mat-icon>
+            </button>
+         </div>
+      </div>
+   </div>
+</div>
+
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
    <!--- Note that these columns can be defined in any order.
@@ -7,8 +19,7 @@
    <ng-container matColumnDef="NumContrat">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Numéro de contrat </th>
       <ng-container mat-cell *matCellDef="let element">
-         <td *ngIf="element.DateSignaturePrestataire == null">
-            {{element.NumContrat}} </td>
+         <td>{{element.NumContrat}} </td>
       </ng-container>
    </ng-container>
 
@@ -16,8 +27,7 @@
    <ng-container matColumnDef="DateEntree">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Date d'entrée </th>
       <ng-container mat-cell *matCellDef="let element">
-         <td *ngIf="element.DateSignaturePrestataire == null">
-            {{element.DateEntree | date:'dd/MM/yyyy'}} </td>
+         <td>{{element.DateEntree | date:'dd/MM/yyyy'}}</td>
       </ng-container>
    </ng-container>
 
@@ -25,8 +35,7 @@
    <ng-container matColumnDef="DureeContrat">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Duree du contrat </th>
       <ng-container mat-cell *matCellDef="let element">
-         <td *ngIf="element.DateSignaturePrestataire == null">
-            {{element.DureeContrat}} </td>
+         <td>{{element.DureeContrat}}</td>
       </ng-container>
    </ng-container>
 
@@ -34,8 +43,9 @@
    <ng-container matColumnDef="DateFinContrat">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Date de fin de contrat </th>
       <ng-container mat-cell *matCellDef="let element">
-         <td *ngIf="element.DateSignaturePrestataire == null">
-            {{element.DateFinContrat | date:'dd/MM/yyyy'}} </td>
+         <td>
+            {{element.DateFinContrat | date:'dd/MM/yyyy'}}
+         </td>
       </ng-container>
    </ng-container>
 
@@ -43,8 +53,7 @@
    <ng-container matColumnDef="Modifier">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Modifier </th>
       <ng-container mat-cell *matCellDef="let element">
-         <td *ngIf="element.DateSignaturePrestataire == null">
-            <button class="btn btn-transparent" (click)="editForm(element)">
+         <td><button class="btn btn-transparent" (click)="editForm(element)">
                <mat-icon aria-hidden="false">edit</mat-icon>
             </button> </td>
       </ng-container>
@@ -54,8 +63,7 @@
    <ng-container matColumnDef="Details">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Détails </th>
       <ng-container mat-cell *matCellDef="let element">
-         <td *ngIf="element.DateSignaturePrestataire == null">
-            <button class="btn btn-transparent" (click)="detailsContrat(element.IdContrat)" data-toggle="modal"
+         <td><button class="btn btn-transparent" (click)="detailsContrat(element.IdContrat)" data-toggle="modal"
                data-target="#infoModal">
                <mat-icon aria-hidden="false">visibility</mat-icon>
             </button> </td>
@@ -157,8 +165,8 @@
             </div>
          </div>
          <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-            </div>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+         </div>
       </div>
    </div>
 </div>

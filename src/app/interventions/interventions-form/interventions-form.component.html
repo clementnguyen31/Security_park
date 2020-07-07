@@ -1,0 +1,55 @@
+<h1 class="text-center font-weight-bold">Ajouter une intervention</h1>
+<form #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" name="IdInterventionVgp" #IdInterventionVgp="ngModel" [(ngModel)]="serviceIntervention.formDataInterventionVgps.IdInterventionVgp">
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="numcontrat">Date de l'intervention</label>
+            <input id="numcontrat" type="date" name="DateIntervention" #DateIntervention="ngModel"
+                [(ngModel)]="serviceIntervention.formDataInterventionVgps.DateIntervention" class="form-control"
+                placeholder="Date de l'intervention">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="raportrecu">Rapport reçu ?</label>
+            <select class="form-control" id="raportrecu" name="EstRapportRecu" #EstRapportRecu="ngModel"
+                [(ngModel)]="serviceIntervention.formDataInterventionVgps.EstRapportRecu" class="form-control" required>
+                <option value="" disabled>Rapport reçu ?</option>
+                <option [ngValue]="true">Oui</option>
+                <option [ngValue]="false">Non</option>
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="EstSatisfaisant">Satisfaisant ?</label>
+            <select class="form-control" id="EstSatisfaisant" name="EstSatisfaisant" #EstSatisfaisant="ngModel"
+                [(ngModel)]="serviceIntervention.formDataInterventionVgps.EstSatisfaisant" class="form-control"
+                required>
+                <option value="" disabled>Intervention satisfaisante ?</option>
+                <option [ngValue]="true">Oui</option>
+                <option [ngValue]="false">Non</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="EstSuite">Suite ?</label>
+            <select id="EstSuite" name="EstSuite" #EstSuite="ngModel"
+                [(ngModel)]="serviceIntervention.formDataInterventionVgps.EstSuite" class="form-control"
+                placeholder="Suite ?">
+                <option value="" disabled>Suite ?</option>
+                <option [ngValue]="true">Oui</option>
+                <option [ngValue]="false">Non</option>
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <div>
+                <label for="commentaire">Commentaires</label>
+                <textarea id="commentaire" name="Commentaire" #Commentaire="ngModel"
+                    [(ngModel)]="serviceIntervention.formDataInterventionVgps.Commentaire" class="form-control"
+                    placeholder="Commentaires"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary" style="margin-right: 0.5em;">Valider</button>
+        <button type="button" class="btn btn-secondary" (click)="onClose()">Fermer</button>
+    </div>
+</form>

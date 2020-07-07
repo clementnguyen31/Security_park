@@ -110,6 +110,17 @@
     </ng-container>
   </ng-container>
 
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Intervention">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Intervention </th>
+      <ng-container mat-cell *matCellDef="let element">
+        <td *ngIf="element.TypeContrat=='LLD'">
+          <button class="btn btn-transparent" (click)="addIntervention(element.IdEngin)">
+            <mat-icon aria-hidden="false">build</mat-icon>
+          </button> </td>
+      </ng-container>
+    </ng-container>
+
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
@@ -299,10 +310,11 @@
           <div class="row">
             <div class="col-md-6">
               <form #formEcheancier="ngForm" (submit)="onSubmitEcheancier(formEcheancier)">
+                <input type="hidden" name="IdEcheancier" #IdEcheancier="ngModel" [(ngModel)]="echeancierService.formDataEcheancier.IdEcheancier">
                 <div class="form-row">
                   <div class="form-group col-md-4">
                     <label for="dateecheancier">Date</label>
-                    <input type="datetime-local" id="dateecheancier" name="DateEcheancier" #DateEcheancier="ngModel"
+                     <input type="datetime-local" id="dateecheancier" name="DateEcheancier" #DateEcheancier="ngModel"
                       [(ngModel)]="echeancierService.formDataEcheancier.DateEcheancier" class="form-control" required>
                   </div>
                 </div>
@@ -312,14 +324,6 @@
                     <input name="Montant" id="montant" #Montant="ngModel"
                       [(ngModel)]="echeancierService.formDataEcheancier.Montant" class="form-control"
                       placeholder="Montant" required>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <label for="idengin">Id Engin</label>
-                    <input name="IdEngin" id="moisecheancier" #IdEngin="ngModel"
-                      [(ngModel)]="echeancierService.formDataEcheancier.IdEngin" [value]="currentEnginInfo.IdEngin" class="form-control"
-                      placeholder="IdEngin" required>
                   </div>
                 </div>
                 <div class="form-row">
