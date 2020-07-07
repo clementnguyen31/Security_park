@@ -12,6 +12,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { Engins } from 'src/app/shared/engins.model';
 import { InterventionsFormComponent } from 'src/app/interventions/interventions-form/interventions-form.component';
+import { Interventions } from 'src/app/shared/interventions.model';
+import { InterventionsService } from 'src/app/shared/interventions.service';
 
 @Component({
   selector: 'app-engins-longue-duree-list',
@@ -29,16 +31,18 @@ export class EnginsLongueDureeListComponent implements OnInit {
   currentEnginInfo: any = {};
   currentEnginContrat: any = {};
   currentEnginContratVGP: any = {};
-  currentEnginEcheancier: any = {};
   echeanciersByIdEngin: Echeanciers[];
+  interventionByIdEngin: Interventions[];
 
-  constructor(public enginservice: EnginsService, public contratservice: ContratsService, public contratVGPService: ContratVGPService, public echeancierService: EcheanciersService, public contratvgpservice: ContratVGPService, private dialog: MatDialog, private toastr: ToastrService) { }
+
+  constructor(public enginservice: EnginsService, public contratservice: ContratsService, public contratVGPService: ContratVGPService, public echeancierService: EcheanciersService, public contratvgpservice: ContratVGPService, private dialog: MatDialog, private toastr: ToastrService, public interventionService: InterventionsService) { }
 
   ngOnInit(): void {
     this.enginservice.refreshListEngins();
     this.contratservice.refreshContratListe();
     this.contratvgpservice.refreshListContratsVGP();
     this.echeancierService.refreshListEcheanciers();
+    this.interventionService.refreshListInterventionVgps();
     this.getAllData();
     this.dataSource.sort = this.sort;
     this.applyFilter('LLD');
@@ -101,6 +105,9 @@ export class EnginsLongueDureeListComponent implements OnInit {
     });
     this.contratvgpservice.getContratVGP(idcontratvgp).subscribe(res => {
       this.currentEnginContratVGP = res;
+    });
+    this.interventionService.getInterventionVgpsByIdEngin(id).subscribe(res => {
+      this.interventionByIdEngin = res;
     })
   }
 

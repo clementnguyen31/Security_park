@@ -19,7 +19,9 @@
    <ng-container matColumnDef="NumContrat">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Numéro de contrat </th>
       <ng-container mat-cell *matCellDef="let element">
-         <td>{{element.NumContrat}} </td>
+         <ng-container>
+            <td>{{element.NumContrat}} </td>
+         </ng-container>
       </ng-container>
    </ng-container>
 
@@ -27,7 +29,9 @@
    <ng-container matColumnDef="DateEntree">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Date d'entrée </th>
       <ng-container mat-cell *matCellDef="let element">
-         <td>{{element.DateEntree | date:'dd/MM/yyyy'}}</td>
+         <ng-container>
+            <td>{{element.DateEntree | date:'dd/MM/yyyy'}}</td>
+         </ng-container>
       </ng-container>
    </ng-container>
 
@@ -35,7 +39,9 @@
    <ng-container matColumnDef="DureeContrat">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Duree du contrat </th>
       <ng-container mat-cell *matCellDef="let element">
-         <td>{{element.DureeContrat}}</td>
+         <ng-container>
+            <td>{{element.DureeContrat}}</td>
+         </ng-container>
       </ng-container>
    </ng-container>
 
@@ -43,9 +49,11 @@
    <ng-container matColumnDef="DateFinContrat">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Date de fin de contrat </th>
       <ng-container mat-cell *matCellDef="let element">
-         <td>
-            {{element.DateFinContrat | date:'dd/MM/yyyy'}}
-         </td>
+         <ng-container>
+            <td>
+               {{element.DateFinContrat | date:'dd/MM/yyyy'}}
+            </td>
+         </ng-container>
       </ng-container>
    </ng-container>
 
@@ -53,9 +61,11 @@
    <ng-container matColumnDef="Modifier">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Modifier </th>
       <ng-container mat-cell *matCellDef="let element">
-         <td><button class="btn btn-transparent" (click)="editForm(element)">
-               <mat-icon aria-hidden="false">edit</mat-icon>
-            </button> </td>
+         <ng-container>
+            <td><button class="btn btn-transparent" (click)="editForm(element)">
+                  <mat-icon aria-hidden="false">edit</mat-icon>
+               </button> </td>
+         </ng-container>
       </ng-container>
    </ng-container>
 
@@ -63,10 +73,12 @@
    <ng-container matColumnDef="Details">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Détails </th>
       <ng-container mat-cell *matCellDef="let element">
-         <td><button class="btn btn-transparent" (click)="detailsContrat(element.IdContrat)" data-toggle="modal"
-               data-target="#infoModal">
-               <mat-icon aria-hidden="false">visibility</mat-icon>
-            </button> </td>
+         <ng-container>
+            <td><button class="btn btn-transparent" (click)="detailsContrat(element.IdContrat)" data-toggle="modal"
+                  data-target="#infoModal">
+                  <mat-icon aria-hidden="false">visibility</mat-icon>
+               </button> </td>
+         </ng-container>
       </ng-container>
    </ng-container>
 

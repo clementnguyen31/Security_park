@@ -3,6 +3,12 @@
     <input type="hidden" name="IdInterventionVgp" #IdInterventionVgp="ngModel" [(ngModel)]="serviceIntervention.formDataInterventionVgps.IdInterventionVgp">
     <div class="form-row">
         <div class="form-group col-md-4">
+            <label for="IdEngin">Id Engin</label>
+            <input id="IdEngin" name="IdEngin" #IdEngin="ngModel"
+                [(ngModel)]="serviceIntervention.formDataInterventionVgps.IdEngin" class="form-control"
+                placeholder="IdEngin">
+        </div>
+        <div class="form-group col-md-4">
             <label for="numcontrat">Date de l'intervention</label>
             <input id="numcontrat" type="date" name="DateIntervention" #DateIntervention="ngModel"
                 [(ngModel)]="serviceIntervention.formDataInterventionVgps.DateIntervention" class="form-control"

@@ -11,9 +11,16 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class InterventionsFormComponent implements OnInit {
 
-  constructor(public serviceIntervention: InterventionsService, private toastr: ToastrService, public dialogbox: MatDialogRef<InterventionsFormComponent>) { }
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data,
+    public serviceIntervention: InterventionsService,
+    private toastr: ToastrService,
+    public dialogbox: MatDialogRef<InterventionsFormComponent>) { 
+      this.serviceIntervention.formDataInterventionVgps.IdEngin = data.IdEngin;
+    }
 
   ngOnInit(): void {
+    this.resetForm();
   }
 
   resetForm(form?: NgForm) {
@@ -28,7 +35,8 @@ export class InterventionsFormComponent implements OnInit {
       EstSatisfaisant: false,
       Commentaire: '',
       EstSuite: false,
-      IdFacture: 0
+      IdFacture: 0,
+      IdEngin: this.data.IdEngin
     }
   }
 

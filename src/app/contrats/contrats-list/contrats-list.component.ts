@@ -30,10 +30,20 @@ export class ContratsListComponent implements OnInit {
     public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.dataSource.filterPredicate = (data: Contrats, filter: string) => data.NumContrat.indexOf(filter) == null;
-    this.service.refreshContratListe();
     this.getAllData();
     this.dataSource.sort = this.sort;
+    this.dataSource.filterPredicate = (data: Contrats, filter: string) => data.NumContrat.includes(filter);
+    this.filterContrat("");
+  }
+
+  filterContrat(val){
+    this.dataSource.filter = val.trim().toLowerCase();
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
   }
 
   getAllData() {

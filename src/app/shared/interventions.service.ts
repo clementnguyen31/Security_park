@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Interventions } from './interventions.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Engins } from './engins.model';
+import { Observable } from 'rxjs';
+import { EnginsService } from './engins.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,8 @@ export class InterventionsService {
     EstSatisfaisant: false,
     Commentaire: '',
     EstSuite: false,
-    IdFacture: 0
+    IdFacture: 0,
+    IdEngin: 0
   }
 
   engins : Engins[];
@@ -24,9 +27,15 @@ export class InterventionsService {
   readonly rootURL = 'https://localhost:44338/api';
   InterventionVGPListe: Interventions[];
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient, public enginservice: EnginsService) { }
 
-  getInterventionVgps(id) {
+  
+  getInterventionVgpsByIdEngin(idEngin): Observable<any> {
+    let params = new HttpParams().set('IdEngin', idEngin);
+    return this.http.get(this.rootURL + "/InterventionVgps", { params: params });
+  }
+
+  getInterventionVgp(id) {
     return this.http.get(this.rootURL + "/InterventionVgps/" + id);
   }
 

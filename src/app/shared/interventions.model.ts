@@ -7,5 +7,6 @@ export class Interventions {
     Commentaire: string;
     EstSuite: boolean;
     IdFacture: number;
+    IdEngin: number
 }
 
