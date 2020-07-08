@@ -32,8 +32,7 @@ export class ContratsListComponent implements OnInit {
   ngOnInit(): void {
     this.getAllData();
     this.dataSource.sort = this.sort;
-    this.dataSource.filterPredicate = (data: Contrats, filter: string) => data.NumContrat.includes(filter);
-    this.filterContrat("");
+    this.filterContrat('Attente');
   }
 
   filterContrat(val){

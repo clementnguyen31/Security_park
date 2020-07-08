@@ -32,6 +32,11 @@ export class ContratValideListComponent implements OnInit {
     this.service.refreshContratListe();
     this.enginservice.refreshListEngins();
     this.dataSource.sort = this.sort;
+    this.filterContrat('Valide');
+  }
+  
+  filterContrat(val){
+    this.dataSource.filter = val.trim().toLowerCase();
   }
 
   getAllData(){

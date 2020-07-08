@@ -109,6 +109,14 @@
                placeholder="Commentaires"></textarea>
          </div>
       </div>
+      <label for="typecontrat">Etat du contrat</label>
+      <select class="form-control" id="EtatContrat" name="EtatContrat" #EtatContrat="ngModel"
+         [(ngModel)]="service.formDataContrat.EtatContrat" class="form-control" required>
+         <option value="" disabled>Choisissez l'état du contrat</option>
+         <option value="Attente">Attente</option>
+         <option value="Valide">Validé</option>
+         <option value="Archive">Archivé</option>
+      </select>
    </div>
 
    <div class="form-group text-center">

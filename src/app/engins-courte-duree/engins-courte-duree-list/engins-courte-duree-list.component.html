@@ -89,59 +89,19 @@
   <!-- Symbol Column -->
   <ng-container matColumnDef="Echeancier">
     <th mat-header-cell *matHeaderCellDef> Echeancier </th>
-    <ng-container mat-cell *matCellDef="let element">
+    <td mat-cell *matCellDef="let element">
       <ng-container *ngFor="let contrat of contratservice.contratsListe">
       <div *ngIf="element.TypeContrat=='LCD' && element.IdContrat == contrat.IdContrat">
         <button class="btn btn-transparent" (click)="echeancierModal(element.IdEngin, element.Matricule, contrat.LieuUtilisation, contrat.DateEntree, contrat.DureeContrat)">
           <mat-icon aria-hidden="false">attach_money</mat-icon>
         </button> </div>
       </ng-container>
-    </ng-container>
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-
-<!--<table class="table table-striped">
-  <thead>
-    <tr class="text-center">
-      <th>Matricule</th>
-      <th>Type de l'engin</th>
-      <th>Lieu d'utilisation</th>
-      <th>Intervention en cours</th>
-      <th>A l'arrêt ?</th>
-      <th>Modifier</th>
-      <th>Détails</th>
-      <th>Échéancier</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let engin of enginservice.enginsListe; index as i" class="text-center">
-      <td *ngIf="engin.TypeContrat=='LCD'">{{engin.Matricule}}</td>
-      <td *ngIf="engin.TypeContrat=='LCD'">{{engin.TypeEngin}}</td>
-      <ng-container *ngFor="let contrat of contratservice.contratsListe">
-        <td *ngIf="engin.TypeContrat=='LCD' && engin.IdContrat == contrat.IdContrat">
-          {{contrat.LieuUtilisation}}</td>
-      </ng-container>
-      <td *ngIf="engin.TypeContrat=='LCD' && engin.InterventionEnCours==true">Oui</td>
-      <td *ngIf="engin.TypeContrat=='LCD' && engin.InterventionEnCours==false">Non</td>
-      <td *ngIf="engin.TypeContrat=='LCD' && engin.EstArret==true">Oui</td>
-      <td *ngIf="engin.TypeContrat=='LCD' && engin.EstArret==false">Non</td>
-      <td *ngIf="engin.TypeContrat=='LCD'"><button class="btn btn-transparent" (click)="populateForm(engin)">
-          <mat-icon aria-hidden="false">edit</mat-icon>
-        </button></td>
-      <td *ngIf="engin.TypeContrat=='LCD'"><button class="btn btn-transparent"
-          (click)="detailsInfo(engin.IdEngin, engin.IdContrat)" data-toggle="modal" data-target="#infoModal">
-          <mat-icon aria-hidden="false">visibility</mat-icon>
-        </button></td>
-      <td *ngIf="engin.TypeContrat=='LCD'"><button class="btn btn-transparent" (click)="echeancierInfo(engin.IdEngin)"
-          data-toggle="modal" data-target="#infoModal2">
-          <mat-icon aria-hidden="false">attach_money</mat-icon>
-        </button></td>
-    </tr>
-  </tbody>
-</table> -->
 
 <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered mw-100 w-80">
@@ -244,80 +204,3 @@
     </div>
   </div>
 </div>
-
-<!--<div class="modal fade" id="infoModal2" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel2"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered mw-100 w-75">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="col-12 modal-title text-center font-weight-bold" id="exampleModalLabel2">Echeancier de facturation
-          pour l'engin {{currentEnginInfo.Matricule}}</h1>
-      </div>
-      <div class="modal-body">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-6">
-              <form #formEcheancier="ngForm" (submit)="onSubmitEcheancier(formEcheancier)">
-                <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <label for="matricule">Matricule</label>
-                    <input id="matricule" name="Matricule" #Matricule="ngModel"
-                      [(ngModel)]="echeancierService.formDataEcheancier.Matricule" [value]="currentEnginInfo.Matricule"
-                      class="form-control" required>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <label for="dateecheancier">Date</label>
-                    <input type="datetime-local" id="dateecheancier" name="DateEcheancier" #DateEcheancier="ngModel"
-                      [(ngModel)]="echeancierService.formDataEcheancier.DateEcheancier" class="form-control" required>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <label for="montant">Montant</label>
-                    <input name="Montant" id="montant" #Montant="ngModel"
-                      [(ngModel)]="echeancierService.formDataEcheancier.Montant" class="form-control"
-                      placeholder="Montant" required>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <label for="idengin">Id Engin</label>
-                    <input name="IdEngin" id="moisecheancier" #IdEngin="ngModel"
-                      [(ngModel)]="echeancierService.formDataEcheancier.IdEngin" [value]="currentEnginInfo.IdEngin"
-                      class="form-control" placeholder="IdEngin" required>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <button class="form-group col-md-2 btn btn-primary" type="submit">Ajouter</button>
-                </div>
-              </form>
-            </div>
-            <div class="col-md-6">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <td>Matricule</td>
-                    <td>Date</td>
-                    <td>Montant</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let ech of echeanciersByIdEngin">
-                    <td>{{ech.Matricule}}</td>
-                    <td>{{ech.DateEcheancier | date:'MM/yyyy' }}</td>
-                    <td>{{ech.Montant}} €</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-      </div>
-    </div>
-  </div>
-</div> -->

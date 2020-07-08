@@ -32,6 +32,11 @@ export class ContratArchiveListComponent implements OnInit {
     this.service.refreshContratListe();
     this.enginservice.refreshListEngins();
     this.dataSource.sort = this.sort;
+    this.filterContrat('Archive');
+  }
+  
+  filterContrat(val){
+    this.dataSource.filter = val.trim().toLowerCase();
   }
 
   getAllData(){

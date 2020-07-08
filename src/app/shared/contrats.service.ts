@@ -23,7 +23,8 @@ export class ContratsService {
     DateSignaturePrestataire: null,
     DateCirculation: null,
     Commentaire: '',
-    DateSortie: null
+    DateSortie: null,
+    EtatContrat: ''
   }
 
   readonly rootURL = 'https://localhost:44338/api';

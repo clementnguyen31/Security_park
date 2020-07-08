@@ -6,41 +6,41 @@
     <!-- Position Column -->
     <ng-container matColumnDef="NumContrat">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Numéro de contrat </th>
-        <ng-container mat-cell *matCellDef="let element">
-            <td
+        <td mat-cell *matCellDef="let element">
+            <div
                 *ngIf="element.DureeContrat && element.DateFinContrat && element.DateEntree && element.LieuUtilisation && element.DateSignatureIrrijardin && element.NumContrat && element.PrestataireLocation && element.TypeEngin && element.DateSignaturePrestataire && element.DateCirculation && element.PrixLoyer && element.DateSortie">
-                {{element.NumContrat}} </td>
-        </ng-container>
+                {{element.NumContrat}} </div>
+        </td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="DateEntree">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Date d'entrée </th>
-        <ng-container mat-cell *matCellDef="let element">
-            <td
+        <td mat-cell *matCellDef="let element">
+            <div
                 *ngIf="element.DureeContrat && element.DateFinContrat && element.DateEntree && element.LieuUtilisation && element.DateSignatureIrrijardin && element.NumContrat && element.PrestataireLocation && element.TypeEngin && element.DateSignaturePrestataire && element.DateCirculation && element.PrixLoyer && element.DateSortie">
-                {{element.DateEntree | date:'dd/MM/yyyy'}} </td>
-        </ng-container>
+                {{element.DateEntree | date:'dd/MM/yyyy'}} </div>
+        </td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="DureeContrat">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Duree du contrat </th>
-        <ng-container mat-cell *matCellDef="let element">
-            <td
+        <td mat-cell *matCellDef="let element">
+            <div
                 *ngIf="element.DureeContrat && element.DateFinContrat && element.DateEntree && element.LieuUtilisation && element.DateSignatureIrrijardin && element.NumContrat && element.PrestataireLocation && element.TypeEngin && element.DateSignaturePrestataire && element.DateCirculation && element.PrixLoyer && element.DateSortie">
-                {{element.DureeContrat}} </td>
-        </ng-container>
+                {{element.DureeContrat}} </div>
+        </td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="DateFinContrat">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Date de fin de contrat </th>
-        <ng-container mat-cell *matCellDef="let element">
-            <td
+        <td mat-cell *matCellDef="let element">
+            <div
                 *ngIf="element.DureeContrat && element.DateFinContrat && element.DateEntree && element.LieuUtilisation && element.DateSignatureIrrijardin && element.NumContrat && element.PrestataireLocation && element.TypeEngin && element.DateSignaturePrestataire && element.DateCirculation && element.PrixLoyer && element.DateSortie">
-                {{element.DateFinContrat | date:'dd/MM/yyyy'}} </td>
-        </ng-container>
+                {{element.DateFinContrat | date:'dd/MM/yyyy'}} </div>
+        </td>
     </ng-container>
 
     <!-- Symbol Column -->
@@ -49,23 +49,23 @@
 
         <td mat-cell *matCellDef="let element">
             <ng-container *ngFor="let engin of enginservice.enginsListe">
-        <td
-            *ngIf="element.DureeContrat && element.DateFinContrat && element.DateEntree && element.LieuUtilisation && element.DateSignatureIrrijardin && element.NumContrat && element.PrestataireLocation && element.TypeEngin && element.DateSignaturePrestataire && element.DateCirculation && element.PrixLoyer && engin.IdContrat == element.IdContrat && element.DateSortie">
-            {{engin.Matricule}}</td>
-    </ng-container>
-    </td>
+                <div
+                    *ngIf="element.DureeContrat && element.DateFinContrat && element.DateEntree && element.LieuUtilisation && element.DateSignatureIrrijardin && element.NumContrat && element.PrestataireLocation && element.TypeEngin && element.DateSignaturePrestataire && element.DateCirculation && element.PrixLoyer && engin.IdContrat == element.IdContrat && element.DateSortie">
+                    {{engin.Matricule}}</div>
+            </ng-container>
+        </td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="Modifier">
         <th mat-header-cell *matHeaderCellDef> Modifier </th>
-        <ng-container mat-cell *matCellDef="let element">
-            <td
+        <td mat-cell *matCellDef="let element">
+            <div
                 *ngIf="element.DureeContrat && element.DateFinContrat && element.DateEntree && element.LieuUtilisation && element.DateSignatureIrrijardin && element.NumContrat && element.PrestataireLocation && element.TypeEngin && element.DateSignaturePrestataire && element.DateCirculation && element.PrixLoyer && element.DateSortie">
                 <button class="btn btn-transparent" (click)="editForm(element)">
                     <mat-icon aria-hidden="false">edit</mat-icon>
-                </button> </td>
-        </ng-container>
+                </button> </div>
+        </td>
     </ng-container>
 
     <!-- Symbol Column -->
@@ -73,14 +73,14 @@
         <th mat-header-cell *matHeaderCellDef> Détails </th>
         <td mat-cell *matCellDef="let element">
             <ng-container *ngFor="let engin of enginservice.enginsListe">
-        <td
-            *ngIf="element.DureeContrat && element.DateFinContrat && element.DateEntree && element.LieuUtilisation && element.DateSignatureIrrijardin && element.NumContrat && element.PrestataireLocation && element.TypeEngin && element.DateSignaturePrestataire && element.DateCirculation && element.PrixLoyer && element.DateSortie && engin.IdContrat == element.IdContrat ">
-            <button class="btn btn-transparent" (click)="detailsContrat(element.IdContrat, engin.IdEngin)"
-                data-toggle="modal" data-target="#infoModal">
-                <mat-icon aria-hidden="false">visibility</mat-icon>
-            </button> </td>
-    </ng-container>
-    </td>
+                <div
+                    *ngIf="element.DureeContrat && element.DateFinContrat && element.DateEntree && element.LieuUtilisation && element.DateSignatureIrrijardin && element.NumContrat && element.PrestataireLocation && element.TypeEngin && element.DateSignaturePrestataire && element.DateCirculation && element.PrixLoyer && element.DateSortie && engin.IdContrat == element.IdContrat ">
+                    <button class="btn btn-transparent" (click)="detailsContrat(element.IdContrat, engin.IdEngin)"
+                        data-toggle="modal" data-target="#infoModal">
+                        <mat-icon aria-hidden="false">visibility</mat-icon>
+                    </button> </div>
+            </ng-container>
+        </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

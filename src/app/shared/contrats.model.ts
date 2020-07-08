@@ -14,4 +14,5 @@ export class Contrats {
     DateCirculation: Date;
     Commentaire: string;
     DateSortie: Date;
+    EtatContrat: string;
 }
