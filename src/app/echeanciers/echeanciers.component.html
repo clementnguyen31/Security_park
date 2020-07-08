@@ -1,8 +1,7 @@
 <div class="container">
     <div class="row">
-        <h1 class="text-center">Echeancier de facturation</h1>
         <div class="col-md-12">
-
+            <h1 class="text-center font-weight-bold">Echeancier de facturation</h1>
         </div>
         <div class="col-md-12">
             <form #formEcheancier="ngForm" (submit)="onSubmitEcheancier(formEcheancier)">
@@ -30,6 +29,30 @@
                     <button class="form-group col-md-2 btn btn-primary" type="submit">Ajouter</button>
                 </div>
             </form>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>Matricule</td>
+                        <td>Date</td>
+                        <td>Montant</td>
+                        <td>Lieu d'utilisation</td>
+                        <td>Date de début de contrat</td>
+                        <td>Durée du contrat</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ech of echeanciersByIdEngin">
+                        <td>{{ech.Matricule}}</td>
+                        <td>{{ech.DateEcheancier | date:'MM/yyyy' }}</td>
+                        <td>{{ech.Montant}} €</td>
+                        <td>{{ech.LieuUtilisation}}</td>
+                        <td>{{ech.DateDebutContrat | date:'MM/yyyy'}}</td>
+                        <td>{{ech.DureeContrat}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

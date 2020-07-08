@@ -92,8 +92,8 @@
     <ng-container mat-cell *matCellDef="let element">
       <td *ngIf="element.TypeContrat=='LLD'">
         <button class="btn btn-transparent"
-          (click)="detailsInfo(element.IdEngin, element.IdContrat, element.IdContratVgp)"
-          data-toggle="modal" data-target="#infoModal">
+          (click)="detailsInfo(element.IdEngin, element.IdContrat, element.IdContratVgp)" data-toggle="modal"
+          data-target="#infoModal">
           <mat-icon aria-hidden="false">visibility</mat-icon>
         </button> </td>
     </ng-container>
@@ -103,10 +103,12 @@
   <ng-container matColumnDef="Echeancier">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Echeancier </th>
     <ng-container mat-cell *matCellDef="let element">
-      <td *ngIf="element.TypeContrat=='LLD'">
-        <button class="btn btn-transparent" (click)="echeancierModal(element.IdEngin)">
-          <mat-icon aria-hidden="false">attach_money</mat-icon>
-        </button> </td>
+      <ng-container *ngFor="let contrat of contratservice.contratsListe">
+        <td *ngIf="element.TypeContrat=='LLD' && element.IdContrat == contrat.IdContrat">
+          <button class="btn btn-transparent" (click)="echeancierModal(element.IdEngin, element.Matricule, contrat.LieuUtilisation, contrat.DateEntree, contrat.DureeContrat)">
+            <mat-icon aria-hidden="false">attach_money</mat-icon>
+          </button> </td>
+      </ng-container>
     </ng-container>
   </ng-container>
 
@@ -257,7 +259,7 @@
                     <td>Commentaire</td>
                   </tr>
                 </thead>
-                <tbody  class="table-active" class="text-center">
+                <tbody class="table-active" class="text-center">
                   <tr *ngFor="let intervention of interventionByIdEngin">
                     <td>{{intervention.IdEngin}}</td>
                     <td>{{intervention.DateIntervention}}</td>
@@ -283,83 +285,3 @@
     </div>
   </div>
 </div>
-
-<!--<div class="modal fade" id="infoModal2" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel2"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered mw-100 w-75">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="col-12 modal-title text-center font-weight-bold" id="exampleModalLabel2">Echeancier de facturation
-          pour l'engin {{currentEnginInfo.Matricule}}</h1>
-      </div>
-      <div class="modal-body">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-6">
-              <form #formEcheancier="ngForm" (submit)="onSubmitEcheancier(formEcheancier)">
-                <input type="hidden" name="IdEcheancier" #IdEcheancier="ngModel"
-                  [(ngModel)]="echeancierService.formDataEcheancier.IdEcheancier">
-                <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <label for="matricule">Matricule</label>
-                    <input id="matricule" name="Matricule" #Matricule="ngModel"
-                      [(ngModel)]="echeancierService.formDataEcheancier.Matricule" [value]="currentEnginInfo.Matricule"
-                      class="form-control" required>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <label for="dateecheancier">Date</label>
-                    <input type="datetime-local" id="dateecheancier" name="DateEcheancier" #DateEcheancier="ngModel"
-                      [(ngModel)]="echeancierService.formDataEcheancier.DateEcheancier" class="form-control" required>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <label for="montant">Montant</label>
-                    <input name="Montant" id="montant" #Montant="ngModel"
-                      [(ngModel)]="echeancierService.formDataEcheancier.Montant" class="form-control"
-                      placeholder="Montant" required>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <label for="idengin">Id Engin</label>
-                    <input name="IdEngin" id="moisecheancier" #IdEngin="ngModel"
-                      [(ngModel)]="echeancierService.formDataEcheancier.IdEngin" [value]="currentEnginInfo.IdEngin"
-                      class="form-control" placeholder="IdEngin" required>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <button class="form-group col-md-2 btn btn-primary" type="submit">Ajouter</button>
-                </div>
-              </form>
-            </div>
-            <div class="col-md-6">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <td>Matricule</td>
-                    <td>Date</td>
-                    <td>Montant</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let ech of echeanciersByIdEngin">
-                    <td>{{ech.Matricule}}</td>
-                    <td>{{ech.DateEcheancier | date:'MM/yyyy' }}</td>
-                    <td>{{ech.Montant}} €</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-      </div>
-    </div>
-  </div>
-</div> -->
-

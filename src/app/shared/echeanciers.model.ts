@@ -4,5 +4,7 @@ export class Echeanciers {
     Montant: number;
     IdEngin: number;
     Matricule: number;
-
+    LieuUtilisation: string;
+    DateDebutContrat: Date;
+    DureeContrat: number;
 }

@@ -20,7 +20,10 @@ export class EcheanciersService {
     DateEcheancier: null,
     Montant: 0,
     IdEngin: 0,
-    Matricule: 0
+    Matricule: 0,
+    LieuUtilisation: '',
+    DateDebutContrat: null,
+    DureeContrat: 0
   }
 
   readonly rootURL = 'https://localhost:44338/api';

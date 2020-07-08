@@ -90,11 +90,12 @@
   <ng-container matColumnDef="Echeancier">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Echeancier </th>
     <ng-container mat-cell *matCellDef="let element">
-      <td *ngIf="element.TypeContrat=='LCD'">
-        <button class="btn btn-transparent" (click)="echeancierInfo(element.IdEngin)" data-toggle="modal"
-          data-target="#infoModal2">
+      <ng-container *ngFor="let contrat of contratservice.contratsListe">
+      <td *ngIf="element.TypeContrat=='LCD' && element.IdContrat == contrat.IdContrat">
+        <button class="btn btn-transparent" (click)="echeancierModal(element.IdEngin, element.Matricule, contrat.LieuUtilisation, contrat.DateEntree, contrat.DureeContrat)">
           <mat-icon aria-hidden="false">attach_money</mat-icon>
         </button> </td>
+      </ng-container>
     </ng-container>
   </ng-container>
 
@@ -244,7 +245,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="infoModal2" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel2"
+<!--<div class="modal fade" id="infoModal2" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel2"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered mw-100 w-75">
     <div class="modal-content">
@@ -319,4 +320,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

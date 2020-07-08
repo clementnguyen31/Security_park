@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Echeanciers } from 'src/app/shared/echeanciers.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
+import { EcheanciersComponent } from 'src/app/echeanciers/echeanciers.component';
 
 @Component({
   selector: 'app-engins-courte-duree-list',
@@ -59,19 +60,6 @@ export class EnginsCourteDureeListComponent implements OnInit {
 
   }
 
-  resetFormEcheancier(form?: NgForm) {
-    if (form != null) {
-      form.form.reset();
-    }
-    this.echeancierService.formDataEcheancier = {
-      IdEcheancier: 0,
-      DateEcheancier: null,
-      Montant: 0,
-      IdEngin: 0,
-      Matricule: 0
-    }
-  }
-
   populateForm(selectedRecord) {
     this.enginservice.formDataEngins = Object.assign({}, selectedRecord);
     const dialogConfig = new MatDialogConfig();
@@ -89,6 +77,15 @@ export class EnginsCourteDureeListComponent implements OnInit {
     this.dialog.open(EnginsCourteDureeFormComponent, dialogConfig);
   }
 
+  echeancierModal(idengin, matricule, lieu, datedebut, duree){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "70%";
+    dialogConfig.data = { idengin, matricule, lieu, datedebut, duree};
+    const dialogRef = this.dialog.open(EcheanciersComponent, dialogConfig);
+  } 
+
   detailsInfo(id, idcontrat) {
     this.enginservice.getEngin(id).subscribe(res => {
       this.currentEnginInfo = res;
@@ -98,35 +95,10 @@ export class EnginsCourteDureeListComponent implements OnInit {
     });
   }
 
-  echeancierInfo(id) {
-    this.enginservice.getEngin(id).subscribe(res => {
-      this.currentEnginInfo = res;
-    });
-    this.echeancierService.getEcheanciersByIdEngin(id).subscribe(res => {
-      this.echeanciersByIdEngin = res;
-
-    });
-  }
-
   onDelete(id) {
     this.enginservice.deleteEngins(id).subscribe(res => {
       this.enginservice.refreshListEngins();
     })
-  }
-
-  insertEcheancier(form: NgForm) {
-    this.echeancierService.postEcheanciers().subscribe(
-      res => {
-        this.resetFormEcheancier(form);
-        this.toastr.success("Ajout réussi", 'Security Park');
-        this.echeancierService.refreshListEcheanciers();
-      },
-      err => { console.log(err); }
-    )
-  }
-
-  onSubmitEcheancier(form: NgForm) {
-    this.insertEcheancier(form);
   }
 
 }

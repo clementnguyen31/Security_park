@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { EcheanciersService } from '../shared/echeanciers.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgForm } from '@angular/forms';
+import { Echeanciers } from '../shared/echeanciers.model';
 
 @Component({
   selector: 'app-echeanciers',
@@ -16,9 +17,14 @@ export class EcheanciersComponent implements OnInit {
   private toastr: ToastrService,
   public dialogbox: MatDialogRef<EcheanciersComponent>) { }
 
+  echeanciersByIdEngin: Echeanciers[];
+
   ngOnInit(): void {
     this.resetFormEcheancier();
     this.echeancierService.refreshListEcheanciers();
+    this.echeancierService.getEcheanciersByIdEngin(this.data.idengin).subscribe(res => {
+      this.echeanciersByIdEngin = res;
+    })
   }
 
   resetFormEcheancier(form?: NgForm) {
@@ -30,7 +36,10 @@ export class EcheanciersComponent implements OnInit {
       DateEcheancier: null,
       Montant: 0,
       IdEngin: this.data.idengin,
-      Matricule: 0
+      Matricule: this.data.matricule,
+      LieuUtilisation: this.data.lieu,
+      DateDebutContrat: this.data.datedebut,
+      DureeContrat: this.data.duree
     } 
   }
 

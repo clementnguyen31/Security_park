@@ -55,7 +55,7 @@ export class EnginsLongueDureeListComponent implements OnInit {
   getAllData() {
     let resp = this.enginservice.getEngins().subscribe(report => this.dataSource.data = report as Engins[]);
   }
- 
+
   populateForm(selectedRecord) {
     this.enginservice.formDataEngins = Object.assign({}, selectedRecord);
     const dialogConfig = new MatDialogConfig();
@@ -95,26 +95,26 @@ export class EnginsLongueDureeListComponent implements OnInit {
     });
   }
 
- /* echeancierInfo(id) {
-    this.enginservice.getEngin(id).subscribe(res => {
-      this.currentEnginInfo = res;
-    });
-    this.echeancierService.getEcheanciersByIdEngin(id).subscribe(res => {
-      this.echeanciersByIdEngin = res;
-    })
-    this.interventionService.getInterventionVgpsByIdEngin(id).subscribe(res => {
-      this.interventionByIdEngin = res;
-    })
-  } */
+  /* echeancierInfo(id) {
+     this.enginservice.getEngin(id).subscribe(res => {
+       this.currentEnginInfo = res;
+     });
+     this.echeancierService.getEcheanciersByIdEngin(id).subscribe(res => {
+       this.echeanciersByIdEngin = res;
+     })
+     this.interventionService.getInterventionVgpsByIdEngin(id).subscribe(res => {
+       this.interventionByIdEngin = res;
+     })
+   } */
 
-  echeancierModal(idengin){
+  echeancierModal(idengin, matricule, lieu, datedebut, duree) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "70%";
-    dialogConfig.data = { idengin };
+    dialogConfig.data = { idengin, matricule, lieu, datedebut, duree };
     const dialogRef = this.dialog.open(EcheanciersComponent, dialogConfig);
-  } 
+  }
 
   onDelete(id) {
     this.enginservice.deleteEngins(id).subscribe(res => {
