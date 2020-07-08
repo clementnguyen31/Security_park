@@ -14,6 +14,7 @@ import { Engins } from 'src/app/shared/engins.model';
 import { InterventionsFormComponent } from 'src/app/interventions/interventions-form/interventions-form.component';
 import { Interventions } from 'src/app/shared/interventions.model';
 import { InterventionsService } from 'src/app/shared/interventions.service';
+import { EcheanciersComponent } from 'src/app/echeanciers/echeanciers.component';
 
 @Component({
   selector: 'app-engins-longue-duree-list',
@@ -33,7 +34,6 @@ export class EnginsLongueDureeListComponent implements OnInit {
   currentEnginContratVGP: any = {};
   echeanciersByIdEngin: Echeanciers[];
   interventionByIdEngin: Interventions[];
-
 
   constructor(public enginservice: EnginsService, public contratservice: ContratsService, public contratVGPService: ContratVGPService, public echeancierService: EcheanciersService, public contratvgpservice: ContratVGPService, private dialog: MatDialog, private toastr: ToastrService, public interventionService: InterventionsService) { }
 
@@ -55,20 +55,7 @@ export class EnginsLongueDureeListComponent implements OnInit {
   getAllData() {
     let resp = this.enginservice.getEngins().subscribe(report => this.dataSource.data = report as Engins[]);
   }
-
-  resetFormEcheancier(form?: NgForm) {
-    if (form != null) {
-      form.form.reset();
-    }
-    this.echeancierService.formDataEcheancier = {
-      IdEcheancier: 0,
-      DateEcheancier: null,
-      Montant: 0,
-      IdEngin: 0,
-      Matricule: 0
-    }
-  }
-
+ 
   populateForm(selectedRecord) {
     this.enginservice.formDataEngins = Object.assign({}, selectedRecord);
     const dialogConfig = new MatDialogConfig();
@@ -85,18 +72,18 @@ export class EnginsLongueDureeListComponent implements OnInit {
     dialogConfig.width = "70%";
     this.dialog.open(EnginsLongueDureeFormComponent, dialogConfig);
   }
-  addIntervention(idEngin){
+
+  addIntervention(idengin) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "70%";
-    dialogConfig.data = {idEngin};
-    this.dialog.open(InterventionsFormComponent, dialogConfig);
+    dialogConfig.data = { idengin };
+    const dialogRef = this.dialog.open(InterventionsFormComponent, dialogConfig);
   }
 
 
   detailsInfo(id, idcontrat, idcontratvgp) {
-    var param;
     this.enginservice.getEngin(id).subscribe(res => {
       this.currentEnginInfo = res;
     });
@@ -106,39 +93,33 @@ export class EnginsLongueDureeListComponent implements OnInit {
     this.contratvgpservice.getContratVGP(idcontratvgp).subscribe(res => {
       this.currentEnginContratVGP = res;
     });
-    this.interventionService.getInterventionVgpsByIdEngin(id).subscribe(res => {
-      this.interventionByIdEngin = res;
-    })
   }
 
-  echeancierInfo(id) {
+ /* echeancierInfo(id) {
     this.enginservice.getEngin(id).subscribe(res => {
       this.currentEnginInfo = res;
     });
     this.echeancierService.getEcheanciersByIdEngin(id).subscribe(res => {
       this.echeanciersByIdEngin = res;
     })
-  }
+    this.interventionService.getInterventionVgpsByIdEngin(id).subscribe(res => {
+      this.interventionByIdEngin = res;
+    })
+  } */
+
+  echeancierModal(idengin){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "70%";
+    dialogConfig.data = { idengin };
+    const dialogRef = this.dialog.open(EcheanciersComponent, dialogConfig);
+  } 
 
   onDelete(id) {
     this.enginservice.deleteEngins(id).subscribe(res => {
       this.enginservice.refreshListEngins();
     })
-  }
-
-  insertEcheancier(form: NgForm) {
-    this.echeancierService.postEcheanciers().subscribe(
-      res => {
-        this.resetFormEcheancier(form);
-        this.toastr.success("Ajout réussi", 'Security Park');
-        this.echeancierService.refreshListEcheanciers();
-      },
-      err => { console.log(err); }
-    )
-  }
-
-  onSubmitEcheancier(form: NgForm) {
-    this.insertEcheancier(form);
   }
 
 }

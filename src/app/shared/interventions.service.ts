@@ -27,12 +27,16 @@ export class InterventionsService {
   readonly rootURL = 'https://localhost:44338/api';
   InterventionVGPListe: Interventions[];
 
-  constructor(public http: HttpClient, public enginservice: EnginsService) { }
+  constructor(public http: HttpClient) { }
 
   
   getInterventionVgpsByIdEngin(idEngin): Observable<any> {
     let params = new HttpParams().set('IdEngin', idEngin);
     return this.http.get(this.rootURL + "/InterventionVgps", { params: params });
+  }
+
+  getInterventionVgps() {
+    return this.http.get(this.rootURL + "/InterventionVgps");
   }
 
   getInterventionVgp(id) {

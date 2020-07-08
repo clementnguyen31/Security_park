@@ -33,7 +33,8 @@ import { InterventionsFormComponent } from './interventions/interventions-form/i
 import { ContratVgpComponent } from './contrat-vgp/contrat-vgp.component';
 import { ContratVgpFormComponent } from './contrat-vgp/contrat-vgp-form/contrat-vgp-form.component';
 import { ContratVGPService } from './shared/contrat-vgp.service';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { EcheanciersComponent } from './echeanciers/echeanciers.component';
 
 @NgModule({
   declarations: [
@@ -57,10 +58,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     ContratArchiveListComponent,
     InterventionsFormComponent,
     ContratVgpComponent,
-    ContratVgpFormComponent
+    ContratVgpFormComponent,
+    EcheanciersComponent,
   ],
   entryComponents: [EnginsCourteDureeFormComponent,
-    ContratsFormComponent, ContratVGPService],
+    ContratsFormComponent, ContratVGPService, InterventionsFormComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,

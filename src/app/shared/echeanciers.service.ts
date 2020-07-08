@@ -26,7 +26,7 @@ export class EcheanciersService {
   readonly rootURL = 'https://localhost:44338/api';
   echeanciersList: Echeanciers[];
 
-  constructor(public http: HttpClient, public enginservice: EnginsService) { }
+  constructor(public http: HttpClient) { }
 
   getEcheanciersByIdEngin(idEngin): Observable<any> {
     let params = new HttpParams().set('IdEngin', idEngin);

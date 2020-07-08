@@ -15,12 +15,12 @@ export class InterventionsFormComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data,
     public serviceIntervention: InterventionsService,
     private toastr: ToastrService,
-    public dialogbox: MatDialogRef<InterventionsFormComponent>) { 
-      this.serviceIntervention.formDataInterventionVgps.IdEngin = data.IdEngin;
-    }
+    public dialogbox: MatDialogRef<InterventionsFormComponent>) {
+  }
 
   ngOnInit(): void {
     this.resetForm();
+    console.log(this.data.idengin);
   }
 
   resetForm(form?: NgForm) {
@@ -36,7 +36,7 @@ export class InterventionsFormComponent implements OnInit {
       Commentaire: '',
       EstSuite: false,
       IdFacture: 0,
-      IdEngin: this.data.IdEngin
+      IdEngin: this.data.idengin
     }
   }
 

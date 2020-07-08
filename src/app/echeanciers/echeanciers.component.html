@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <h1 class="text-center">Echeancier de facturation</h1>
+        <div class="col-md-12">
+
+        </div>
+        <div class="col-md-12">
+            <form #formEcheancier="ngForm" (submit)="onSubmitEcheancier(formEcheancier)">
+                <input type="hidden" name="IdEcheancier" #IdEcheancier="ngModel"
+                    [(ngModel)]="echeancierService.formDataEcheancier.IdEcheancier">
+                <input type="hidden" name="IdEngin" #IdEngin="ngModel"
+                    [(ngModel)]="echeancierService.formDataEcheancier.IdEngin" class="form-control">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="dateecheancier">Date</label>
+                        <input type="datetime-local" id="dateecheancier" name="DateEcheancier" #DateEcheancier="ngModel"
+                            [(ngModel)]="echeancierService.formDataEcheancier.DateEcheancier" class="form-control"
+                            required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="montant">Montant</label>
+                        <input name="Montant" id="montant" #Montant="ngModel"
+                            [(ngModel)]="echeancierService.formDataEcheancier.Montant" class="form-control"
+                            placeholder="Montant" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <button class="form-group col-md-2 btn btn-primary" type="submit">Ajouter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
