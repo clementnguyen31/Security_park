@@ -59,7 +59,7 @@
 
    <!-- Symbol Column -->
    <ng-container matColumnDef="Modifier">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Modifier </th>
+      <th mat-header-cell *matHeaderCellDef> Modifier </th>
       <ng-container mat-cell *matCellDef="let element">
          <ng-container>
             <td><button class="btn btn-transparent" (click)="editForm(element)">
@@ -71,7 +71,7 @@
 
    <!-- Symbol Column -->
    <ng-container matColumnDef="Details">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Détails </th>
+      <th mat-header-cell *matHeaderCellDef> Détails </th>
       <ng-container mat-cell *matCellDef="let element">
          <ng-container>
             <td><button class="btn btn-transparent" (click)="detailsContrat(element.IdContrat)" data-toggle="modal"

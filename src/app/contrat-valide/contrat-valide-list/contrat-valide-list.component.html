@@ -58,7 +58,7 @@
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="Modifier">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Modifier </th>
+        <th mat-header-cell *matHeaderCellDef> Modifier </th>
         <ng-container mat-cell *matCellDef="let element">
             <td
                 *ngIf="element.DureeContrat && element.DateFinContrat && element.DateEntree && element.LieuUtilisation && element.DateSignatureIrrijardin && element.NumContrat && element.PrestataireLocation && element.TypeEngin && element.DateSignaturePrestataire && element.DateCirculation && element.PrixLoyer && element.DateSortie == null">
@@ -70,7 +70,7 @@
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="Details">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Détails </th>
+        <th mat-header-cell *matHeaderCellDef> Détails </th>
         <ng-container mat-cell *matCellDef="let element">
             <td
                 *ngIf="element.DureeContrat && element.DateFinContrat && element.DateEntree && element.LieuUtilisation && element.DateSignatureIrrijardin && element.NumContrat && element.PrestataireLocation && element.TypeEngin && element.DateSignaturePrestataire && element.DateCirculation && element.PrixLoyer && element.DateSortie == null">

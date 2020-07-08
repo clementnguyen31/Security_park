@@ -57,44 +57,44 @@
   <!-- Symbol Column -->
   <ng-container matColumnDef="EstArret">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> A l'arrêt ? </th>
-    <ng-container mat-cell *matCellDef="let element">
-      <td *ngIf="element.TypeContrat=='LCD' && element.EstArret==true">Oui</td>
-      <td *ngIf="element.TypeContrat=='LCD' && element.EstArret==false">Non</td>
-    </ng-container>
+    <td mat-cell *matCellDef="let element">
+      <div *ngIf="element.TypeContrat=='LCD' && element.EstArret==true">Oui</div>
+      <div *ngIf="element.TypeContrat=='LCD' && element.EstArret==false">Non</div>
+    </td>
   </ng-container>
 
   <!-- Symbol Column -->
   <ng-container matColumnDef="Modifier">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Modifier </th>
-    <ng-container mat-cell *matCellDef="let element">
-      <td *ngIf="element.TypeContrat=='LCD'">
+    <th mat-header-cell *matHeaderCellDef> Modifier </th>
+    <td mat-cell *matCellDef="let element">
+      <div *ngIf="element.TypeContrat=='LCD'">
         <button class="btn btn-transparent" (click)="populateForm(element)">
           <mat-icon aria-hidden="false">edit</mat-icon>
-        </button> </td>
-    </ng-container>
+        </button> </div>
+    </td>
   </ng-container>
 
   <!-- Symbol Column -->
   <ng-container matColumnDef="Details">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Détails </th>
-    <ng-container mat-cell *matCellDef="let element">
-      <td *ngIf="element.TypeContrat=='LCD'">
+    <th mat-header-cell *matHeaderCellDef> Détails </th>
+    <td mat-cell *matCellDef="let element">
+      <div *ngIf="element.TypeContrat=='LCD'">
         <button class="btn btn-transparent" (click)="detailsInfo(element.IdEngin, element.IdContrat)"
           data-toggle="modal" data-target="#infoModal">
           <mat-icon aria-hidden="false">visibility</mat-icon>
-        </button> </td>
-    </ng-container>
+        </button> </div>
+    </td>
   </ng-container>
 
   <!-- Symbol Column -->
   <ng-container matColumnDef="Echeancier">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Echeancier </th>
+    <th mat-header-cell *matHeaderCellDef> Echeancier </th>
     <ng-container mat-cell *matCellDef="let element">
       <ng-container *ngFor="let contrat of contratservice.contratsListe">
-      <td *ngIf="element.TypeContrat=='LCD' && element.IdContrat == contrat.IdContrat">
+      <div *ngIf="element.TypeContrat=='LCD' && element.IdContrat == contrat.IdContrat">
         <button class="btn btn-transparent" (click)="echeancierModal(element.IdEngin, element.Matricule, contrat.LieuUtilisation, contrat.DateEntree, contrat.DureeContrat)">
           <mat-icon aria-hidden="false">attach_money</mat-icon>
-        </button> </td>
+        </button> </div>
       </ng-container>
     </ng-container>
   </ng-container>

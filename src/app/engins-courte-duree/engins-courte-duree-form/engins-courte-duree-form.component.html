@@ -86,7 +86,7 @@
       </div>
       <div class="form-group col-md-6">
          <label for="DateDeclarationEntree">Date déclaration entrée</label>
-         <input id="DateDeclarationEntree" type="date" name="DateDeclarationEntree" #DateDeclarationEntree="ngModel"
+         <input id="DateDeclarationEntree" type="datetime-local" name="DateDeclarationEntree" #DateDeclarationEntree="ngModel"
             [(ngModel)]="enginService.formDataEngins.DateDeclarationEntree" class="form-control" required>
       </div>
    </div>
@@ -104,14 +104,14 @@
       </div>
       <div class="form-group col-md-6">
          <label for="DateDeclarationSortie">Date déclaration sortie</label>
-         <input id="DateDeclarationSortie" type="date" name="DateDeclarationEntree" #DateDeclarationSortie="ngModel"
+         <input id="DateDeclarationSortie" type="datetime-local" name="DateDeclarationEntree" #DateDeclarationSortie="ngModel"
             [(ngModel)]="enginService.formDataEngins.DateDeclarationSortie" class="form-control" required>
       </div>
    </div>
    <div class="form-row">
       <div class="form-group col-md-3">
          <label for="DateCirculation">Date de 1<sup>ère</sup> circulation</label>
-         <input id="DateCirculation" type="date" name="DateCirculation" #DateCirculation="ngModel"
+         <input id="DateCirculation" type="datetime-local" name="DateCirculation" #DateCirculation="ngModel"
             [(ngModel)]="enginService.formDataEngins.DateCirculation" class="form-control" required>
       </div>
       <div class="form-group col-md-3">
