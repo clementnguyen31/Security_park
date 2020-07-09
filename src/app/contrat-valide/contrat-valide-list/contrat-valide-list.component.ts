@@ -6,6 +6,7 @@ import { ContratsFormComponent } from 'src/app/contrats/contrats-form/contrats-f
 import { Contrats } from 'src/app/shared/contrats.model';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class ContratValideListComponent implements OnInit {
   dataSource = new MatTableDataSource<Contrats>(this.ELEMENT_DATA);
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   currentContratInfo: any = {};
 
@@ -32,6 +34,7 @@ export class ContratValideListComponent implements OnInit {
     this.service.refreshContratListe();
     this.enginservice.refreshListEngins();
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
     this.filterContrat('Valide');
   }
   

@@ -13,6 +13,7 @@ import { Echeanciers } from 'src/app/shared/echeanciers.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { EcheanciersComponent } from 'src/app/echeanciers/echeanciers.component';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-engins-courte-duree-list',
@@ -22,11 +23,12 @@ import { EcheanciersComponent } from 'src/app/echeanciers/echeanciers.component'
 export class EnginsCourteDureeListComponent implements OnInit {
 
   ELEMENT_DATA: Engins[];
-  displayedColumns: string[] = ['Matricule', 'TypeEngin', 'LieuUtilisation', 'InterventionEnCours', 'EstArret', 'Modifier', 'Details', 'Echeancier'];
+  displayedColumns: string[] = ['Matricule', 'TypeEngin', 'LieuUtilisation', 'DateProchaineVgp', 'InterventionEnCours', 'EstArret', 'Modifier', 'Details', 'Echeancier'];
   dataSource = new MatTableDataSource<Engins>(this.ELEMENT_DATA);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  
   currentContratInfo: any = {};
 
   currentEnginInfo: any = {};
@@ -47,6 +49,7 @@ export class EnginsCourteDureeListComponent implements OnInit {
     this.contratservice.refreshContratListe();
     this.getAllData();
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
     this.applyFilter('LCD');
   }
 

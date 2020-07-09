@@ -5,7 +5,7 @@
     <div class="form-row">
         <div class="form-group col-md-4">
             <label for="matricule">Matricule</label>
-            <input name="Matricule" id="matricule" #Matricule="ngModel"     
+            <input name="Matricule" id="matricule" #Matricule="ngModel"
                 [(ngModel)]="enginService.formDataEngins.Matricule" class="form-control" placeholder="Matricule"
                 required>
         </div>
@@ -112,12 +112,12 @@
         </div>
     </div>
     <div class="form-row">
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-3">
             <label for="DateCirculation">Date de 1<sup>ère</sup> circulation</label>
             <input id="DateCirculation" type="date" name="DateCirculation" #DateCirculation="ngModel"
                 [(ngModel)]="enginService.formDataEngins.DateCirculation" class="form-control" required>
         </div>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-3">
             <label for="InterventionEnCours">Intervention en cours ?</label>
             <select class="form-control" name="InterventionEnCours" #InterventionEnCours="ngModel"
                 [(ngModel)]="enginService.formDataEngins.InterventionEnCours" id="InterventionEnCours" required>
@@ -126,39 +126,17 @@
                 <option [ngValue]="false">Non</option>
             </select>
         </div>
-        <div class="form-group col-md-4">
+        <div class="form-group col-md-3">
             <label for="contrat">Contrat</label>
             <select class="form-control" name="IdContrat" #IdContrat="ngModel"
                 [(ngModel)]="enginService.formDataEngins.IdContrat" id="contrat" required>
                 <option value="" disabled>Choisissez un contrat</option>
                 <option *ngFor="let contrat of contratService.contratsListe" [ngValue]="contrat.IdContrat">
-                    <ng-container *ngIf="contrat.DateSignaturePrestataire">
+                    <ng-container *ngIf="contrat.EtatContrat == 'Valide'">
                         {{contrat.NumContrat}} </ng-container>
                 </option>
             </select>
         </div>
-        <!--<div class="form-row">
-            <div class="form-group-3">
-                <label for="DateDebutVgp">Date de début VGP</label>
-                <input id="DateDebutVgp" type="date" name="DateDebutVgp" #DateDebutVgp="ngModel"
-                [(ngModel)]="contratVGPService.formDataContratVGP.DateDebutVgp" class="form-control" required>
-            </div>
-            <div class="form-group-3">
-                <label for="DureeVgp">Durée de la VGP</label>
-                <input id="DureeVgp" name="DureeVgp" #DureeVgp="ngModel"
-                [(ngModel)]="contratVGPService.formDataContratVGP.DureeVgp" class="form-control" required>
-            </div>
-            <div class="form-group-3">
-                <label for="MontantVisite">Montant de la visite</label>
-                <input id="MontantVisite" name="MontantVisite" #MontantVisite="ngModel"
-                [(ngModel)]="contratVGPService.formDataContratVGP.MontantVisite" class="form-control" required>
-            </div>
-            <div class="form-group-3">
-                <label for="DateProchaineVgp">Date de la prochaine VGP</label>
-                <input id="DateProchaineVgp" type="date" name="DateProchaineVgp" #DateProchaineVgp="ngModel"
-                [(ngModel)]="contratVGPService.formDataContratVGP.DateProchaineVgp" class="form-control" required>
-            </div>
-        </div> -->
         <div class="form-group col-md-3">
             <label for="contratVGP">Contrat VGP</label>
             <ng-container *ngIf="enginService.formDataEngins.TypeContrat=='LCD'; else second">
@@ -177,36 +155,16 @@
             </ng-template>
         </div>
 
-        <!--<div class="form-row">
-            <div class="form-group col-md-3">
-                <label for="DateDebutVgp">Date de début VGP</label>
-                <input id="DateDebutVgp" type="date" name="DateDebutVgp" #DateDebutVgp="ngModel"
-                    [(ngModel)]="contratVGPService.formDataContratVGP.DateDebutVgp" class="form-control" required>
-            </div>
-            <div class="form-group col-md-3">
-                <label for="DureeVgp">Durée de la VGP</label>
-                <input id="DureeVgp" name="DureeVgp" #DureeVgp="ngModel"
-                    [(ngModel)]="contratVGPService.formDataContratVGP.DureeVgp" class="form-control" required>
-            </div>
-            <div class="form-group col-md-3">
-                <label for="MontantViste">Montant de la visite</label>
-                <input id="MontantViste" name="MontantViste" #MontantViste="ngModel"
-                    [(ngModel)]="contratVGPService.formDataContratVGP.MontantVisite" class="form-control" required>
-            </div>
-            <div class="form-group col-md-3">
-                <label for="DateProchaineVgp">Date de la prochaine VGP</label>
-                <input id="DateProchaineVgp" type="date" name="DateProchaineVgp" #DateProchaineVgp="ngModel"
-                    [(ngModel)]="contratVGPService.formDataContratVGP.DateProchaineVgp" class="form-control" required>
-            </div>
-        </div> -->
-
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-center">
-                        <button class="form-group col-md-2 btn btn-primary" style="margin-right: 0.5em;"
-                            type="submit">Valider</button>
-                        <button class="form-group col-md-2 btn btn-secondary" (click)="onClose()"
+                        <button class="form-group col-md-3 btn btn-warning" (click)="ajouterContratVGP()"
+                            type="button">Ajouter contrat VGP</button>
+                        <button class="form-group col-md-3 btn btn-info" type="button" (click)="listeContratVGP()">Voir
+                            contrats VGP</button>
+                        <button class="form-group col-md-3 btn btn-primary" type="submit">Valider</button>
+                        <button class="form-group col-md-3 btn btn-secondary" (click)="onClose()"
                             type="button">Fermer</button>
                     </div>
                 </div>

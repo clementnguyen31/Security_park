@@ -9,6 +9,7 @@ import { MatSort } from '@angular/material/sort';
 import { filter } from 'rxjs/operators';
 import { response } from 'express';
 import { element } from 'protractor';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-contrats-list',
@@ -22,6 +23,7 @@ export class ContratsListComponent implements OnInit {
   dataSource = new MatTableDataSource<Contrats>(this.ELEMENT_DATA);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   currentContratInfo: any = {};
 
@@ -32,6 +34,7 @@ export class ContratsListComponent implements OnInit {
   ngOnInit(): void {
     this.getAllData();
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
     this.filterContrat('Attente');
   }
 

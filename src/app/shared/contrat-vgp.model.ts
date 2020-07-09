@@ -5,5 +5,4 @@ export class ContratVGP {
     DureeVgp: number;
     MontantVisite: number;
     DateProchaineVgp: Date;
-    IdEngin: number;
 }

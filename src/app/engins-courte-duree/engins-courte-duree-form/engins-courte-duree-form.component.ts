@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ContratsService } from 'src/app/shared/contrats.service';
 import { ContratVGPService } from 'src/app/shared/contrat-vgp.service';
+import { ContratPipe } from 'src/app/shared/contrat-pipe';
 
 @Component({
   selector: 'app-engins-courte-duree-form',
@@ -31,8 +32,8 @@ export class EnginsCourteDureeFormComponent implements OnInit {
       NumSerie: null,
       EstDeclareRentre: '',
       EstDeclareSortie: '',
-      DateDeclarationEntree: '',
-      DateDeclarationSortie: '',
+      DateDeclarationEntree: null,
+      DateDeclarationSortie: null,
       Marque: '',
       TypeContrat: '',
       TypeEngin: '',
@@ -44,6 +45,7 @@ export class EnginsCourteDureeFormComponent implements OnInit {
       IdContratVgp: 0,
       InterventionEnCours: false,
       EstArret: false,
+      DateProchaineVgp: null
     }
   }
 

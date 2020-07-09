@@ -1,0 +1,23 @@
+<h2 class="text-center">Liste des contrats de VGP</h2>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table">
+            <thead class="text-center table-active">
+                <tr>
+                    <th>Date de début VGP</th>
+                    <th>Date de prochaine VGP</th>
+                    <th>Durée VGP</th>
+                    <th>Montant de la visite</th>
+                </tr>
+            </thead>
+            <tbody class="table-active" class="text-center">
+                <tr *ngFor="let vgp of contratvgpservice.contratsVGPListe">
+                    <td>{{vgp.DateDebutVgp | date:'dd/MM/yyyy' }}</td>
+                    <td>{{vgp.DateProchaineVgp | date:'dd/MM/yyyy' }}</td>
+                    <td>{{vgp.DureeVgp}} mois</td>
+                    <td>{{vgp.MontantVisite}} €</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

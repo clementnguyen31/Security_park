@@ -6,6 +6,7 @@ import { ContratsService } from 'src/app/shared/contrats.service';
 import { EnginsService } from 'src/app/shared/engins.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ContratsFormComponent } from 'src/app/contrats/contrats-form/contrats-form.component';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-contrat-archive-list',
@@ -19,6 +20,7 @@ export class ContratArchiveListComponent implements OnInit {
   dataSource = new MatTableDataSource<Contrats>(this.ELEMENT_DATA);
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   currentContratInfo: any = {};
   currentEnginInfo: any = {};
@@ -32,6 +34,7 @@ export class ContratArchiveListComponent implements OnInit {
     this.service.refreshContratListe();
     this.enginservice.refreshListEngins();
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
     this.filterContrat('Archive');
   }
   

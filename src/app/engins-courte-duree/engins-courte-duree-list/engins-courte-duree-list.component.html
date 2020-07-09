@@ -10,7 +10,6 @@
   </div>
 </div>
 
-
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
   <!--- Note that these columns can be defined in any order.
@@ -43,6 +42,14 @@
           {{contrat.LieuUtilisation}}</div>
       </ng-container>
     </td>
+  </ng-container>
+
+  <ng-container matColumnDef="DateProchaineVgp">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Date de la prochaine VGP</th>
+    <td mat-cell *matCellDef="let element">
+      <div *ngIf="element.TypeContrat=='LCD'">
+        {{element.DateProchaineVgp | date:'dd/MM/yyyy'}}</div>
+  </td>
   </ng-container>
 
   <!-- Symbol Column -->
@@ -91,10 +98,11 @@
     <th mat-header-cell *matHeaderCellDef> Echeancier </th>
     <td mat-cell *matCellDef="let element">
       <ng-container *ngFor="let contrat of contratservice.contratsListe">
-      <div *ngIf="element.TypeContrat=='LCD' && element.IdContrat == contrat.IdContrat">
-        <button class="btn btn-transparent" (click)="echeancierModal(element.IdEngin, element.Matricule, contrat.LieuUtilisation, contrat.DateEntree, contrat.DureeContrat)">
-          <mat-icon aria-hidden="false">attach_money</mat-icon>
-        </button> </div>
+        <div *ngIf="element.TypeContrat=='LCD' && element.IdContrat == contrat.IdContrat">
+          <button class="btn btn-transparent"
+            (click)="echeancierModal(element.IdEngin, element.Matricule, contrat.LieuUtilisation, contrat.DateEntree, contrat.DureeContrat)">
+            <mat-icon aria-hidden="false">attach_money</mat-icon>
+          </button> </div>
       </ng-container>
     </td>
   </ng-container>
@@ -102,6 +110,8 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 
 <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered mw-100 w-80">

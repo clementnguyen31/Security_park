@@ -14,19 +14,20 @@ export class EnginsService {
     NumSerie: null,
     EstDeclareRentre: '',
     EstDeclareSortie: '',
-    DateDeclarationEntree: '',
-    DateDeclarationSortie: '',
+    DateDeclarationEntree: null,
+    DateDeclarationSortie: null,
     Marque: '',
     TypeContrat: '',
     TypeEngin: '',
     TypeBatterie: '',
     PeriodiciteVgp: null,
     EstVgp: false,
-    DateCirculation: '',
+    DateCirculation: null,
     IdContrat: 0,
     IdContratVgp: 0,
     InterventionEnCours: false,
     EstArret: false,
+    DateProchaineVgp: null
   };
   readonly rootURL = 'https://localhost:44338/api';
   enginsListe: Engins[];

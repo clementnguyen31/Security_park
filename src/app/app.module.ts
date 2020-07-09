@@ -35,6 +35,9 @@ import { ContratVgpFormComponent } from './contrat-vgp/contrat-vgp-form/contrat-
 import { ContratVGPService } from './shared/contrat-vgp.service';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { EcheanciersComponent } from './echeanciers/echeanciers.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { ContratPipe } from './shared/contrat-pipe';
+import { ContratVgpListComponent } from './contrat-vgp/contrat-vgp-list/contrat-vgp-list.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +63,8 @@ import { EcheanciersComponent } from './echeanciers/echeanciers.component';
     ContratVgpComponent,
     ContratVgpFormComponent,
     EcheanciersComponent,
+    ContratPipe,
+    ContratVgpListComponent
   ],
   entryComponents: [EnginsCourteDureeFormComponent,
     ContratsFormComponent, ContratVGPService, InterventionsFormComponent],
@@ -74,7 +79,8 @@ import { EcheanciersComponent } from './echeanciers/echeanciers.component';
     MatDialogModule,
     FormsModule,
     MatIconModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatPaginatorModule
   ],
   providers: [
     EcheanciersService,

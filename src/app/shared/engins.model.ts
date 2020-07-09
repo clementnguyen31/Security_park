@@ -5,19 +5,20 @@ export class Engins {
     NumSerie: String;
     EstDeclareRentre: String;
     EstDeclareSortie: String;
-    DateDeclarationEntree: String;
-    DateDeclarationSortie: String;
+    DateDeclarationEntree: Date;
+    DateDeclarationSortie: Date;
     Marque: String;
     TypeContrat: String;
     TypeEngin: String;
     TypeBatterie: String;
     PeriodiciteVgp: String;
     EstVgp: boolean;
-    DateCirculation: String;
+    DateCirculation: Date;
     IdContrat: number;
     IdContratVgp: number;
     InterventionEnCours: boolean;
     EstArret: boolean;
+    DateProchaineVgp: Date;
 
     /*public string Matricule1 { get; set; }
     public string NumSerie1 { get; set; }

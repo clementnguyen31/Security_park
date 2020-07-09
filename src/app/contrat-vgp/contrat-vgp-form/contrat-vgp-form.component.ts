@@ -1,9 +1,11 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, EventEmitter } from '@angular/core';
 import { ContratVGPService } from 'src/app/shared/contrat-vgp.service';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ContratVGP } from 'src/app/shared/contrat-vgp.model';
+import {Output} from '@angular/core';
+
 
 @Component({
   selector: 'app-contrat-vgp-form',
@@ -11,6 +13,8 @@ import { ContratVGP } from 'src/app/shared/contrat-vgp.model';
   styleUrls: ['./contrat-vgp-form.component.css']
 })
 export class ContratVgpFormComponent implements OnInit {
+
+  @Output() childForm = new EventEmitter();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data, 
   public contratvgpservice: ContratVGPService, 
@@ -20,6 +24,7 @@ export class ContratVgpFormComponent implements OnInit {
   ngOnInit(): void {
     this.resetForm();
     this.contratvgpservice.refreshListContratsVGP();
+
   }
 
   resetForm(form?: NgForm) {
@@ -28,8 +33,7 @@ export class ContratVgpFormComponent implements OnInit {
       DateDebutVgp: null,
       DureeVgp: 0,
       MontantVisite: 0,
-      DateProchaineVgp: null,
-      IdEngin : this.data.IdEngin
+      DateProchaineVgp: null
     }
   }
 

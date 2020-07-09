@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { EnginsService } from 'src/app/shared/engins.service';
 import { ToastrService } from 'ngx-toastr';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MatDialogConfig, MatDialog } from '@angular/material/dialog';
 import { NgForm } from '@angular/forms';
 import { ContratsService } from 'src/app/shared/contrats.service';
 import { ContratVGPService } from 'src/app/shared/contrat-vgp.service';
+import { ContratVgpFormComponent } from 'src/app/contrat-vgp/contrat-vgp-form/contrat-vgp-form.component';
+import { ContratVgpListComponent } from 'src/app/contrat-vgp/contrat-vgp-list/contrat-vgp-list.component';
 
 @Component({
   selector: 'app-engins-longue-duree-form',
@@ -13,7 +15,7 @@ import { ContratVGPService } from 'src/app/shared/contrat-vgp.service';
 })
 export class EnginsLongueDureeFormComponent implements OnInit {
 
-  constructor(public enginService: EnginsService, private toastr: ToastrService, public dialogbox: MatDialogRef<EnginsLongueDureeFormComponent>, public contratService: ContratsService, public contratVGPService: ContratVGPService) { }
+  constructor(public enginService: EnginsService, private toastr: ToastrService, private dialog: MatDialog, public dialogbox: MatDialogRef<EnginsLongueDureeFormComponent>, public contratService: ContratsService, public contratVGPService: ContratVGPService) { }
 
   ngOnInit(): void {
     this.contratService.refreshContratListe();
@@ -30,8 +32,8 @@ export class EnginsLongueDureeFormComponent implements OnInit {
       NumSerie: null,
       EstDeclareRentre: '',
       EstDeclareSortie: '',
-      DateDeclarationEntree: '',
-      DateDeclarationSortie: '',
+      DateDeclarationEntree: null,
+      DateDeclarationSortie: null,
       Marque: '',
       TypeContrat: '',
       TypeEngin: '',
@@ -42,7 +44,9 @@ export class EnginsLongueDureeFormComponent implements OnInit {
       IdContrat: 0,
       IdContratVgp: 0,
       InterventionEnCours: false,
-      EstArret: false,    }
+      EstArret: false,
+      DateProchaineVgp: null
+    }
   }
 
   updateForm(form: NgForm) {
@@ -53,6 +57,22 @@ export class EnginsLongueDureeFormComponent implements OnInit {
         this.enginService.refreshListEngins();
       }
     )
+  }
+
+  ajouterContratVGP() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "70%";
+    this.dialog.open(ContratVgpFormComponent, dialogConfig);
+  }
+
+  listeContratVGP() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "70%";
+    this.dialog.open(ContratVgpListComponent, dialogConfig);
   }
 
   insertForm(form: NgForm) {

@@ -15,6 +15,7 @@ import { InterventionsFormComponent } from 'src/app/interventions/interventions-
 import { Interventions } from 'src/app/shared/interventions.model';
 import { InterventionsService } from 'src/app/shared/interventions.service';
 import { EcheanciersComponent } from 'src/app/echeanciers/echeanciers.component';
+import {MatPaginator} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-engins-longue-duree-list',
@@ -28,6 +29,7 @@ export class EnginsLongueDureeListComponent implements OnInit {
   dataSource = new MatTableDataSource<Engins>(this.ELEMENT_DATA);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   currentEnginInfo: any = {};
   currentEnginContrat: any = {};
@@ -45,6 +47,7 @@ export class EnginsLongueDureeListComponent implements OnInit {
     this.interventionService.refreshListInterventionVgps();
     this.getAllData();
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
     this.applyFilter('LLD');
   }
 
