@@ -45,7 +45,7 @@
    <div class="form-row">
       <div class="form-group col-md-4">
          <label for="dateentree">Date d'entrée</label>
-         <input id="dateentree" name="DateEntree" type="date" #DateEntree="ngModel"
+         <input id="dateentree" name="DateEntree" type="datetime-local" #DateEntree="ngModel"
             [(ngModel)]="service.formDataContrat.DateEntree" class="form-control" placeholder="Date d'entrée">
       </div>
       <div class="form-group col-md-4">
@@ -55,7 +55,7 @@
       </div>
       <div class="form-group col-md-4">
          <label for="datefincontrat">Date de fin de contrat</label>
-         <input id="datefincontrat" name="DateFinContrat" type="date" #DateFinContrat="ngModel"
+         <input id="datefincontrat" name="DateFinContrat" type="datetime-local" #DateFinContrat="ngModel"
             [(ngModel)]="service.formDataContrat.DateFinContrat" class="form-control"
             placeholder="Date de fin de contrat"
             (click)="calculDateFin(service.formDataContrat.DateEntree,service.formDataContrat.DureeContrat)">
@@ -64,7 +64,7 @@
    <div class="form-row">
       <div class="form-group col-md-4">
          <label for="datesignatureirrijardin">Date de signature Irrijardin</label>
-         <input id="datesignatureirrijardin" name="DateSignatureIrrijardin" type="date"
+         <input id="datesignatureirrijardin" name="DateSignatureIrrijardin" type="datetime-local"
             #DateSignatureIrrijardin="ngModel" [(ngModel)]="service.formDataContrat.DateSignatureIrrijardin"
             class="form-control" placeholder="Date de signature Irrijardin">
       </div>
@@ -76,7 +76,7 @@
       </div>
       <div class="form-group col-md-4">
          <label for="DateSortie">Date de sortie</label>
-         <input id="DateSortie" name="DateSortie" type="date" #DateSortie="ngModel"
+         <input id="DateSortie" name="DateSortie" type="datetime-local" #DateSortie="ngModel"
             [(ngModel)]="service.formDataContrat.DateSortie" class="form-control" placeholder="DateSortie">
       </div>
    </div>
@@ -84,13 +84,13 @@
       <div class="form-group col-md-6">
          <div>
             <label for="datesignatureprestataire">Date de signature Prestataire</label>
-            <input id="datesignatureprestataire" name="DateSignaturePrestataire" type="date"
+            <input id="datesignatureprestataire" name="DateSignaturePrestataire" type="datetime-local"
                #DateSignaturePrestataire="ngModel" [(ngModel)]="service.formDataContrat.DateSignaturePrestataire"
                class="form-control" placeholder="Date de signature Prestataire">
          </div>
          <div>
             <label for="datecirculation">Date de 1 <sup>ère</sup> circulation</label>
-            <input id="datecirculation" name="DateCirculation" type="date" #DateCirculation="ngModel"
+            <input id="datecirculation" name="DateCirculation" type="datetime-local" #DateCirculation="ngModel"
                [(ngModel)]="service.formDataContrat.DateCirculation" class="form-control"
                placeholder="Date de 1ère circulation">
          </div>

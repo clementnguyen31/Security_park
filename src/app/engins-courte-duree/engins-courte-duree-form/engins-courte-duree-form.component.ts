@@ -17,6 +17,8 @@ export class EnginsCourteDureeFormComponent implements OnInit {
 
   constructor(public enginService: EnginsService, private toastr: ToastrService, public dialogbox: MatDialogRef<EnginsCourteDureeFormComponent>, public contratService: ContratsService, public contratVGPService: ContratVGPService) { }
 
+  contratFilter: any = {EtatContrat: 'Valide'};
+
   ngOnInit(): void {
     this.contratService.refreshContratListe();
     this.contratVGPService.refreshListContratsVGP();

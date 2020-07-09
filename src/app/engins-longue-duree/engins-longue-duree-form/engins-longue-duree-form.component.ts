@@ -7,6 +7,9 @@ import { ContratsService } from 'src/app/shared/contrats.service';
 import { ContratVGPService } from 'src/app/shared/contrat-vgp.service';
 import { ContratVgpFormComponent } from 'src/app/contrat-vgp/contrat-vgp-form/contrat-vgp-form.component';
 import { ContratVgpListComponent } from 'src/app/contrat-vgp/contrat-vgp-list/contrat-vgp-list.component';
+import { Engins } from 'src/app/shared/engins.model';
+import { Contrats } from 'src/app/shared/contrats.model';
+import { FilterPipe } from 'ngx-filter-pipe';
 
 @Component({
   selector: 'app-engins-longue-duree-form',
@@ -16,6 +19,8 @@ import { ContratVgpListComponent } from 'src/app/contrat-vgp/contrat-vgp-list/co
 export class EnginsLongueDureeFormComponent implements OnInit {
 
   constructor(public enginService: EnginsService, private toastr: ToastrService, private dialog: MatDialog, public dialogbox: MatDialogRef<EnginsLongueDureeFormComponent>, public contratService: ContratsService, public contratVGPService: ContratVGPService) { }
+
+  contratFilter: any = {EtatContrat: 'Valide'};
 
   ngOnInit(): void {
     this.contratService.refreshContratListe();

@@ -38,6 +38,7 @@ import { EcheanciersComponent } from './echeanciers/echeanciers.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ContratPipe } from './shared/contrat-pipe';
 import { ContratVgpListComponent } from './contrat-vgp/contrat-vgp-list/contrat-vgp-list.component';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { ContratVgpListComponent } from './contrat-vgp/contrat-vgp-list/contrat-
     FormsModule,
     MatIconModule,
     ToastrModule.forRoot(),
-    MatPaginatorModule
+    MatPaginatorModule,
+    FilterPipeModule
   ],
   providers: [
     EcheanciersService,

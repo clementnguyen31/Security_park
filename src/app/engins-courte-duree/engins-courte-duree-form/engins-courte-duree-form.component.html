@@ -136,9 +136,8 @@
          <select class="form-control" name="IdContrat" #IdContrat="ngModel"
             [(ngModel)]="enginService.formDataEngins.IdContrat" id="contrat" required>
             <option value="" disabled>Choisissez un contrat</option>
-            <option *ngFor="let contrat of contratService.contratsListe" [ngValue]="contrat.IdContrat">
-               <ng-container *ngIf="contrat.EtatContrat == 'Valide'">
-                  {{contrat.NumContrat}} </ng-container>
+            <option *ngFor="let contrat of contratService.contratsListe | filterBy: contratFilter" [ngValue]="contrat.IdContrat">
+                  {{contrat.NumContrat}}
             </option>
          </select>
       </div>
