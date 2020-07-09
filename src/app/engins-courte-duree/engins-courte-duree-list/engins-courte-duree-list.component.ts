@@ -14,6 +14,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { EcheanciersComponent } from 'src/app/echeanciers/echeanciers.component';
 import { MatPaginator } from '@angular/material/paginator';
+import { InterventionsFormComponent } from 'src/app/interventions/interventions-form/interventions-form.component';
+import { Interventions } from 'src/app/shared/interventions.model';
+import { InterventionsService } from 'src/app/shared/interventions.service';
 
 @Component({
   selector: 'app-engins-courte-duree-list',
@@ -23,7 +26,7 @@ import { MatPaginator } from '@angular/material/paginator';
 export class EnginsCourteDureeListComponent implements OnInit {
 
   ELEMENT_DATA: Engins[];
-  displayedColumns: string[] = ['Matricule', 'TypeEngin', 'LieuUtilisation', 'DateProchaineVgp', 'InterventionEnCours', 'EstArret', 'Modifier', 'Details', 'Echeancier'];
+  displayedColumns: string[] = ['Matricule', 'TypeEngin', 'LieuUtilisation', 'DateProchaineVgp', 'InterventionEnCours', 'EstArret', 'Modifier', 'Details', 'Echeancier', 'Intervention'];
   dataSource = new MatTableDataSource<Engins>(this.ELEMENT_DATA);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -35,18 +38,21 @@ export class EnginsCourteDureeListComponent implements OnInit {
   currentEnginContrat: any = {};
   currentEnginEcheancier: any = {};
   echeanciersByIdEngin: Echeanciers[];
+  interventionByIdEngin: Interventions[];
 
   constructor(public enginservice: EnginsService,
     public contratservice: ContratsService,
     public contratVGPService: ContratVGPService,
     public echeancierService: EcheanciersService,
     private dialog: MatDialog,
-    private toastr: ToastrService,) { }
+    private toastr: ToastrService,
+    public interventionService: InterventionsService) { }
 
   ngOnInit(): void {
     this.echeancierService.refreshListEcheanciers();
     this.enginservice.refreshListEngins();
     this.contratservice.refreshContratListe();
+    this.interventionService.refreshListInterventionVgps();
     this.getAllData();
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
@@ -78,6 +84,15 @@ export class EnginsCourteDureeListComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "70%";
     this.dialog.open(EnginsCourteDureeFormComponent, dialogConfig);
+  }
+
+  addIntervention(idengin) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "70%";
+    dialogConfig.data = { idengin };
+    const dialogRef = this.dialog.open(InterventionsFormComponent, dialogConfig);
   }
 
   echeancierModal(idengin, matricule, lieu, datedebut, duree){
