@@ -111,6 +111,9 @@ export class EnginsCourteDureeListComponent implements OnInit {
     this.contratservice.getContrat(idcontrat).subscribe(res => {
       this.currentEnginContrat = res;
     });
+    this.interventionService.getInterventionVgpsByIdEngin(id).subscribe(res => {
+      this.interventionByIdEngin = res;
+    })
   }
 
   onDelete(id) {

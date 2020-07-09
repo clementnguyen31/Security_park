@@ -229,11 +229,27 @@
                 </thead>
                 <tbody class="table-active" class="text-center">
                   <tr *ngFor="let intervention of interventionByIdEngin">
+  
                     <td>{{intervention.DateIntervention}}</td>
-                    <td>{{intervention.EstRapportRecu}}</td>
+                    <ng-container *ngIf="intervention.EstRapportRecu==true; else recuNon">
+                      <td>Oui</td>
+                    </ng-container>
+                    <ng-template #recuNon>
+                      <td>Non</td>
+                    </ng-template>
                     <td>{{intervention.PrestataireVerification}}</td>
-                    <td>{{intervention.EstSatisfaisant}}</td>
-                    <td>{{intervention.EstSuite}}</td>
+                    <ng-container *ngIf="intervention.EstSatisfaisant==true; else statisfaitNon">
+                      <td>Oui</td>
+                    </ng-container>
+                    <ng-template #statisfaitNon>
+                      <td>Non</td>
+                    </ng-template>
+                    <ng-container *ngIf="intervention.EstSuite==true; else suiteNon">
+                      <td>Oui</td>
+                    </ng-container>
+                    <ng-template #suiteNon>
+                      <td>Non</td>
+                    </ng-template>
                     <td>{{intervention.Commentaire}}</td>
                   </tr>
                 </tbody>

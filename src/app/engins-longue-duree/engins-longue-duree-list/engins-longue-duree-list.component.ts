@@ -95,6 +95,9 @@ export class EnginsLongueDureeListComponent implements OnInit {
     this.contratvgpservice.getContratVGP(idcontratvgp).subscribe(res => {
       this.currentEnginContratVGP = res;
     });
+    this.interventionService.getInterventionVgpsByIdEngin(id).subscribe(res => {
+      this.interventionByIdEngin = res;
+    })
   }
 
   /* echeancierInfo(id) {

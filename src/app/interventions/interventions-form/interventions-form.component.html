@@ -33,6 +33,12 @@
     </div>
     <div class="form-row">
         <div class="form-group col-md-4">
+            <label for="PrestataireVerification">Prestataire de vérification</label>
+            <input id="PrestataireVerification" name="PrestataireVerification" #PrestataireVerification="ngModel"
+                [(ngModel)]="serviceIntervention.formDataInterventionVgps.PrestataireVerification" class="form-control"
+                placeholder="Prestataire de vérification">
+        </div>
+        <div class="form-group col-md-4">
             <label for="EstSuite">Suite ?</label>
             <select id="EstSuite" name="EstSuite" #EstSuite="ngModel"
                 [(ngModel)]="serviceIntervention.formDataInterventionVgps.EstSuite" class="form-control"
