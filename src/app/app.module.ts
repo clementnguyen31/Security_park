@@ -39,6 +39,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { ContratPipe } from './shared/contrat-pipe';
 import { ContratVgpListComponent } from './contrat-vgp/contrat-vgp-list/contrat-vgp-list.component';
 import { FilterPipeModule } from 'ngx-filter-pipe';
+import { ReparationComponent } from './reparation/reparation.component';
+import { ReparationListeComponent } from './reparation/reparation-liste/reparation-liste.component';
+import { ReparationFormComponent } from './reparation/reparation-form/reparation-form.component';
+import { EnginsCourteDureeModalComponent } from './engins-courte-duree/engins-courte-duree-list/engins-courte-duree-modal/engins-courte-duree-modal.component';
+import { EnginsLonguesDureeModalComponent } from './engins-longue-duree/engins-longue-duree-list/engins-longues-duree-modal/engins-longues-duree-modal.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +70,12 @@ import { FilterPipeModule } from 'ngx-filter-pipe';
     ContratVgpFormComponent,
     EcheanciersComponent,
     ContratPipe,
-    ContratVgpListComponent
+    ContratVgpListComponent,
+    ReparationComponent,
+    ReparationListeComponent,
+    ReparationFormComponent,
+    EnginsCourteDureeModalComponent,
+    EnginsLonguesDureeModalComponent
   ],
   entryComponents: [EnginsCourteDureeFormComponent,
     ContratsFormComponent, ContratVGPService, InterventionsFormComponent],

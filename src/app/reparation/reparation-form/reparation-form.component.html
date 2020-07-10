@@ -1,0 +1,73 @@
+<h1 class="text-center font-weight-bold">Ajouter une réparation</h1>
+<form #form="ngForm" (submit)="onSubmit(form)">
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="PrestataireVerfifcation">Prestataire de vérification</label>
+            <input id="PrestataireVerfifcation" name="PrestataireVerfifcation" #PrestataireVerfifcation="ngModel"
+                [(ngModel)]="serviceReparation.formDataReparation.PrestataireVerfifcation" class="form-control"
+                placeholder="Prestataire de vérification">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="DateDevis">Date du devis</label>
+            <input id="DateDevis" name="DateDevis" type="date" #DateDevis="ngModel"
+                [(ngModel)]="serviceReparation.formDataReparation.DateDevis" class="form-control"
+                placeholder="Date de devis">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="DateDemandeReponse">Date de demande de réponse</label>
+            <input id="DateDemandeReponse" name="DateDemandeReponse" type="date" #DateDemandeReponse="ngModel"
+                [(ngModel)]="serviceReparation.formDataReparation.DateDemandeReponse" class="form-control"
+                placeholder="Date de demande de réponse">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label for="TypeIntervention">Type d'intervention</label>
+            <input id="TypeIntervention" name="TypeIntervention" #TypeIntervention="ngModel"
+                [(ngModel)]="serviceReparation.formDataReparation.TypeIntervention" class="form-control"
+                placeholder="Type d'intervention">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="MontantDevis">Montant du devis</label>
+            <input id="MontantDevis" name="MontantDevis" #MontantDevis="ngModel"
+                [(ngModel)]="serviceReparation.formDataReparation.MontantDevis" class="form-control"
+                placeholder="Montant du devis">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="DateValidationDevis">Date de validation de devis</label>
+            <input id="DateValidationDevis" name="DateValidationDevis" type="date" #DateValidationDevis="ngModel"
+                [(ngModel)]="serviceReparation.formDataReparation.DateValidationDevis" class="form-control"
+                placeholder="Date de validation de devis">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="DateTravauxConformite">Date des travaux de conformités</label>
+            <input id="DateTravauxConformite" name="DateTravauxConformite" type="date" #DateTravauxConformite="ngModel"
+                [(ngModel)]="serviceReparation.formDataReparation.DateTravauxConformite" class="form-control"
+                placeholder="Date des travaux de conformités">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="DateFacture">Date de la facture</label>
+            <input id="DateFacture" name="DateFacture" type="date" #DateFacture="ngModel"
+                [(ngModel)]="serviceReparation.formDataReparation.DateFacture" class="form-control"
+                placeholder="Date de la facture">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="MontantFacture">Montant de la facture</label>
+            <input id="MontantFacture" name="MontantFacture" #MontantFacture="ngModel"
+                [(ngModel)]="serviceReparation.formDataReparation.MontantFacture" class="form-control"
+                placeholder="Montant de la facture">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="DateValidationFacture">Date de la validation de la facture</label>
+            <input id="DateValidationFacture" name="DateValidationFacture" type="date" #DateValidationFacture="ngModel"
+                [(ngModel)]="serviceReparation.formDataReparation.DateValidationFacture" class="form-control"
+                placeholder="Date de la validation de la facture">
+        </div>
+    </div>
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary" style="margin-right: 0.5em;">Valider</button>
+        <button type="button" class="btn btn-secondary" (click)="onClose()">Fermer</button>
+    </div>
+</form>

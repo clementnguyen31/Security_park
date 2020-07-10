@@ -1,0 +1,142 @@
+<div class="container-fluid">
+    <h2 class="text-center font-weight-bold">Caractéristiques</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped text-center table-bordered">
+                <thead class="table-irri">
+                    <tr>
+                        <th>Matricule</th>
+                        <th>NumSerie</th>
+                        <th>Marque</th>
+                        <th>Contrat</th>
+                        <th>Type</th>
+                        <th>Batterie</th>
+                        <th>Date déclaration entrée (assurance)</th>
+                        <th>Date déclaration sortie (assurance)</th>
+                        <th>A l'arrêt ?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{currentEnginInfo.Matricule}}</td>
+                        <td>{{currentEnginInfo.NumSerie}}</td>
+                        <td>{{currentEnginInfo.Marque}}</td>
+                        <td>{{currentEnginInfo.TypeContrat}}</td>
+                        <td>{{currentEnginInfo.TypeEngin}}</td>
+                        <td>{{currentEnginInfo.TypeBatterie}}</td>
+                        <ng-container *ngIf="currentEnginInfo.EstDeclareRentre==true; else second">
+                            <td>{{currentEnginInfo.DateDeclarationEntree | date:'dd/MM/yyyy'}}</td>
+                        </ng-container>
+                        <ng-template #second>
+                            <td>Pas de date</td>
+                        </ng-template>
+                        <ng-container *ngIf="currentEnginInfo.EstDeclareSortie==true; else third">
+                            <td>{{currentEnginInfo.DateDeclarationSortie | date:'dd/MM/yyyy'}}</td>
+                        </ng-container>
+                        <ng-template #third>
+                            <td>Pas de date</td>
+                        </ng-template>
+                        <ng-container *ngIf="currentEnginInfo.EstArret==true; else fourth">
+                            <td>Oui</td>
+                        </ng-container>
+                        <ng-template #fourth>
+                            <td>Non</td>
+                        </ng-template>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <h2 class="text-center font-weight-bold">Contrat de location</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped text-center table-bordered">
+                <thead class="table-irri">
+                    <tr>
+                        <th>Numéro de contrat</th>
+                        <th>Date de début</th>
+                        <th>Date de fin</th>
+                        <th>Durée du contrat</th>
+                        <th>Lieu d'utilisation</th>
+                        <th>Prestataire de location</th>
+                        <th>Prix du loyer</th>
+                        <th>Date de signature Irrijardin</th>
+                        <th>Date de signature du prestataire</th>
+                        <th>Date de 1<sup>ère</sup> circulation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>{{currentEnginContrat.NumContrat}}</td>
+                    <td>{{currentEnginContrat.DateEntree | date:'dd/MM/yyyy'}}</td>
+                    <td>{{currentEnginContrat.DateFinContrat | date:'dd/MM/yyyy'}}</td>
+                    <td>{{currentEnginContrat.DureeContrat}} mois</td>
+                    <td>{{currentEnginContrat.LieuUtilisation}}</td>
+                    <td>{{currentEnginContrat.PrestataireLocation}}</td>
+                    <td>{{currentEnginContrat.PrixLoyer}} €</td>
+                    <td>{{currentEnginContrat.DateSignatureIrrijardin | date:'dd/MM/yyyy'}}</td>
+                    <td>{{currentEnginContrat.DateSignaturePrestataire | date:'dd/MM/yyyy'}}</td>
+                    <td>{{currentEnginContrat.DateCirculation | date:'dd/MM/yyyy'}}</td>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <h2 class="text-center font-weight-bold">Interventions</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped text-center table-bordered">
+                <thead class="table-irri">
+                    <tr>
+                        <td>Date de l'intervention</td>
+                        <td>Rapport reçu</td>
+                        <td>Prestataire de vérification</td>
+                        <td>Satisfait ?</td>
+                        <td>Suite ?</td>
+                        <td>Commentaire</td>
+                        <td>Date de facture</td>
+                        <td>Montant de facture</td>
+                        <td>Date de validation de facture</td>
+                        <td>Modifier</td>
+                        <td>Ajouter une réparation</td>
+                    </tr>
+                </thead>
+                <tbody class="table-active" class="text-center">
+                    <tr *ngFor="let intervention of interventionByIdEngin">
+                        <td>{{intervention.DateIntervention}}</td>
+                        <ng-container *ngIf="intervention.EstRapportRecu==true; else recuNon">
+                            <td>Oui</td>
+                        </ng-container>
+                        <ng-template #recuNon>
+                            <td>Non</td>
+                        </ng-template>
+                        <td>{{intervention.PrestataireVerification}}</td>
+                        <ng-container *ngIf="intervention.EstSatisfaisant==true; else statisfaitNon">
+                            <td>Oui</td>
+                        </ng-container>
+                        <ng-template #statisfaitNon>
+                            <td>Non</td>
+                        </ng-template>
+                        <ng-container *ngIf="intervention.EstSuite==true; else suiteNon">
+                            <td>Oui</td>
+                        </ng-container>
+                        <ng-template #suiteNon>
+                            <td>Non</td>
+                        </ng-template>
+                        <td>{{intervention.Commentaire}}</td>
+                        <td>{{intervention.DateFacture}}</td>
+                        <td>{{intervention.MontantFacture}} €</td>
+                        <td>{{intervention.DateValidationFacture}}</td>
+                        <td><button type="button" class="btn btn-primary"
+                                (click)="modifierIntervention(intervention);">Modifier Intervention</button></td>
+                        <td><button type="button" class="btn btn-warning"
+                                (click)="ajouterReparation(intervention.IdInterventionVgp);">Ajouter réparation</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <h2>Commentaires : </h2>
+        <textarea class="form-control" readonly>{{currentEnginContrat.Commentaire}}</textarea>
+    </div>
+</div>

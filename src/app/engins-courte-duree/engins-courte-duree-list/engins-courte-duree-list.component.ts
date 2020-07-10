@@ -17,6 +17,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { InterventionsFormComponent } from 'src/app/interventions/interventions-form/interventions-form.component';
 import { Interventions } from 'src/app/shared/interventions.model';
 import { InterventionsService } from 'src/app/shared/interventions.service';
+import { ReparationFormComponent } from 'src/app/reparation/reparation-form/reparation-form.component';
+import { EnginsCourteDureeModalComponent } from './engins-courte-duree-modal/engins-courte-duree-modal.component';
 
 @Component({
   selector: 'app-engins-courte-duree-list',
@@ -32,13 +34,6 @@ export class EnginsCourteDureeListComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   
-  currentContratInfo: any = {};
-
-  currentEnginInfo: any = {};
-  currentEnginContrat: any = {};
-  currentEnginEcheancier: any = {};
-  echeanciersByIdEngin: Echeanciers[];
-  interventionByIdEngin: Interventions[];
 
   constructor(public enginservice: EnginsService,
     public contratservice: ContratsService,
@@ -95,14 +90,6 @@ export class EnginsCourteDureeListComponent implements OnInit {
     const dialogRef = this.dialog.open(InterventionsFormComponent, dialogConfig);
   }
 
-  modifierIntervention(selectedRecord){
-    this.interventionService.formDataInterventionVgps = Object.assign({}, selectedRecord);
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = false;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "70%";
-    const dialogRef = this.dialog.open(InterventionsFormComponent, dialogConfig);
-  }
 
   echeancierModal(idengin, matricule, lieu, datedebut, duree){
     const dialogConfig = new MatDialogConfig();
@@ -114,15 +101,12 @@ export class EnginsCourteDureeListComponent implements OnInit {
   } 
 
   detailsInfo(id, idcontrat) {
-    this.enginservice.getEngin(id).subscribe(res => {
-      this.currentEnginInfo = res;
-    });
-    this.contratservice.getContrat(idcontrat).subscribe(res => {
-      this.currentEnginContrat = res;
-    });
-    this.interventionService.getInterventionVgpsByIdEngin(id).subscribe(res => {
-      this.interventionByIdEngin = res;
-    })
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "70%";
+    dialogConfig.data = { id, idcontrat};
+    const dialogRef = this.dialog.open(EnginsCourteDureeModalComponent, dialogConfig);
   }
 
   onDelete(id) {

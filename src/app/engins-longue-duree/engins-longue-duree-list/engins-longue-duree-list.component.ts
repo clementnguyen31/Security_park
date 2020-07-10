@@ -16,6 +16,7 @@ import { Interventions } from 'src/app/shared/interventions.model';
 import { InterventionsService } from 'src/app/shared/interventions.service';
 import { EcheanciersComponent } from 'src/app/echeanciers/echeanciers.component';
 import { MatPaginator } from '@angular/material/paginator';
+import { EnginsLonguesDureeModalComponent } from './engins-longues-duree-modal/engins-longues-duree-modal.component';
 
 @Component({
   selector: 'app-engins-longue-duree-list',
@@ -95,31 +96,13 @@ export class EnginsLongueDureeListComponent implements OnInit {
   }
 
   detailsInfo(id, idcontrat, idcontratvgp) {
-    this.enginservice.getEngin(id).subscribe(res => {
-      this.currentEnginInfo = res;
-    });
-    this.contratservice.getContrat(idcontrat).subscribe(res => {
-      this.currentEnginContrat = res;
-    });
-    this.contratvgpservice.getContratVGP(idcontratvgp).subscribe(res => {
-      this.currentEnginContratVGP = res;
-    });
-    this.interventionService.getInterventionVgpsByIdEngin(id).subscribe(res => {
-      this.interventionByIdEngin = res;
-    })
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "70%";
+    dialogConfig.data = { id, idcontrat, idcontratvgp};
+    const dialogRef = this.dialog.open(EnginsLonguesDureeModalComponent, dialogConfig);
   }
-
-  /* echeancierInfo(id) {
-     this.enginservice.getEngin(id).subscribe(res => {
-       this.currentEnginInfo = res;
-     });
-     this.echeancierService.getEcheanciersByIdEngin(id).subscribe(res => {
-       this.echeanciersByIdEngin = res;
-     })
-     this.interventionService.getInterventionVgpsByIdEngin(id).subscribe(res => {
-       this.interventionByIdEngin = res;
-     })
-   } */
 
   echeancierModal(idengin, matricule, lieu, datedebut, duree) {
     const dialogConfig = new MatDialogConfig();
