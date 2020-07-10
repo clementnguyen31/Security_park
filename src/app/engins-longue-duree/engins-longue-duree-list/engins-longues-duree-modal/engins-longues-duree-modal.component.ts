@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 import { InterventionsService } from 'src/app/shared/interventions.service';
 import { InterventionsFormComponent } from 'src/app/interventions/interventions-form/interventions-form.component';
 import { ReparationFormComponent } from 'src/app/reparation/reparation-form/reparation-form.component';
+import { ReparationListeComponent } from 'src/app/reparation/reparation-liste/reparation-liste.component';
 
 @Component({
   selector: 'app-engins-longues-duree-modal',
@@ -74,6 +75,15 @@ export class EnginsLonguesDureeModalComponent implements OnInit {
     dialogConfig.width = "70%";
     dialogConfig.data = { idIntervention };
     const dialogRef = this.dialog.open(ReparationFormComponent, dialogConfig);
+  }
+
+  voirReparation(idinterventionvgp){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "70%";
+    dialogConfig.data = { idinterventionvgp };
+    const dialogRef = this.dialog.open(ReparationListeComponent, dialogConfig);
   }
 
 }

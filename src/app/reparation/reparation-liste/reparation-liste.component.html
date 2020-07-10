@@ -1,1 +1,35 @@
-<p>reparation-liste works!</p>
+<h1 class="text-center font-weight-bold">Réparation</h1>
+<div class="row">
+    <div class="container-fluid">
+        <table class="table table-striped text-center table-bordered">
+            <thead class="table-irri">
+                <tr>
+                    <th>Type de l'intervention</th>
+                    <th>Prestataire de vérification</th>
+                    <th>Date du devis</th>
+                    <th>Date de demande de réponse</th>
+                    <th>Montant du devis</th>
+                    <th>Date de validation du devis</th>
+                    <th>Date des travaux de conformités</th>
+                    <th>Date de facture</th>
+                    <th>Montant de facture</th>
+                    <th>Date de validation de facture</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rep of currentReparation">
+                    <td>{{rep.TypeIntervention}}</td>
+                    <td>{{rep.PrestataireVerfifcation}}</td>
+                    <td>{{rep.DateDevis}}</td>
+                    <td>{{rep.DateDemandeReponse}}</td>
+                    <td>{{rep.MontantDevis}}</td>
+                    <td>{{rep.DateValidationDevis}}</td>
+                    <td>{{rep.DateTravauxConformite}}</td>
+                    <td>{{rep.DateFacture}}</td>
+                    <td>{{rep.MontantFacture}}</td>
+                    <td>{{rep.DateValidationFacture}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

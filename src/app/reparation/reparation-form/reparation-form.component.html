@@ -1,5 +1,7 @@
 <h1 class="text-center font-weight-bold">Ajouter une réparation</h1>
 <form #form="ngForm" (submit)="onSubmit(form)">
+    <input type="hidden" name="IdInterventionVgp" #IdInterventionVgp="ngModel"
+        [(ngModel)]="serviceReparation.formDataReparation.IdInterventionVgp">
     <div class="form-row">
         <div class="form-group col-md-4">
             <label for="PrestataireVerfifcation">Prestataire de vérification</label>

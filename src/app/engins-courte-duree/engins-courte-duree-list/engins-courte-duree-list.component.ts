@@ -104,7 +104,7 @@ export class EnginsCourteDureeListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "70%";
+    dialogConfig.width = "100%";
     dialogConfig.data = { id, idcontrat};
     const dialogRef = this.dialog.open(EnginsCourteDureeModalComponent, dialogConfig);
   }

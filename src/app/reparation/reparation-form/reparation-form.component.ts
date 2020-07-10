@@ -18,7 +18,6 @@ export class ReparationFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.resetForm();
-    console.log(this.data.idIntervention);
   }
 
   updateForm(form: NgForm) {
@@ -46,7 +45,7 @@ export class ReparationFormComponent implements OnInit {
       MontantFacture: 0,
       DateValidationFacture: null,
       TypeIntervention: '',
-      IdInterventionVgp: 0
+      IdInterventionVgp: this.data.idIntervention
     }
   }
 

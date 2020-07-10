@@ -1,9 +1,5 @@
 table th{
     background-color:  #01427c;
     color: white;
-    font-weight: bold;
-  }
-
-table{
-    width: 100%;
+    font-weight: normal;
 }
