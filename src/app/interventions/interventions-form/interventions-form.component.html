@@ -57,6 +57,27 @@
             </div>
         </div>
     </div>
+    <h1 class="text-center font-weight-bold">Facture de l'intervention</h1>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="DateFacture">Date de la facture</label>
+            <input id="DateFacture" type="date" name="DateFacture" #DateFacture="ngModel"
+                [(ngModel)]="serviceIntervention.formDataInterventionVgps.DateFacture" class="form-control"
+                placeholder="Date de la facture">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="MontantFacture">Montant de la facture</label>
+            <input id="MontantFacture" name="MontantFacture" #MontantFacture="ngModel"
+                [(ngModel)]="serviceIntervention.formDataInterventionVgps.MontantFacture" class="form-control"
+                placeholder="Montant de la facture">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="DateValidationFacture">Date de validation de facture</label>
+            <input id="DateValidationFacture" type="date" name="DateValidationFacture" #DateValidationFacture="ngModel"
+                [(ngModel)]="serviceIntervention.formDataInterventionVgps.DateValidationFacture" class="form-control"
+                placeholder="Date de validation de facture">
+        </div>
+    </div>
     <div class="form-group text-center">
         <button type="submit" class="btn btn-primary" style="margin-right: 0.5em;">Valider</button>
         <button type="button" class="btn btn-secondary" (click)="onClose()">Fermer</button>

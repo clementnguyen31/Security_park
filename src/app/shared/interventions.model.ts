@@ -7,6 +7,9 @@ export class Interventions {
     Commentaire: string;
     EstSuite: boolean;
     IdFacture: number;
-    IdEngin: number
+    IdEngin: number;
+    DateFacture: Date;
+    MontantFacture: number;
+    DateValidationFacture: Date
 }
 

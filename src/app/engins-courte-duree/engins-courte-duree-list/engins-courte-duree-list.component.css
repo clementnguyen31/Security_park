@@ -17,3 +17,15 @@ button{
     margin-bottom: 1em;
     margin-top: 1em;
 }
+
+.table-irri{
+  background-color:  #01427c;
+  color: white;
+  font-weight: normal;
+}
+
+table th{
+  background-color:  #01427c;
+  color: white;
+  font-weight: bold;
+}

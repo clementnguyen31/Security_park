@@ -89,46 +89,6 @@
 
 <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 
-<!--<div class="container">
-   <div class="row">
-      <div class="col-md-12">
-         <div class="text-center">
-            <button class="btn btn-customcolor btn-add btn-sm" (click)="ajouterContrat()">
-               <mat-icon aria-hidden="false">add</mat-icon>
-            </button>
-         </div>
-      </div>
-   </div>
-</div>
-<table class="table table-striped">
-   <thead class="text-center">
-      <th>N° de contrat</th>
-      <th>Date d'entrée</th>
-      <th>Durée de location</th>
-      <th>Date de fin</th>
-      <th>Modifier</th>
-      <th>Détails</th>
-   </thead>
-   <tbody class="text-center">
-      <tr *ngFor="let contrat of service.contratsListe; let i=index">
-         <td *ngIf="!contrat.DateSignaturePrestataire">{{contrat.NumContrat}}</td>
-         <td *ngIf="!contrat.DateSignaturePrestataire">{{contrat.DateEntree | date:'dd/MM/yyyy'}}</td>
-         <td *ngIf="!contrat.DateSignaturePrestataire">{{contrat.DureeContrat}} mois</td>
-         <td *ngIf="!contrat.DateSignaturePrestataire">{{contrat.DateFinContrat | date:'dd/MM/yyyy'}}</td>
-         <td *ngIf="!contrat.DateSignaturePrestataire">
-            <button class="btn btn-transparent" (click)="editForm(contrat)">
-               <mat-icon aria-hidden="false">edit</mat-icon>
-            </button>
-         </td>
-         <td *ngIf="!contrat.DateSignaturePrestataire">
-            <button class="btn btn-transparent" (click)="detailsContrat(contrat.IdContrat)" data-toggle="modal"
-               data-target="#infoModal">
-               <mat-icon aria-hidden="false">visibility</mat-icon>
-            </button>
-         </td>
-      </tr>
-   </tbody>
-</table> -->
 <div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="infoModalLabel" aria-hidden="true">
    <div class="modal-dialog modal-dialog-centered mw-100 w-80">
       <div class="modal-content">
@@ -140,8 +100,8 @@
                <h2 class="text-center">Caractéristiques</h2>
                <div class="row">
                   <div class="col-md-12">
-                     <table class="table table-striped">
-                        <thead class="text-center">
+                     <table class="table table-striped text-center table-bordered">
+                        <thead class="table-irri">
                            <tr>
                               <th>N° de contrat</th>
                               <th>Date d'entrée</th>
@@ -155,7 +115,7 @@
                               <th>Date de 1 <sup>ère</sup> circulation</th>
                            </tr>
                         </thead>
-                        <tbody class="text-center">
+                        <tbody>
                            <tr>
                               <td>{{currentContratInfo.NumContrat}}</td>
                               <td>{{currentContratInfo.DateEntree | date:'dd/MM/yyyy'}}</td>

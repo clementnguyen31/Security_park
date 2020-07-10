@@ -132,11 +132,11 @@
       </div>
       <div class="modal-body">
         <div class="container-fluid">
-          <h2 class="text-center">Caractéristiques</h2>
+          <h2 class="text-center font-weight-bold">Caractéristiques</h2>
           <div class="row">
             <div class="col-md-12">
-              <table class="table">
-                <thead class="text-center">
+              <table class="table table-striped text-center table-bordered">
+                <thead class="table-irri">
                   <tr>
                     <th>Matricule</th>
                     <th>NumSerie</th>
@@ -149,8 +149,8 @@
                     <th>A l'arrêt ?</th>
                   </tr>
                 </thead>
-                <tbody class="table-active">
-                  <tr class="text-center">
+                <tbody>
+                  <tr>
                     <td>{{currentEnginInfo.Matricule}}</td>
                     <td>{{currentEnginInfo.NumSerie}}</td>
                     <td>{{currentEnginInfo.Marque}}</td>
@@ -180,11 +180,11 @@
               </table>
             </div>
           </div>
-          <h2 class="text-center">Contrat de location</h2>
+          <h2 class="text-center font-weight-bold">Contrat de location</h2>
           <div class="row">
             <div class="col-md-12">
-              <table class="table">
-                <thead class="text-center">
+              <table class="table table-striped text-center table-bordered">
+                <thead class="table-irri">
                   <tr>
                     <th>Numéro de contrat</th>
                     <th>Date de début</th>
@@ -198,7 +198,7 @@
                     <th>Date de 1<sup>ère</sup> circulation</th>
                   </tr>
                 </thead>
-                <tbody class="table-active" class="text-center">
+                <tbody>
                   <td>{{currentEnginContrat.NumContrat}}</td>
                   <td>{{currentEnginContrat.DateEntree | date:'dd/MM/yyyy'}}</td>
                   <td>{{currentEnginContrat.DateFinContrat | date:'dd/MM/yyyy'}}</td>
@@ -213,11 +213,11 @@
               </table>
             </div>
           </div>
-          <h2 class="text-center">Interventions</h2>
+          <h2 class="text-center font-weight-bold">Interventions</h2>
           <div class="row">
             <div class="col-md-12">
-              <table class="table">
-                <thead class="text-center table-active">
+              <table class="table table-striped text-center table-bordered">
+                <thead class="table-irri">
                   <tr>
                     <td>Date de l'intervention</td>
                     <td>Rapport reçu</td>
@@ -225,11 +225,14 @@
                     <td>Satisfait ?</td>
                     <td>Suite ?</td>
                     <td>Commentaire</td>
+                    <td>Date de facture</td>
+                    <td>Montant de facture</td>
+                    <td>Date de validation de facture</td>
+                    <td>Modifier</td>
                   </tr>
                 </thead>
                 <tbody class="table-active" class="text-center">
                   <tr *ngFor="let intervention of interventionByIdEngin">
-  
                     <td>{{intervention.DateIntervention}}</td>
                     <ng-container *ngIf="intervention.EstRapportRecu==true; else recuNon">
                       <td>Oui</td>
@@ -251,6 +254,10 @@
                       <td>Non</td>
                     </ng-template>
                     <td>{{intervention.Commentaire}}</td>
+                    <td>{{intervention.DateFacture}}</td>
+                    <td>{{intervention.MontantFacture}} €</td>
+                    <td>{{intervention.DateValidationFacture}}</td>
+                    <td><button type="button" class="btn btn-primary" (click)="modifierIntervention(intervention);">Modifier</button></td>
                   </tr>
                 </tbody>
               </table>

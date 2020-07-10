@@ -5,3 +5,16 @@ table {
   th.mat-sort-header-sorted {
     color: black;
   }
+
+  .table-irri{
+    background-color:  #01427c;
+    color: white;
+    font-weight: normal;
+  }
+  
+
+  table th{
+    background-color:  #01427c;
+    color: white;
+    font-weight: bold;
+  }

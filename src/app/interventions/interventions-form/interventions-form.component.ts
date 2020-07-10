@@ -36,12 +36,15 @@ export class InterventionsFormComponent implements OnInit {
       Commentaire: '',
       EstSuite: false,
       IdFacture: 0,
-      IdEngin: this.data.idengin
+      IdEngin: this.data.idengin,
+      DateFacture: null,
+      MontantFacture: 0,
+      DateValidationFacture: null
     }
   }
 
   updateForm(form: NgForm) {
-    this.serviceIntervention.postInterventionVgps().subscribe(
+    this.serviceIntervention.putInterventionVgps().subscribe(
       res => {
         this.resetForm(form);
         this.toastr.success("L'intervention a été correctement modifié", 'Security Park');

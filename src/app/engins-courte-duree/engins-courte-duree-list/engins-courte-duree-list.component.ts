@@ -95,6 +95,15 @@ export class EnginsCourteDureeListComponent implements OnInit {
     const dialogRef = this.dialog.open(InterventionsFormComponent, dialogConfig);
   }
 
+  modifierIntervention(selectedRecord){
+    this.interventionService.formDataInterventionVgps = Object.assign({}, selectedRecord);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "70%";
+    const dialogRef = this.dialog.open(InterventionsFormComponent, dialogConfig);
+  }
+
   echeancierModal(idengin, matricule, lieu, datedebut, duree){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;

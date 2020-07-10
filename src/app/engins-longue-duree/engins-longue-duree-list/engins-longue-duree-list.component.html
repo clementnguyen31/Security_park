@@ -140,8 +140,8 @@
           <h2 class="text-center">Caractéristiques</h2>
           <div class="row">
             <div class="col-md-12">
-              <table class="table">
-                <thead class="text-center">
+              <table class="table table-striped text-center table-bordered">
+                <thead class="table-irri">
                   <tr>
                     <th>Matricule</th>
                     <th>NumSerie</th>
@@ -156,7 +156,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="text-center">
+                  <tr>
                     <td>{{currentEnginInfo.Matricule}}</td>
                     <td>{{currentEnginInfo.NumSerie}}</td>
                     <td>{{currentEnginInfo.Marque}}</td>
@@ -195,8 +195,8 @@
           <h2 class="text-center">Contrat de location</h2>
           <div class="row">
             <div class="col-md-12">
-              <table class="table">
-                <thead class="text-center table-active">
+              <table class="table table-striped text-center table-bordered">
+                <thead class="table-irri">
                   <tr>
                     <th>Numéro de contrat</th>
                     <th>Date de début</th>
@@ -228,8 +228,8 @@
           <h2 class="text-center">Contrat de VGP</h2>
           <div class="row">
             <div class="col-md-12">
-              <table class="table">
-                <thead class="text-center table-active">
+              <table class="table table-striped text-center table-bordered">
+                <thead class="table-irri">
                   <tr>
                     <th>Date de début VGP</th>
                     <th>Date de prochaine VGP</th>
@@ -237,7 +237,7 @@
                     <th>Montant de la visite</th>
                   </tr>
                 </thead>
-                <tbody class="table-active" class="text-center">
+                <tbody>
                   <td>{{currentEnginContratVGP.DateDebutVgp | date:'dd/MM/yyyy' }}</td>
                   <td>{{currentEnginContratVGP.DateProchaineVgp | date:'dd/MM/yyyy' }}</td>
                   <td>{{currentEnginContratVGP.DureeVgp}} mois</td>
@@ -249,21 +249,23 @@
           <h2 class="text-center">Interventions VGP</h2>
           <div class="row">
             <div class="col-md-12">
-              <table class="table">
-                <thead class="text-center table-active">
+              <table class="table table-striped text-center table-bordered">
+                <thead class="table-irri">
                   <tr>
-                    <td>Id de l'engin</td>
                     <td>Date de l'intervention</td>
                     <td>Rapport reçu</td>
                     <td>Prestataire de vérification</td>
                     <td>Satisfait ?</td>
                     <td>Suite ?</td>
                     <td>Commentaire</td>
+                    <td>Date de facture</td>
+                    <td>Montant de facture</td>
+                    <td>Date de validation de facture</td>
+                    <td>Modifier</td>
                   </tr>
                 </thead>
-                <tbody class="table-active" class="text-center">
+                <tbody>
                   <tr *ngFor="let intervention of interventionByIdEngin">
-                    <td>{{intervention.IdEngin}}</td>
                     <td>{{intervention.DateIntervention}}</td>
                     <ng-container *ngIf="intervention.EstRapportRecu==true; else recuNon">
                       <td>Oui</td>
@@ -285,6 +287,10 @@
                       <td>Non</td>
                     </ng-template>
                     <td>{{intervention.Commentaire}}</td>
+                    <td>{{intervention.DateFacture}}</td>
+                    <td>{{intervention.MontantFacture}} €</td>
+                    <td>{{intervention.DateValidationFacture}}</td>
+                    <td><button type="button" class="btn btn-primary" (click)="modifierIntervention(intervention);">Modifier</button></td>
                   </tr>
                 </tbody>
               </table>

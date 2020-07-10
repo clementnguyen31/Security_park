@@ -19,7 +19,10 @@ export class InterventionsService {
     Commentaire: '',
     EstSuite: false,
     IdFacture: 0,
-    IdEngin: 0
+    IdEngin: 0,
+    DateFacture: null,
+    MontantFacture: 0,
+    DateValidationFacture: null
   }
 
   engins : Engins[];
