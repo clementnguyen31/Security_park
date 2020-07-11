@@ -1,6 +1,7 @@
 <mat-dialog-content>
+    <h1 class="text-center font-weight-bold">Détails sur l'engin n°{{currentEnginInfo.Matricule}}</h1>
     <div class="container-fluid">
-        <h2 class="text-center">Caractéristiques</h2>
+        <h2 class="text-center font-weight-bold">Caractéristiques</h2>
         <div class="row">
             <div class="col-md-12">
                 <table class="table table-striped text-center table-bordered">
@@ -55,7 +56,7 @@
                 </table>
             </div>
         </div>
-        <h2 class="text-center">Contrat de location</h2>
+        <h2 class="text-center font-weight-bold">Contrat de location</h2>
         <div class="row">
             <div class="col-md-12">
                 <table class="table table-striped text-center table-bordered">
@@ -88,7 +89,7 @@
                 </table>
             </div>
         </div>
-        <h2 class="text-center">Contrat de VGP</h2>
+        <h2 class="text-center font-weight-bold">Contrat de VGP</h2>
         <div class="row">
             <div class="col-md-12">
                 <table class="table table-striped text-center table-bordered">
@@ -109,7 +110,7 @@
                 </table>
             </div>
         </div>
-        <h2 class="text-center">Interventions VGP</h2>
+        <h2 class="text-center font-weight-bold">Interventions VGP</h2>
         <div class="row">
             <div class="col-md-12">
                 <table class="table table-striped text-center table-bordered">
@@ -174,8 +175,16 @@
             </div>
         </div>
         <div class="col-md-12">
-            <h2>Commentaires : </h2>
-            <textarea class="form-control" readonly>{{currentEnginContrat.Commentaire}}</textarea>
+            <h2 class="text-center font-weight-bold">Commentaires</h2>
+            <textarea class="form-control" style="margin-bottom: 1em;" readonly>{{currentEnginContrat.Commentaire}}</textarea>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center">
+                    <button class="form-group btn btn-secondary" mat-button [mat-dialog-close]="true"
+                        type="button">Fermer</button>
+                </div>
+            </div>
         </div>
     </div>
 </mat-dialog-content>

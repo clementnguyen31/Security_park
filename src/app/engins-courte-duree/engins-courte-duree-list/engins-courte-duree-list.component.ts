@@ -69,7 +69,7 @@ export class EnginsCourteDureeListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "70%";
+    dialogConfig.width = "100%";
     this.dialog.open(EnginsCourteDureeFormComponent, dialogConfig);
   }
 
@@ -77,7 +77,7 @@ export class EnginsCourteDureeListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "70%";
+    dialogConfig.width = "100%";
     this.dialog.open(EnginsCourteDureeFormComponent, dialogConfig);
   }
 
@@ -85,7 +85,7 @@ export class EnginsCourteDureeListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "70%";
+    dialogConfig.width = "100%";
     dialogConfig.data = { idengin };
     const dialogRef = this.dialog.open(InterventionsFormComponent, dialogConfig);
   }
@@ -95,7 +95,7 @@ export class EnginsCourteDureeListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "70%";
+    dialogConfig.width = "100%";
     dialogConfig.data = { idengin, matricule, lieu, datedebut, duree};
     const dialogRef = this.dialog.open(EcheanciersComponent, dialogConfig);
   } 

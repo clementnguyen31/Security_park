@@ -65,7 +65,7 @@ export class EnginsLongueDureeListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "70%";
+    dialogConfig.width = "100%";
     this.dialog.open(EnginsLongueDureeFormComponent, dialogConfig);
   }
 
@@ -73,7 +73,7 @@ export class EnginsLongueDureeListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "70%";
+    dialogConfig.width = "100%";
     this.dialog.open(EnginsLongueDureeFormComponent, dialogConfig);
   }
 
@@ -81,7 +81,7 @@ export class EnginsLongueDureeListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "70%";
+    dialogConfig.width = "100%";
     dialogConfig.data = { idengin };
     const dialogRef = this.dialog.open(InterventionsFormComponent, dialogConfig);
   }
@@ -91,7 +91,7 @@ export class EnginsLongueDureeListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "70%";
+    dialogConfig.width = "100%";
     const dialogRef = this.dialog.open(InterventionsFormComponent, dialogConfig);
   }
 
@@ -99,7 +99,7 @@ export class EnginsLongueDureeListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "70%";
+    dialogConfig.width = "100%";
     dialogConfig.data = { id, idcontrat, idcontratvgp};
     const dialogRef = this.dialog.open(EnginsLonguesDureeModalComponent, dialogConfig);
   }
@@ -108,7 +108,7 @@ export class EnginsLongueDureeListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "70%";
+    dialogConfig.width = "100%";
     dialogConfig.data = { idengin, matricule, lieu, datedebut, duree };
     const dialogRef = this.dialog.open(EcheanciersComponent, dialogConfig);
   }
