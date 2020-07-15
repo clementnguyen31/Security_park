@@ -62,7 +62,8 @@ export class EcheanciersService {
   }
 
   public exportAsExcelFile(json: any[], excelFileName: string): void {  
-    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);  
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json, { header: ['Matricule', 'DateEcheancier', 'Montant', 'LieuUtilisation', 'DateDebutContrat', 'DureeContrat']
+    });  
     console.log('worksheet', worksheet);  
     const workbook: XLSX.WorkBook = {  
         Sheets: {  

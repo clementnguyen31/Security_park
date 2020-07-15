@@ -20,14 +20,14 @@
                 <tr *ngFor="let rep of currentReparation">
                     <td>{{rep.TypeIntervention}}</td>
                     <td>{{rep.PrestataireVerfifcation}}</td>
-                    <td>{{rep.DateDevis}}</td>
-                    <td>{{rep.DateDemandeReponse}}</td>
+                    <td>{{rep.DateDevis | date:'dd/MM/yyyy'}}</td>
+                    <td>{{rep.DateDemandeReponse | date:'dd/MM/yyyy'}}</td>
                     <td>{{rep.MontantDevis}} €</td>
-                    <td>{{rep.DateValidationDevis}}</td>
-                    <td>{{rep.DateTravauxConformite}}</td>
-                    <td>{{rep.DateFacture}}</td>
+                    <td>{{rep.DateValidationDevis | date:'dd/MM/yyyy'}}</td>
+                    <td>{{rep.DateTravauxConformite | date:'dd/MM/yyyy'}}</td>
+                    <td>{{rep.DateFacture | date:'dd/MM/yyyy'}}</td>
                     <td>{{rep.MontantFacture}} €</td>
-                    <td>{{rep.DateValidationFacture}}</td>
+                    <td>{{rep.DateValidationFacture | date:'dd/MM/yyyy'}}</td>
                 </tr>
             </tbody>
         </table>

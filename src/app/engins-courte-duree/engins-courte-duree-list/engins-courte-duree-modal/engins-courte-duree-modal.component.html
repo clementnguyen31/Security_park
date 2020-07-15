@@ -125,9 +125,9 @@
                                 <td>Non</td>
                             </ng-template>
                             <td>{{intervention.Commentaire}}</td>
-                            <td>{{intervention.DateFacture}}</td>
+                            <td>{{intervention.DateFacture | date:'dd/MM/yyyy'}}</td>
                             <td>{{intervention.MontantFacture}} €</td>
-                            <td>{{intervention.DateValidationFacture}}</td>
+                            <td>{{intervention.DateValidationFacture | date:'dd/MM/yyyy'}}</td>
                             <td><button class="btn btn-transparent" (click)="modifierIntervention(intervention);">
                                     <mat-icon aria-hidden="false">edit</mat-icon>
                                 </button></td>
@@ -149,7 +149,12 @@
         <div class="col-md-12">
             <h2 class="text-center font-weight-bold">Réparation (non liée à une VGP)</h2>
             <div class="row">
-                <div><button type="button" class="btn btn-primary" (click)="ajouterReparationNonVGP(currentEnginInfo.IdEngin)">Ajouter</button></div>
+                <div class="col-md-12">
+                    <div class="text-center"><button type="button" class="btn btn-customcolor btn-add btn-sm"
+                            (click)="ajouterReparationNonVGP(currentEnginInfo.IdEngin)">
+                            <mat-icon aria-hidden="false">add</mat-icon>
+                        </button></div>
+                </div>
                 <table class="table table-striped text-center table-bordered">
                     <thead class="table-irri">
                         <tr>
@@ -169,14 +174,14 @@
                         <tr *ngFor="let rep of reparationNonVgpByIdEngin">
                             <td>{{rep.TypeIntervention}}</td>
                             <td>{{rep.PrestataireVerification}}</td>
-                            <td>{{rep.DateDevis}}</td>
-                            <td>{{rep.DateDemandeResponse}}</td>
+                            <td>{{rep.DateDevis | date:'dd/MM/yyyy'}}</td>
+                            <td>{{rep.DateDemandeResponse | date:'dd/MM/yyyy'}}</td>
                             <td>{{rep.MontantDevis}} €</td>
-                            <td>{{rep.DateValidationDevis}}</td>
-                            <td>{{rep.DateTravauxConformite}}</td>
-                            <td>{{rep.DateFacture}}</td>
+                            <td>{{rep.DateValidationDevis | date:'dd/MM/yyyy'}}</td>
+                            <td>{{rep.DateTravauxConformite | date:'dd/MM/yyyy'}}</td>
+                            <td>{{rep.DateFacture | date:'dd/MM/yyyy'}}</td>
                             <td>{{rep.MontantFacture}} €</td>
-                            <td>{{rep.DateValidationFacture}}</td>
+                            <td>{{rep.DateValidationFacture | date:'dd/MM/yyyy'}}</td>
                         </tr>
                     </tbody>
                 </table>

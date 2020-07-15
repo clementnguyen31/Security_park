@@ -10,6 +10,7 @@ import { filter } from 'rxjs/operators';
 import { response } from 'express';
 import { element } from 'protractor';
 import { MatPaginator } from '@angular/material/paginator';
+import { ContratsModalComponent } from '../contrats-modal/contrats-modal.component';
 
 @Component({
   selector: 'app-contrats-list',
@@ -57,7 +58,7 @@ export class ContratsListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "70%";
+    dialogConfig.width = "100%";
     this.dialog.open(ContratsFormComponent, dialogConfig);
   }
 
@@ -65,14 +66,17 @@ export class ContratsListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "70%";
+    dialogConfig.width = "100%";
     this.dialog.open(ContratsFormComponent, dialogConfig);
   }
 
-  detailsContrat(id) {
-    this.service.getContrat(id).subscribe(res => {
-      this.currentContratInfo = res;
-    })
+  detailsContrat(idengin) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "100%";
+    dialogConfig.data = { idengin };
+    this.dialog.open(ContratsModalComponent, dialogConfig);
   }
 
 }

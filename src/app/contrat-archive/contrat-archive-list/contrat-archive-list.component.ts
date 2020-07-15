@@ -7,6 +7,7 @@ import { EnginsService } from 'src/app/shared/engins.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ContratsFormComponent } from 'src/app/contrats/contrats-form/contrats-form.component';
 import { MatPaginator } from '@angular/material/paginator';
+import { ContratArchiveModalComponent } from '../contrat-archive-modal/contrat-archive-modal.component';
 
 @Component({
   selector: 'app-contrat-archive-list',
@@ -21,9 +22,6 @@ export class ContratArchiveListComponent implements OnInit {
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-
-  currentContratInfo: any = {};
-  currentEnginInfo: any = {};
 
   constructor(public service: ContratsService,
     public enginservice: EnginsService,
@@ -47,12 +45,12 @@ export class ContratArchiveListComponent implements OnInit {
   }
 
   detailsContrat(id, idengin) {
-    this.service.getContrat(id).subscribe(res => {
-      this.currentContratInfo = res;
-    });
-    this.enginservice.getEngin(idengin).subscribe(res => {
-      this.currentEnginInfo = res;
-    });
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "100%";
+    dialogConfig.data = { id, idengin};
+    this.dialog.open(ContratArchiveModalComponent, dialogConfig);
   }
 
   editForm(selectedRecord) {

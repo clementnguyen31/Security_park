@@ -16,7 +16,7 @@
             <label for="raportrecu">Rapport reçu ?</label>
             <select class="form-control" id="raportrecu" name="EstRapportRecu" #EstRapportRecu="ngModel"
                 [(ngModel)]="serviceIntervention.formDataInterventionVgps.EstRapportRecu" class="form-control" required>
-                <option value="" disabled>Rapport reçu ?</option>
+                <option [ngValue]="" disabled>Rapport reçu ?</option>
                 <option [ngValue]="true">Oui</option>
                 <option [ngValue]="false">Non</option>
             </select>

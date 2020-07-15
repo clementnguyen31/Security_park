@@ -46,6 +46,8 @@ import { EnginsCourteDureeModalComponent } from './engins-courte-duree/engins-co
 import { EnginsLonguesDureeModalComponent } from './engins-longue-duree/engins-longue-duree-list/engins-longues-duree-modal/engins-longues-duree-modal.component';
 import { ReparationNonVGPComponent } from './reparation-non-vgp/reparation-non-vgp.component';
 import { ReparationNonVgpFormComponent } from './reparation-non-vgp/reparation-non-vgp-form/reparation-non-vgp-form.component';
+import { ContratsModalComponent } from './contrats/contrats-modal/contrats-modal.component';
+import { ContratArchiveModalComponent } from './contrat-archive/contrat-archive-modal/contrat-archive-modal.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +81,9 @@ import { ReparationNonVgpFormComponent } from './reparation-non-vgp/reparation-n
     EnginsCourteDureeModalComponent,
     EnginsLonguesDureeModalComponent,
     ReparationNonVGPComponent,
-    ReparationNonVgpFormComponent
+    ReparationNonVgpFormComponent,
+    ContratsModalComponent,
+    ContratArchiveModalComponent
   ],
   entryComponents: [EnginsCourteDureeFormComponent,
     ContratsFormComponent, ContratVGPService, InterventionsFormComponent],

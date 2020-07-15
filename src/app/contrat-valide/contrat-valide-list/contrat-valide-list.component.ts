@@ -7,6 +7,7 @@ import { Contrats } from 'src/app/shared/contrats.model';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { ContratsModalComponent } from 'src/app/contrats/contrats-modal/contrats-modal.component';
 
 
 @Component({
@@ -46,10 +47,13 @@ export class ContratValideListComponent implements OnInit {
     let resp = this.service.getContrats().subscribe(report => this.dataSource.data = report as Contrats[]);
   }
 
-  detailsContrat(id) {
-    this.service.getContrat(id).subscribe(res => {
-      this.currentContratInfo = res;
-    })
+  detailsContrat(idengin) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "100%";
+    dialogConfig.data = { idengin };
+    this.dialog.open(ContratsModalComponent, dialogConfig);
   }
 
   editForm(selectedRecord) {
