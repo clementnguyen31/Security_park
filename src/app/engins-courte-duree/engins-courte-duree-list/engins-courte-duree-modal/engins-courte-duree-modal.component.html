@@ -147,8 +147,45 @@
             </div>
         </div>
         <div class="col-md-12">
+            <h2 class="text-center font-weight-bold">Réparation (non liée à une VGP)</h2>
+            <div class="row">
+                <div><button type="button" class="btn btn-primary" (click)="ajouterReparationNonVGP(currentEnginInfo.IdEngin)">Ajouter</button></div>
+                <table class="table table-striped text-center table-bordered">
+                    <thead class="table-irri">
+                        <tr>
+                            <th>Type de l'intervention</th>
+                            <th>Prestataire de vérification</th>
+                            <th>Date du devis</th>
+                            <th>Date de demande de réponse</th>
+                            <th>Montant du devis</th>
+                            <th>Date de validation du devis</th>
+                            <th>Date des travaux de conformités</th>
+                            <th>Date de facture</th>
+                            <th>Montant de facture</th>
+                            <th>Date de validation de facture</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let rep of reparationNonVgpByIdEngin">
+                            <td>{{rep.TypeIntervention}}</td>
+                            <td>{{rep.PrestataireVerification}}</td>
+                            <td>{{rep.DateDevis}}</td>
+                            <td>{{rep.DateDemandeResponse}}</td>
+                            <td>{{rep.MontantDevis}} €</td>
+                            <td>{{rep.DateValidationDevis}}</td>
+                            <td>{{rep.DateTravauxConformite}}</td>
+                            <td>{{rep.DateFacture}}</td>
+                            <td>{{rep.MontantFacture}} €</td>
+                            <td>{{rep.DateValidationFacture}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-12">
             <h2 class="text-center font-weight-bold">Commentaires</h2>
-            <textarea class="form-control" style="margin-bottom: 1em;" readonly>{{currentEnginContrat.Commentaire}}</textarea>
+            <textarea class="form-control" style="margin-bottom: 1em;"
+                readonly>{{currentEnginContrat.Commentaire}}</textarea>
         </div>
         <div class="row">
             <div class="col-md-12">

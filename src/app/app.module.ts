@@ -44,6 +44,8 @@ import { ReparationListeComponent } from './reparation/reparation-liste/reparati
 import { ReparationFormComponent } from './reparation/reparation-form/reparation-form.component';
 import { EnginsCourteDureeModalComponent } from './engins-courte-duree/engins-courte-duree-list/engins-courte-duree-modal/engins-courte-duree-modal.component';
 import { EnginsLonguesDureeModalComponent } from './engins-longue-duree/engins-longue-duree-list/engins-longues-duree-modal/engins-longues-duree-modal.component';
+import { ReparationNonVGPComponent } from './reparation-non-vgp/reparation-non-vgp.component';
+import { ReparationNonVgpFormComponent } from './reparation-non-vgp/reparation-non-vgp-form/reparation-non-vgp-form.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +77,9 @@ import { EnginsLonguesDureeModalComponent } from './engins-longue-duree/engins-l
     ReparationListeComponent,
     ReparationFormComponent,
     EnginsCourteDureeModalComponent,
-    EnginsLonguesDureeModalComponent
+    EnginsLonguesDureeModalComponent,
+    ReparationNonVGPComponent,
+    ReparationNonVgpFormComponent
   ],
   entryComponents: [EnginsCourteDureeFormComponent,
     ContratsFormComponent, ContratVGPService, InterventionsFormComponent],

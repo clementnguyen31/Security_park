@@ -11,6 +11,9 @@ import { InterventionsService } from 'src/app/shared/interventions.service';
 import { InterventionsFormComponent } from 'src/app/interventions/interventions-form/interventions-form.component';
 import { ReparationFormComponent } from 'src/app/reparation/reparation-form/reparation-form.component';
 import { ReparationListeComponent } from 'src/app/reparation/reparation-liste/reparation-liste.component';
+import { ReparationNonvgp } from 'src/app/shared/reparation-nonvgp.model';
+import { ReparationNonvgpService } from 'src/app/shared/reparation-nonvgp.service';
+import { ReparationNonVgpFormComponent } from 'src/app/reparation-non-vgp/reparation-non-vgp-form/reparation-non-vgp-form.component';
 
 @Component({
   selector: 'app-engins-courte-duree-modal',
@@ -24,6 +27,7 @@ export class EnginsCourteDureeModalComponent implements OnInit {
   currentEnginEcheancier: any = {};
   echeanciersByIdEngin: Echeanciers[];
   interventionByIdEngin: Interventions[];
+  reparationNonVgpByIdEngin: ReparationNonvgp[];
 
 
   constructor(@Inject(MAT_DIALOG_DATA) public data,
@@ -33,7 +37,8 @@ export class EnginsCourteDureeModalComponent implements OnInit {
     public echeancierService: EcheanciersService,
     private dialog: MatDialog,
     private toastr: ToastrService,
-    public interventionService: InterventionsService) { }
+    public interventionService: InterventionsService,
+    public reparationnonvgpService: ReparationNonvgpService) { }
 
   ngOnInit(): void {
     this.enginservice.getEngin(this.data.id).subscribe(res => {
@@ -45,6 +50,10 @@ export class EnginsCourteDureeModalComponent implements OnInit {
     this.interventionService.getInterventionVgpsByIdEngin(this.data.id).subscribe(res => {
       this.interventionByIdEngin = res;
     });
+    this.reparationnonvgpService.getReparationNonVgpByIdEngin(this.data.id).subscribe(res => {
+      this.reparationNonVgpByIdEngin = res;
+    })
+
   }
 
   addIntervention(idengin) {
@@ -81,6 +90,15 @@ export class EnginsCourteDureeModalComponent implements OnInit {
     dialogConfig.width = "100%";
     dialogConfig.data = { idinterventionvgp };
     const dialogRef = this.dialog.open(ReparationListeComponent, dialogConfig);
+  }
+
+  ajouterReparationNonVGP(idengin){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "100%";
+    dialogConfig.data = { idengin };
+    const dialogRef = this.dialog.open(ReparationNonVgpFormComponent, dialogConfig);
   }
 
 }
