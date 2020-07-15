@@ -22,7 +22,6 @@ export class ContratVgpFormComponent implements OnInit {
   public dialogbox: MatDialogRef<ContratVgpFormComponent>) { }
 
   ngOnInit(): void {
-    this.resetForm();
     this.contratvgpservice.refreshListContratsVGP();
 
   }
@@ -33,7 +32,8 @@ export class ContratVgpFormComponent implements OnInit {
       DateDebutVgp: null,
       DureeVgp: 0,
       MontantVisite: 0,
-      DateProchaineVgp: null
+      DateProchaineVgp: null,
+      NumVgp: 0
     }
   }
 
@@ -47,9 +47,21 @@ export class ContratVgpFormComponent implements OnInit {
     )
   }
 
+  updateForm(form: NgForm){
+    this.contratvgpservice.putContratsVGP().subscribe(
+      res => {
+        this.resetForm(form);
+        this.toastr.success("Le contrat VGP a été correctement modifié", 'Security Park');
+        this.contratvgpservice.refreshListContratsVGP();
+      }
+    )
+  }
+
   onSubmit(form: NgForm) {
     if (this.contratvgpservice.formDataContratVGP.IdContratVgp == 0)
       this.insertForm(form);
+    else
+      this.updateForm(form);
   }
 
 }

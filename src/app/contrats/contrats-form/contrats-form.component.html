@@ -70,9 +70,12 @@
       </div>
       <div class="form-group col-md-4">
          <label for="prestataire">Prestataire de location</label>
-         <input id="prestataire" name="PrestataireLocation" #PrestataireLocation="ngModel"
+         <select id="prestataire" name="PrestataireLocation" #PrestataireLocation="ngModel"
             [(ngModel)]="service.formDataContrat.PrestataireLocation" class="form-control"
             placeholder="Prestataire de location">
+            <option value="" disabled>Choisissez le prestataire de location</option>
+            <option value="Bastide">Bastide Manutention</option>
+         </select>
       </div>
       <div class="form-group col-md-4">
          <label for="DateSortie">Date de sortie</label>
@@ -98,9 +101,24 @@
       <div class="form-group col-md-6">
          <div>
             <label for="lieu">Lieu d'utilisation</label>
-            <input id="lieu" name="LieuUtilisation" #LieuUtilisation="ngModel"
+            <select id="lieu" name="LieuUtilisation" #LieuUtilisation="ngModel"
                [(ngModel)]="service.formDataContrat.LieuUtilisation" class="form-control"
                placeholder="Lieu d'utilisation">
+               <option value="" disabled>Choissisez un lieu d'utilisation</option>
+               <option value="Larrieu">Larrieu (Deanjean)</option>
+               <option value="Noe CTI">Noé CTI</option>
+               <option value="Noe mag">Noé mag</option>
+               <option value="Balma">Balma</option>
+               <option value="Boe">Boé</option>
+               <option value="La Ravoire">La Ravoire</option>
+               <option value="Niort">Niort</option>
+               <option value="Portet">Portet</option>
+               <option value="Seyssins">Seyssins</option>
+               <option value="St Alban">St Alban</option>
+               <option value="St Jean de Luz">St Jean de Luz</option>
+               <option value="Vitrolles">Vitrolles</option>
+               <option value="Emervainville">Emervainville</option>
+            </select>   
          </div>
          <div>
             <label for="commentaire">Commentaires</label>

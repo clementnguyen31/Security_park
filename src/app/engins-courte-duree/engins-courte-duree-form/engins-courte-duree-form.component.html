@@ -13,8 +13,11 @@
       </div>
       <div class="form-group col-md-4">
          <label for="marque">Marque</label>
-         <input name="Marque" id="marque" #Marque="ngModel" [(ngModel)]="enginService.formDataEngins.Marque"
+         <select name="Marque" id="marque" #Marque="ngModel" [(ngModel)]="enginService.formDataEngins.Marque"
             class="form-control" placeholder="Marque" required>
+            <option value="" disabled>Choissisez la marque de l'engin</option>
+            <option value="Fenwick">Fenwick</option>
+         </select>
       </div>
    </div>
    <div class="form-row">

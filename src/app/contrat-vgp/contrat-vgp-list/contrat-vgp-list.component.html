@@ -1,23 +1,63 @@
 <h2 class="text-center">Liste des contrats de VGP</h2>
-<div class="row">
-    <div class="col-md-12">
-        <table class="table table-striped text-center table-bordered">
-            <thead class="table-irri">
-                <tr>
-                    <th>Date de début VGP</th>
-                    <th>Date de prochaine VGP</th>
-                    <th>Durée VGP</th>
-                    <th>Montant de la visite</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let vgp of contratvgpservice.contratsVGPListe">
-                    <td>{{vgp.DateDebutVgp | date:'dd/MM/yyyy' }}</td>
-                    <td>{{vgp.DateProchaineVgp | date:'dd/MM/yyyy' }}</td>
-                    <td>{{vgp.DureeVgp}} mois</td>
-                    <td>{{vgp.MontantVisite}} €</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="NumVgp">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> N° VGP </th>
+        <td mat-cell *matCellDef="let element">
+            {{element.NumVgp}}
+        </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="DateDebutVgp">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date de début VGP </th>
+        <td mat-cell *matCellDef="let element">
+            {{element.DateDebutVgp | date:'dd/MM/yyyy'}}
+        </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="DateProchaineVgp">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date de prochaine VGP </th>
+
+        <td mat-cell *matCellDef="let element">
+            {{element.DateProchaineVgp | date:'dd/MM/yyyy'}}
+        </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="DureeVgp">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Durée de la VGP</th>
+
+        <td mat-cell *matCellDef="let element">
+            {{element.DureeVgp}}
+        </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="MontantVisite">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Montant de la visite</th>
+        <td mat-cell *matCellDef="let element">
+            {{element.MontantVisite}}
+        </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Modifier">
+        <th mat-header-cell *matHeaderCellDef> Modifier </th>
+        <td mat-cell *matCellDef="let element">
+            <button class="btn btn-transparent" (click)="modifierVGP(element)">
+                <mat-icon aria-hidden="false">edit</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>

@@ -17,9 +17,12 @@
         </div>
         <div class="form-group col-md-4">
             <label for="marque">Marque</label>
-            <input name="Marque" id="marque" #Marque="ngModel" [(ngModel)]="enginService.formDataEngins.Marque"
-                class="form-control" placeholder="Marque" required>
-        </div>
+            <select name="Marque" id="marque" #Marque="ngModel" [(ngModel)]="enginService.formDataEngins.Marque"
+               class="form-control" placeholder="Marque" required>
+               <option value="" disabled>Choissisez la marque de l'engin</option>
+               <option value="Fenwick">Fenwick</option>
+            </select>
+         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-4">
@@ -94,7 +97,7 @@
     </div>
 
     <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
             <div class="form-group">
                 <label for="declarersortieSelect">Déclaré sortie ?</label>
                 <select class="form-control" name="EstDeclareSortie" #EstDeclareSortie="ngModel"
@@ -105,11 +108,17 @@
                 </select>
             </div>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
             <label for="DateDeclarationSortie">Date déclaration sortie</label>
             <input id="DateDeclarationSortie" type="date" name="DateDeclarationEntree" #DateDeclarationSortie="ngModel"
                 [(ngModel)]="enginService.formDataEngins.DateDeclarationSortie" class="form-control" required>
         </div>
+        <div class="form-group col-md-4">
+            <label for="DateProchaineVgp">Date de prochaine VGP</label>
+            <input id="DateProchaineVgp" type="date" name="DateProchaineVgp"
+               #DateProchaineVgp="ngModel" [(ngModel)]="enginService.formDataEngins.DateProchaineVgp"
+               class="form-control" required>
+         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-3">
@@ -149,7 +158,7 @@
                     [(ngModel)]="enginService.formDataEngins.IdContratVgp" id="contratVGP" required>
                     <option value="" disabled>Choisissez un contrat VGP</option>
                     <option *ngFor="let contratvgp of contratVGPService.contratsVGPListe"
-                        [ngValue]="contratvgp.IdContratVgp">{{contratvgp.IdContratVgp}}</option>
+                        [ngValue]="contratvgp.IdContratVgp">{{contratvgp.NumVgp}}</option>
                 </select>
             </ng-template>
         </div>

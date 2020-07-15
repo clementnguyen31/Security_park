@@ -14,6 +14,7 @@ export class ContratVGPService {
     DureeVgp: 0,
     MontantVisite: 0,
     DateProchaineVgp: null,
+    NumVgp: 0
   }
 
 
@@ -22,6 +23,10 @@ export class ContratVGPService {
   engins: Engins[];
 
   constructor(public http: HttpClient) { }
+
+  getContratsVGP() {
+    return this.http.get(this.rootURL + "/ContratVgps");
+  }
 
   getContratVGP(id) {
     return this.http.get(this.rootURL + "/ContratVgps/" + id);

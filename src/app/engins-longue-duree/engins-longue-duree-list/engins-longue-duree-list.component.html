@@ -50,10 +50,8 @@
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Date de la prochaine VGP</th>
 
     <td mat-cell *matCellDef="let element">
-      <ng-container *ngFor="let contratvgp of contratvgpservice.contratsVGPListe">
-        <div *ngIf="element.TypeContrat=='LLD' && element.IdContratVgp == contratvgp.IdContratVgp">
-          {{contratvgp.DateProchaineVgp | date:'dd/MM/yyyy'}}</div>
-      </ng-container>
+        <div *ngIf="element.TypeContrat=='LLD'">
+          {{element.DateProchaineVgp | date:'dd/MM/yyyy'}}</div>
     </td>
   </ng-container>
 
