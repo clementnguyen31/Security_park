@@ -61,7 +61,6 @@ export class EnginsCourteDureeListComponent implements OnInit {
   getAllData() {
     let resp = this.enginservice.getEngins().subscribe(report =>
       this.dataSource.data = report as Engins[]);
-
   }
 
   populateForm(selectedRecord) {

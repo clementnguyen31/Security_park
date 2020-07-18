@@ -1,10 +1,13 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { EcheanciersService } from '../shared/echeanciers.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgForm } from '@angular/forms';
 import { Echeanciers } from '../shared/echeanciers.model';
 import { EnginsService } from '../shared/engins.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-echeanciers',
@@ -12,6 +15,13 @@ import { EnginsService } from '../shared/engins.service';
   styleUrls: ['./echeanciers.component.css']
 })
 export class EcheanciersComponent implements OnInit {
+
+  ELEMENT_DATA: Echeanciers[];
+  displayedColumns: string[] = ['Matricule', 'Date', 'Montant', "Lieu d'utilisation", "Date de début de contrat", "Durée du contrat"];
+  dataSource = new MatTableDataSource<Echeanciers>(this.ELEMENT_DATA);
+
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data,
   public echeancierService: EcheanciersService,
@@ -25,12 +35,17 @@ export class EcheanciersComponent implements OnInit {
   ngOnInit(): void {
     this.resetFormEcheancier();
     this.echeancierService.refreshListEcheanciers();
-    this.echeancierService.getEcheanciersByIdEngin(this.data.idengin).subscribe(res => {
-      this.echeanciersByIdEngin = res;
-    });
+    this.getAllData(this.data.idengin);
     this.enginService.getEngin(this.data.idengin).subscribe(res => {
       this.currentEngin = res;
-    })
+    });
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
+
+  getAllData(idengin) {
+    let resp = this.echeancierService.getEcheanciersByIdEngin(idengin).subscribe(report =>
+      this.dataSource.data = report as Echeanciers[]);
   }
 
   resetFormEcheancier(form?: NgForm) {

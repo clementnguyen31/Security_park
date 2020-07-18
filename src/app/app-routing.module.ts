@@ -19,8 +19,7 @@ const routes: Routes = [
     { path: 'page-3', component: ContratsComponent},
     { path: 'page-4', component: ContratValideComponent},
     { path: 'page-5', component: ContratArchiveComponent},
-    { path: 'page-6', component: AdministrationComponent},
-    { path: 'page-7', component: ExportXmlComponent}
+    { path: 'page-6', component: ExportXmlComponent}
   ]}
 ];
 
