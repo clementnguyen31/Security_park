@@ -27,7 +27,7 @@ export class ContratsService {
     EtatContrat: ''
   }
 
-  readonly rootURL = 'https://localhost:44338/api';
+  readonly rootURL = 'https://securityparkapi.azurewebsites.net/api';
   contratsListe: Contrats[];
   engins : Engins[];
 

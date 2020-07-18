@@ -23,7 +23,7 @@ export class ReparationNonvgpService {
     IdEngin: 0
   }
 
-  readonly rootURL = 'https://localhost:44338/api';
+  readonly rootURL = 'https://securityparkapi.azurewebsites.net/api';
   reparationListe: ReparationNonvgp[];
 
   constructor(public http: HttpClient) { }

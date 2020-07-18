@@ -29,7 +29,7 @@ export class EnginsService {
     EstArret: false,
     DateProchaineVgp: null
   };
-  readonly rootURL = 'https://localhost:44338/api';
+  readonly rootURL = 'https://securityparkapi.azurewebsites.net/api';
   enginsListe: Engins[];
   echeancier: Echeanciers[];
 

@@ -27,7 +27,7 @@ export class InterventionsService {
 
   engins : Engins[];
 
-  readonly rootURL = 'https://localhost:44338/api';
+  readonly rootURL = 'https://securityparkapi.azurewebsites.net/api';
   InterventionVGPListe: Interventions[];
 
   constructor(public http: HttpClient) { }

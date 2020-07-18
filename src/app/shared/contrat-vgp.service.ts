@@ -18,7 +18,7 @@ export class ContratVGPService {
   }
 
 
-  readonly rootURL = 'https://localhost:44338/api';
+  readonly rootURL = 'https://securityparkapi.azurewebsites.net/api';
   contratsVGPListe: ContratVGP[];
   engins: Engins[];
 
