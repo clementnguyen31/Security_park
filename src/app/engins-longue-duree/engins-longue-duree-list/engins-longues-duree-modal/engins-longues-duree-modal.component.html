@@ -103,7 +103,7 @@
                     </thead>
                     <tbody>
                         <td>{{currentEnginContratVGP.DateDebutVgp | date:'dd/MM/yyyy' }}</td>
-                        <td>{{currentEnginContratVGP.DateProchaineVgp | date:'dd/MM/yyyy' }}</td>
+                        <td>{{currentEnginInfo.DateProchaineVgp | date:'dd/MM/yyyy' }}</td>
                         <td>{{currentEnginContratVGP.DureeVgp}} mois</td>
                         <td>{{currentEnginContratVGP.MontantVisite}} €</td>
                     </tbody>
@@ -160,12 +160,12 @@
                                     <mat-icon aria-hidden="false">edit</mat-icon>
                                 </button></td>
                             <td><button class="btn btn-transparent"
-                                    (click)="ajouterReparation(intervention.IdInterventionVgp);">
+                                    (click)="ajouterReparation(intervention.IdInterventionVgp, currentEnginInfo.IdEngin);">
                                     <mat-icon aria-hidden="false">add</mat-icon>
                                 </button>
                             </td>
                             <td><button class="btn btn-transparent"
-                                    (click)="voirReparation(intervention.IdInterventionVgp)">
+                                    (click)="voirReparation(intervention.IdInterventionVgp, currentEnginInfo.IdEngin)">
                                     <mat-icon aria-hidden="false">visibility</mat-icon>
                                 </button>
                             </td>
@@ -174,47 +174,47 @@
                 </table>
             </div>
         </div>
-        <div class="col-md-12">
-            <h2 class="text-center font-weight-bold">Réparation (non liée à une VGP)</h2>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="text-center">
-                        <button type="button" class="btn btn-customcolor btn-add btn-sm"
-                            (click)="ajouterReparationNonVGP(currentEnginInfo.IdEngin)">
-                            <mat-icon aria-hidden="false">add</mat-icon>
-                        </button>
-                    </div>
+        <h2 class="text-center font-weight-bold">Réparation (non liée à une VGP)</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-center">
+                    <button type="button" class="btn btn-customcolor btn-add btn-sm"
+                        (click)="ajouterReparationNonVGP(currentEnginInfo.IdEngin)">
+                        <mat-icon aria-hidden="false">add</mat-icon>
+                    </button>
                 </div>
-                <table class="table table-striped text-center table-bordered">
-                    <thead class="table-irri">
-                        <tr>
-                            <th>Type de l'intervention</th>
-                            <th>Prestataire de vérification</th>
-                            <th>Date du devis</th>
-                            <th>Date de demande de réponse</th>
-                            <th>Montant du devis</th>
-                            <th>Date de validation du devis</th>
-                            <th>Date des travaux de conformités</th>
-                            <th>Date de facture</th>
-                            <th>Montant de facture</th>
-                            <th>Date de validation de facture</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let rep of reparationNonVgpByIdEngin">
-                            <td>{{rep.TypeIntervention}}</td>
-                            <td>{{rep.PrestataireVerification}}</td>
-                            <td>{{rep.DateDevis | date:'dd/MM/yyyy'}}</td>
-                            <td>{{rep.DateDemandeResponse | date:'dd/MM/yyyy'}}</td>
-                            <td>{{rep.MontantDevis}} €</td>
-                            <td>{{rep.DateValidationDevis | date:'dd/MM/yyyy'}}</td>
-                            <td>{{rep.DateTravauxConformite | date:'dd/MM/yyyy'}}</td>
-                            <td>{{rep.DateFacture | date:'dd/MM/yyyy'}}</td>
-                            <td>{{rep.MontantFacture}} €</td>
-                            <td>{{rep.DateValidationFacture | date:'dd/MM/yyyy'}}</td>
-                        </tr>
-                    </tbody>
-                </table>
+            </div>
+            <table class="table table-striped text-center table-bordered">
+                <thead class="table-irri">
+                    <tr>
+                        <th>Prestataire</th>
+                        <th>Date du devis</th>
+                        <th>Date de demande de réponse</th>
+                        <th>Montant du devis</th>
+                        <th>Date de validation du devis</th>
+                        <th>Date des travaux</th>
+                        <th>Date de facture</th>
+                        <th>Montant de facture</th>
+                        <th>Date de validation de facture</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let rep of reparationNonVgpByIdEngin">
+                        <td>{{rep.PrestataireVerification}}</td>
+                        <td>{{rep.DateDevis | date:'dd/MM/yyyy'}}</td>
+                        <td>{{rep.DateDemandeResponse | date:'dd/MM/yyyy'}}</td>
+                        <td>{{rep.MontantDevis}} €</td>
+                        <td>{{rep.DateValidationDevis | date:'dd/MM/yyyy'}}</td>
+                        <td>{{rep.DateTravauxConformite | date:'dd/MM/yyyy'}}</td>
+                        <td>{{rep.DateFacture | date:'dd/MM/yyyy'}}</td>
+                        <td>{{rep.MontantFacture}} €</td>
+                        <td>{{rep.DateValidationFacture | date:'dd/MM/yyyy'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <h2 class="font-weight-bold">Commentaires réparation :</h2>
+                <p *ngFor="let rep of reparationNonVgpByIdEngin">Réparation du <span class="font-weight-bold">{{rep.DateDevis | date:'dd/MM/yyyy'}}</span>  : {{rep.TypeIntervention}} </p>
             </div>
         </div>
         <div class="col-md-12">

@@ -1,204 +1,206 @@
 <mat-dialog-content>
     <h1 class="text-center font-weight-bold">Détails sur l'engin n°{{currentEnginInfo.Matricule}}</h1>
-    <div class="container-fluid">
-        <h2 class="text-center font-weight-bold">Caractéristiques</h2>
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table table-striped text-center table-bordered">
-                    <thead class="table-irri">
-                        <tr>
-                            <th>Matricule</th>
-                            <th>NumSerie</th>
-                            <th>Marque</th>
-                            <th>Contrat</th>
-                            <th>Type</th>
-                            <th>Batterie</th>
-                            <th>Date déclaration entrée (assurance)</th>
-                            <th>Date déclaration sortie (assurance)</th>
-                            <th>A l'arrêt ?</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{{currentEnginInfo.Matricule}}</td>
-                            <td>{{currentEnginInfo.NumSerie}}</td>
-                            <td>{{currentEnginInfo.Marque}}</td>
-                            <td>{{currentEnginInfo.TypeContrat}}</td>
-                            <td>{{currentEnginInfo.TypeEngin}}</td>
-                            <td>{{currentEnginInfo.TypeBatterie}}</td>
-                            <ng-container *ngIf="currentEnginInfo.EstDeclareRentre==true; else second">
-                                <td>{{currentEnginInfo.DateDeclarationEntree | date:'dd/MM/yyyy'}}</td>
-                            </ng-container>
-                            <ng-template #second>
-                                <td>Pas de date</td>
-                            </ng-template>
-                            <ng-container *ngIf="currentEnginInfo.EstDeclareSortie==true; else third">
-                                <td>{{currentEnginInfo.DateDeclarationSortie | date:'dd/MM/yyyy'}}</td>
-                            </ng-container>
-                            <ng-template #third>
-                                <td>Pas de date</td>
-                            </ng-template>
-                            <ng-container *ngIf="currentEnginInfo.EstArret==true; else fourth">
-                                <td>Oui</td>
-                            </ng-container>
-                            <ng-template #fourth>
-                                <td>Non</td>
-                            </ng-template>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <h2 class="text-center font-weight-bold">Contrat de location</h2>
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table table-striped text-center table-bordered">
-                    <thead class="table-irri">
-                        <tr>
-                            <th>Numéro de contrat</th>
-                            <th>Date de début</th>
-                            <th>Date de fin</th>
-                            <th>Durée du contrat</th>
-                            <th>Lieu d'utilisation</th>
-                            <th>Prestataire de location</th>
-                            <th>Prix du loyer</th>
-                            <th>Date de signature Irrijardin</th>
-                            <th>Date de signature du prestataire</th>
-                            <th>Date de 1<sup>ère</sup> circulation</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <td>{{currentEnginContrat.NumContrat}}</td>
-                        <td>{{currentEnginContrat.DateEntree | date:'dd/MM/yyyy'}}</td>
-                        <td>{{currentEnginContrat.DateFinContrat | date:'dd/MM/yyyy'}}</td>
-                        <td>{{currentEnginContrat.DureeContrat}} mois</td>
-                        <td>{{currentEnginContrat.LieuUtilisation}}</td>
-                        <td>{{currentEnginContrat.PrestataireLocation}}</td>
-                        <td>{{currentEnginContrat.PrixLoyer}} €</td>
-                        <td>{{currentEnginContrat.DateSignatureIrrijardin | date:'dd/MM/yyyy'}}</td>
-                        <td>{{currentEnginContrat.DateSignaturePrestataire | date:'dd/MM/yyyy'}}</td>
-                        <td>{{currentEnginContrat.DateCirculation | date:'dd/MM/yyyy'}}</td>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <h2 class="text-center font-weight-bold">Interventions</h2>
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table table-striped text-center table-bordered">
-                    <thead class="table-irri">
-                        <tr>
-                            <th>Date de l'intervention</th>
-                            <th>Rapport reçu</th>
-                            <th>Prestataire de vérification</th>
-                            <th>Satisfait ?</th>
-                            <th>Suite ?</th>
-                            <th>Commentaire</th>
-                            <th>Date de facture</th>
-                            <th>Montant de facture</th>
-                            <th>Date de validation de facture</th>
-                            <th>Modifier intervention</th>
-                            <th>Ajouter réparation</th>
-                            <th>Voir réparation</th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-active" class="text-center">
-                        <tr *ngFor="let intervention of interventionByIdEngin">
-                            <td>{{intervention.DateIntervention}}</td>
-                            <ng-container *ngIf="intervention.EstRapportRecu==true; else recuNon">
-                                <td>Oui</td>
-                            </ng-container>
-                            <ng-template #recuNon>
-                                <td>Non</td>
-                            </ng-template>
-                            <td>{{intervention.PrestataireVerification}}</td>
-                            <ng-container *ngIf="intervention.EstSatisfaisant==true; else statisfaitNon">
-                                <td>Oui</td>
-                            </ng-container>
-                            <ng-template #statisfaitNon>
-                                <td>Non</td>
-                            </ng-template>
-                            <ng-container *ngIf="intervention.EstSuite==true; else suiteNon">
-                                <td>Oui</td>
-                            </ng-container>
-                            <ng-template #suiteNon>
-                                <td>Non</td>
-                            </ng-template>
-                            <td>{{intervention.Commentaire}}</td>
-                            <td>{{intervention.DateFacture | date:'dd/MM/yyyy'}}</td>
-                            <td>{{intervention.MontantFacture}} €</td>
-                            <td>{{intervention.DateValidationFacture | date:'dd/MM/yyyy'}}</td>
-                            <td><button class="btn btn-transparent" (click)="modifierIntervention(intervention);">
-                                    <mat-icon aria-hidden="false">edit</mat-icon>
-                                </button></td>
-                            <td><button class="btn btn-transparent"
-                                    (click)="ajouterReparation(intervention.IdInterventionVgp);">
-                                    <mat-icon aria-hidden="false">add</mat-icon>
-                                </button>
-                            </td>
-                            <td><button class="btn btn-transparent"
-                                    (click)="voirReparation(intervention.IdInterventionVgp)">
-                                    <mat-icon aria-hidden="false">visibility</mat-icon>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="col-md-12">
-            <h2 class="text-center font-weight-bold">Réparation (non liée à une VGP)</h2>
+        <div class="container-fluid">
+            <h2 class="text-center font-weight-bold">Caractéristiques</h2>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="text-center"><button type="button" class="btn btn-customcolor btn-add btn-sm"
-                            (click)="ajouterReparationNonVGP(currentEnginInfo.IdEngin)">
-                            <mat-icon aria-hidden="false">add</mat-icon>
-                        </button></div>
+                    <table class="table table-striped text-center table-bordered">
+                        <thead class="table-irri">
+                            <tr>
+                                <th>Matricule</th>
+                                <th>NumSerie</th>
+                                <th>Marque</th>
+                                <th>Contrat</th>
+                                <th>Type</th>
+                                <th>Batterie</th>
+                                <th>Date déclaration entrée (assurance)</th>
+                                <th>Date déclaration sortie (assurance)</th>
+                                <th>A l'arrêt ?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{currentEnginInfo.Matricule}}</td>
+                                <td>{{currentEnginInfo.NumSerie}}</td>
+                                <td>{{currentEnginInfo.Marque}}</td>
+                                <td>{{currentEnginInfo.TypeContrat}}</td>
+                                <td>{{currentEnginInfo.TypeEngin}}</td>
+                                <td>{{currentEnginInfo.TypeBatterie}}</td>
+                                <ng-container *ngIf="currentEnginInfo.EstDeclareRentre==true; else second">
+                                    <td>{{currentEnginInfo.DateDeclarationEntree | date:'dd/MM/yyyy'}}</td>
+                                </ng-container>
+                                <ng-template #second>
+                                    <td>Pas de date</td>
+                                </ng-template>
+                                <ng-container *ngIf="currentEnginInfo.EstDeclareSortie==true; else third">
+                                    <td>{{currentEnginInfo.DateDeclarationSortie | date:'dd/MM/yyyy'}}</td>
+                                </ng-container>
+                                <ng-template #third>
+                                    <td>Pas de date</td>
+                                </ng-template>
+                                <ng-container *ngIf="currentEnginInfo.EstArret==true; else fourth">
+                                    <td>Oui</td>
+                                </ng-container>
+                                <ng-template #fourth>
+                                    <td>Non</td>
+                                </ng-template>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <table class="table table-striped text-center table-bordered">
-                    <thead class="table-irri">
-                        <tr>
-                            <th>Type de l'intervention</th>
-                            <th>Prestataire de vérification</th>
-                            <th>Date du devis</th>
-                            <th>Date de demande de réponse</th>
-                            <th>Montant du devis</th>
-                            <th>Date de validation du devis</th>
-                            <th>Date des travaux de conformités</th>
-                            <th>Date de facture</th>
-                            <th>Montant de facture</th>
-                            <th>Date de validation de facture</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let rep of reparationNonVgpByIdEngin">
-                            <td>{{rep.TypeIntervention}}</td>
-                            <td>{{rep.PrestataireVerification}}</td>
-                            <td>{{rep.DateDevis | date:'dd/MM/yyyy'}}</td>
-                            <td>{{rep.DateDemandeResponse | date:'dd/MM/yyyy'}}</td>
-                            <td>{{rep.MontantDevis}} €</td>
-                            <td>{{rep.DateValidationDevis | date:'dd/MM/yyyy'}}</td>
-                            <td>{{rep.DateTravauxConformite | date:'dd/MM/yyyy'}}</td>
-                            <td>{{rep.DateFacture | date:'dd/MM/yyyy'}}</td>
-                            <td>{{rep.MontantFacture}} €</td>
-                            <td>{{rep.DateValidationFacture | date:'dd/MM/yyyy'}}</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
-        </div>
-        <div class="col-md-12">
-            <h2 class="text-center font-weight-bold">Commentaires</h2>
-            <textarea class="form-control" style="margin-bottom: 1em;"
-                readonly>{{currentEnginContrat.Commentaire}}</textarea>
-        </div>
-        <div class="row">
+            <h2 class="text-center font-weight-bold">Contrat de location</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-striped text-center table-bordered">
+                        <thead class="table-irri">
+                            <tr>
+                                <th>Numéro de contrat</th>
+                                <th>Date de début</th>
+                                <th>Date de fin</th>
+                                <th>Durée du contrat</th>
+                                <th>Lieu d'utilisation</th>
+                                <th>Prestataire de location</th>
+                                <th>Prix du loyer</th>
+                                <th>Date de signature Irrijardin</th>
+                                <th>Date de signature du prestataire</th>
+                                <th>Date de 1<sup>ère</sup> circulation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <td>{{currentEnginContrat.NumContrat}}</td>
+                            <td>{{currentEnginContrat.DateEntree | date:'dd/MM/yyyy'}}</td>
+                            <td>{{currentEnginContrat.DateFinContrat | date:'dd/MM/yyyy'}}</td>
+                            <td>{{currentEnginContrat.DureeContrat}} mois</td>
+                            <td>{{currentEnginContrat.LieuUtilisation}}</td>
+                            <td>{{currentEnginContrat.PrestataireLocation}}</td>
+                            <td>{{currentEnginContrat.PrixLoyer}} €</td>
+                            <td>{{currentEnginContrat.DateSignatureIrrijardin | date:'dd/MM/yyyy'}}</td>
+                            <td>{{currentEnginContrat.DateSignaturePrestataire | date:'dd/MM/yyyy'}}</td>
+                            <td>{{currentEnginContrat.DateCirculation | date:'dd/MM/yyyy'}}</td>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <h2 class="text-center font-weight-bold">Interventions</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-striped text-center table-bordered">
+                        <thead class="table-irri">
+                            <tr>
+                                <th>Date de l'intervention</th>
+                                <th>Rapport reçu</th>
+                                <th>Prestataire de vérification</th>
+                                <th>Satisfait ?</th>
+                                <th>Suite ?</th>
+                                <th>Commentaire</th>
+                                <th>Date de facture</th>
+                                <th>Montant de facture</th>
+                                <th>Date de validation de facture</th>
+                                <th>Modifier intervention</th>
+                                <th>Ajouter réparation</th>
+                                <th>Voir réparation</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-active" class="text-center">
+                            <tr *ngFor="let intervention of interventionByIdEngin">
+                                <td>{{intervention.DateIntervention}}</td>
+                                <ng-container *ngIf="intervention.EstRapportRecu==true; else recuNon">
+                                    <td>Oui</td>
+                                </ng-container>
+                                <ng-template #recuNon>
+                                    <td>Non</td>
+                                </ng-template>
+                                <td>{{intervention.PrestataireVerification}}</td>
+                                <ng-container *ngIf="intervention.EstSatisfaisant==true; else statisfaitNon">
+                                    <td>Oui</td>
+                                </ng-container>
+                                <ng-template #statisfaitNon>
+                                    <td>Non</td>
+                                </ng-template>
+                                <ng-container *ngIf="intervention.EstSuite==true; else suiteNon">
+                                    <td>Oui</td>
+                                </ng-container>
+                                <ng-template #suiteNon>
+                                    <td>Non</td>
+                                </ng-template>
+                                <td>{{intervention.Commentaire}}</td>
+                                <td>{{intervention.DateFacture | date:'dd/MM/yyyy'}}</td>
+                                <td>{{intervention.MontantFacture}} €</td>
+                                <td>{{intervention.DateValidationFacture | date:'dd/MM/yyyy'}}</td>
+                                <td><button class="btn btn-transparent" (click)="modifierIntervention(intervention);">
+                                        <mat-icon aria-hidden="false">edit</mat-icon>
+                                    </button></td>
+                                <td><button class="btn btn-transparent"
+                                        (click)="ajouterReparation(intervention.IdInterventionVgp, currentEnginInfo.IdEngin);">
+                                        <mat-icon aria-hidden="false">add</mat-icon>
+                                    </button>
+                                </td>
+                                <td><button class="btn btn-transparent"
+                                        (click)="voirReparation(intervention.IdInterventionVgp, currentEnginInfo.IdEngin)">
+                                        <mat-icon aria-hidden="false">visibility</mat-icon>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
             <div class="col-md-12">
-                <div class="text-center">
-                    <button class="form-group btn btn-secondary" mat-button [mat-dialog-close]="true"
-                        type="button">Fermer</button>
+                <h2 class="text-center font-weight-bold">Réparation (non liée à une VGP)</h2>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="text-center"><button type="button" class="btn btn-customcolor btn-add btn-sm"
+                                (click)="ajouterReparationNonVGP(currentEnginInfo.IdEngin)">
+                                <mat-icon aria-hidden="false">add</mat-icon>
+                            </button></div>
+                    </div>
+                    <table class="table table-striped text-center table-bordered">
+                        <thead class="table-irri">
+                            <tr>
+                                <th>Prestataire</th>
+                                <th>Date du devis</th>
+                                <th>Date de demande de réponse</th>
+                                <th>Montant du devis</th>
+                                <th>Date de validation du devis</th>
+                                <th>Date des travaux</th>
+                                <th>Date de facture</th>
+                                <th>Montant de facture</th>
+                                <th>Date de validation de facture</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rep of reparationNonVgpByIdEngin">
+                                <td>{{rep.PrestataireVerification}}</td>
+                                <td>{{rep.DateDevis | date:'dd/MM/yyyy'}}</td>
+                                <td>{{rep.DateDemandeResponse | date:'dd/MM/yyyy'}}</td>
+                                <td>{{rep.MontantDevis}} €</td>
+                                <td>{{rep.DateValidationDevis | date:'dd/MM/yyyy'}}</td>
+                                <td>{{rep.DateTravauxConformite | date:'dd/MM/yyyy'}}</td>
+                                <td>{{rep.DateFacture | date:'dd/MM/yyyy'}}</td>
+                                <td>{{rep.MontantFacture}} €</td>
+                                <td>{{rep.DateValidationFacture | date:'dd/MM/yyyy'}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <h2 class="font-weight-bold">Commentaires réparation :</h2>
+                        <p *ngFor="let rep of reparationNonVgpByIdEngin">Réparation du <span class="font-weight-bold">{{rep.DateDevis | date:'dd/MM/yyyy'}}</span>  : {{rep.TypeIntervention}} </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h2 class="text-center font-weight-bold">Commentaires</h2>
+                <textarea class="form-control" style="margin-bottom: 1em;"
+                    readonly>{{currentEnginContrat.Commentaire}}</textarea>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <button class="form-group btn btn-secondary" mat-button [mat-dialog-close]="true"
+                            type="button">Fermer</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 </mat-dialog-content>

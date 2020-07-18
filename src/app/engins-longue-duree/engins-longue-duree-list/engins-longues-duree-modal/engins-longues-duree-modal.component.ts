@@ -62,7 +62,7 @@ export class EnginsLonguesDureeModalComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "70%";
+    dialogConfig.width = "100%";
     dialogConfig.data = { idengin };
     const dialogRef = this.dialog.open(InterventionsFormComponent, dialogConfig);
   }
@@ -72,25 +72,25 @@ export class EnginsLonguesDureeModalComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "70%";
+    dialogConfig.width = "100%";
     const dialogRef = this.dialog.open(InterventionsFormComponent, dialogConfig);
   }
 
-  ajouterReparation(idIntervention){
+  ajouterReparation(idIntervention, idengin){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "70%";
-    dialogConfig.data = { idIntervention };
+    dialogConfig.width = "100%";
+    dialogConfig.data = { idIntervention, idengin };
     const dialogRef = this.dialog.open(ReparationFormComponent, dialogConfig);
   }
 
-  voirReparation(idinterventionvgp){
+  voirReparation(idinterventionvgp, idengin){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "70%";
-    dialogConfig.data = { idinterventionvgp };
+    dialogConfig.width = "100%";
+    dialogConfig.data = { idinterventionvgp,idengin };
     const dialogRef = this.dialog.open(ReparationListeComponent, dialogConfig);
   }
 

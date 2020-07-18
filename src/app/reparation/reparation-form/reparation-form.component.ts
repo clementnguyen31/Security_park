@@ -3,6 +3,7 @@ import { ReparationService } from 'src/app/shared/reparation.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { NgForm } from '@angular/forms';
+import { EnginsService } from 'src/app/shared/engins.service';
 
 @Component({
   selector: 'app-reparation-form',
@@ -11,13 +12,19 @@ import { NgForm } from '@angular/forms';
 })
 export class ReparationFormComponent implements OnInit {
 
+  currentEnginInfo: any = {};
+
   constructor(@Inject(MAT_DIALOG_DATA) public data,
   public serviceReparation: ReparationService,
   private toastr: ToastrService,
+  public enginService: EnginsService,
   public dialogbox: MatDialogRef<ReparationFormComponent>) { }
 
   ngOnInit(): void {
     this.resetForm();
+    this.enginService.getEngin(this.data.idengin).subscribe(res => {
+      this.currentEnginInfo = res;
+    })
   }
 
   updateForm(form: NgForm) {
@@ -27,7 +34,7 @@ export class ReparationFormComponent implements OnInit {
         this.toastr.success("La réparation a été correctement modifié", 'Security Park');
         this.serviceReparation.refreshListReparations();
       }
-    )
+    );
   }
   resetForm(form?: NgForm) {
     if (form != null) {

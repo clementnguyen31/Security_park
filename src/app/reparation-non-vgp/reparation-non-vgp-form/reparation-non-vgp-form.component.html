@@ -4,12 +4,12 @@
         [(ngModel)]="reparationNonVgpService.formDataReparationNonVgp.IdEngin">
     <div class="form-row">
         <div class="form-group col-md-4">
-            <label for="PrestataireVerfifcation">Prestataire de vérification</label>
+            <label for="PrestataireVerfifcation">Prestataire</label>
             <select id="PrestataireVerfifcation" name="PrestataireVerification" #PrestataireVerification="ngModel"
                 [(ngModel)]="reparationNonVgpService.formDataReparationNonVgp.PrestataireVerification" class="form-control"
                 placeholder="Prestataire de vérification">
-                <option value="" disabled>Choisissez un prestataire de vérification</option>
-                <option value="Bureau Veritas">Bureau Veritas</option>
+                <option value="" disabled>Choisissez un prestataire</option>
+                <option value="Bureau Veritas">Bastide</option>
             </select>
         </div>
         <div class="form-group col-md-4">
@@ -45,7 +45,7 @@
                 placeholder="Date de validation de devis">
         </div>
         <div class="form-group col-md-3">
-            <label for="DateTravauxConformite">Date des travaux de conformités</label>
+            <label for="DateTravauxConformite">Date des travaux</label>
             <input id="DateTravauxConformite" name="DateTravauxConformite" type="date" #DateTravauxConformite="ngModel"
                 [(ngModel)]="reparationNonVgpService.formDataReparationNonVgp.DateTravauxConformite" class="form-control"
                 placeholder="Date des travaux de conformités">

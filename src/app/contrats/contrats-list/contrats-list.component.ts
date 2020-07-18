@@ -20,7 +20,7 @@ import { ContratsModalComponent } from '../contrats-modal/contrats-modal.compone
 export class ContratsListComponent implements OnInit {
 
   ELEMENT_DATA: Contrats[]
-  displayedColumns = ['NumContrat', 'DateEntree', 'DureeContrat', 'DateFinContrat', 'Modifier', 'Details'];
+  displayedColumns = ['Lieu', "Type d'engin", 'DureeContrat', 'Date de signature Irrijardin', 'Modifier', 'Details'];
   dataSource = new MatTableDataSource<Contrats>(this.ELEMENT_DATA);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;

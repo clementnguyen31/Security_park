@@ -74,21 +74,21 @@ export class EnginsCourteDureeModalComponent implements OnInit {
     const dialogRef = this.dialog.open(InterventionsFormComponent, dialogConfig);
   }
 
-  ajouterReparation(idIntervention){
+  ajouterReparation(idIntervention, idengin){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "100%";
-    dialogConfig.data = { idIntervention };
+    dialogConfig.data = { idIntervention , idengin};
     const dialogRef = this.dialog.open(ReparationFormComponent, dialogConfig);
   }
 
-  voirReparation(idinterventionvgp){
+  voirReparation(idinterventionvgp, idengin){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "100%";
-    dialogConfig.data = { idinterventionvgp };
+    dialogConfig.data = { idinterventionvgp, idengin };
     const dialogRef = this.dialog.open(ReparationListeComponent, dialogConfig);
   }
 

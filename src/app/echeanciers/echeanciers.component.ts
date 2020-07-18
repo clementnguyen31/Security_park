@@ -4,6 +4,7 @@ import { EcheanciersService } from '../shared/echeanciers.service';
 import { ToastrService } from 'ngx-toastr';
 import { NgForm } from '@angular/forms';
 import { Echeanciers } from '../shared/echeanciers.model';
+import { EnginsService } from '../shared/engins.service';
 
 @Component({
   selector: 'app-echeanciers',
@@ -15,15 +16,20 @@ export class EcheanciersComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data,
   public echeancierService: EcheanciersService,
   private toastr: ToastrService,
+  public enginService: EnginsService,
   public dialogbox: MatDialogRef<EcheanciersComponent>) { }
 
   echeanciersByIdEngin: Echeanciers[];
+  currentEngin: any= {};
 
   ngOnInit(): void {
     this.resetFormEcheancier();
     this.echeancierService.refreshListEcheanciers();
     this.echeancierService.getEcheanciersByIdEngin(this.data.idengin).subscribe(res => {
       this.echeanciersByIdEngin = res;
+    });
+    this.enginService.getEngin(this.data.idengin).subscribe(res => {
+      this.currentEngin = res;
     })
   }
 

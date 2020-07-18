@@ -6,6 +6,7 @@ import { ContratVGP } from 'src/app/shared/contrat-vgp.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { EnginsService } from 'src/app/shared/engins.service';
 
 @Component({
   selector: 'app-contrat-vgp-list',
@@ -15,13 +16,13 @@ import { MatPaginator } from '@angular/material/paginator';
 export class ContratVgpListComponent implements OnInit {
 
   ELEMENT_DATA: ContratVGP[];
-  displayedColumns = ['NumVgp', 'DateDebutVgp', 'DateProchaineVgp', 'DureeVgp', 'MontantVisite', 'Modifier'];
+  displayedColumns = ['NumVgp', 'DateDebutVgp', 'DureeVgp', 'MontantVisite', 'Modifier'];
   dataSource = new MatTableDataSource<ContratVGP>(this.ELEMENT_DATA);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  constructor(public contratvgpservice: ContratVGPService, private dialog: MatDialog) { }
+  constructor(public contratvgpservice: ContratVGPService, private dialog: MatDialog, public enginservice: EnginsService) { }
 
   ngOnInit(): void {
     this.contratvgpservice.refreshListContratsVGP();

@@ -90,7 +90,7 @@
             </div>
         </div>
         <div class="form-group col-md-6">
-            <label for="DateDeclarationEntree">Date déclaration entrée</label>
+            <label for="DateDeclarationEntree">Date déclaration assurance</label>
             <input id="DateDeclarationEntree" type="date" name="DateDeclarationEntree" #DateDeclarationEntree="ngModel"
                 [(ngModel)]="enginService.formDataEngins.DateDeclarationEntree" class="form-control" required>
         </div>
@@ -99,7 +99,7 @@
     <div class="form-row">
         <div class="form-group col-md-4">
             <div class="form-group">
-                <label for="declarersortieSelect">Déclaré sortie ?</label>
+                <label for="declarersortieSelect">Déclaré sortie assurance</label>
                 <select class="form-control" name="EstDeclareSortie" #EstDeclareSortie="ngModel"
                     [(ngModel)]="enginService.formDataEngins.EstDeclareSortie" id="declarersortieSelect" required>
                     <option value="" disabled>Déclaré sortie ?</option>
@@ -157,6 +157,7 @@
                 <select class="form-control" name="IdContratVgp" #IdContrat="ngModel"
                     [(ngModel)]="enginService.formDataEngins.IdContratVgp" id="contratVGP" required>
                     <option value="" disabled>Choisissez un contrat VGP</option>
+                    <option selected="selected" [ngValue]="null">Pas de VGP</option>
                     <option *ngFor="let contratvgp of contratVGPService.contratsVGPListe"
                         [ngValue]="contratvgp.IdContratVgp">{{contratvgp.NumVgp}}</option>
                 </select>

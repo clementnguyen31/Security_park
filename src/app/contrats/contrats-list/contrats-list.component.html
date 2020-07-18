@@ -16,21 +16,21 @@
          The actual rendered columns are set as a property on the row definition" -->
 
    <!-- Position Column -->
-   <ng-container matColumnDef="NumContrat">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Numéro de contrat </th>
+   <ng-container matColumnDef="Lieu">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Lieu </th>
       <td mat-cell *matCellDef="let element">
          <ng-container>
-            <div>{{element.NumContrat}} </div>
+            <div>{{element.LieuUtilisation}} </div>
          </ng-container>
       </td>
    </ng-container>
 
    <!-- Name Column -->
-   <ng-container matColumnDef="DateEntree">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date d'entrée </th>
+   <ng-container matColumnDef="Type d'engin">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Type d'engin </th>
       <td mat-cell *matCellDef="let element">
          <ng-container>
-            <div>{{element.DateEntree | date:'dd/MM/yyyy'}}</div>
+            <div>{{element.TypeEngin}}</div>
          </ng-container>
       </td>
    </ng-container>
@@ -46,12 +46,12 @@
    </ng-container>
 
    <!-- Symbol Column -->
-   <ng-container matColumnDef="DateFinContrat">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date de fin de contrat </th>
+   <ng-container matColumnDef="Date de signature Irrijardin">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date de signature Irrijardin </th>
       <td mat-cell *matCellDef="let element">
          <ng-container>
             <div>
-               {{element.DateFinContrat | date:'dd/MM/yyyy'}}
+               {{element.DateSignatureIrrijardin | date:'dd/MM/yyyy'}}
             </div>
          </ng-container>
       </td>

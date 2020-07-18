@@ -3,6 +3,7 @@ import { InterventionsService } from 'src/app/shared/interventions.service';
 import { NgForm } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { EnginsService } from 'src/app/shared/engins.service';
 
 @Component({
   selector: 'app-interventions-form',
@@ -11,9 +12,12 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class InterventionsFormComponent implements OnInit {
 
+  currentEngin: any= {};
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data,
     public serviceIntervention: InterventionsService,
+    public enginService: EnginsService,
     private toastr: ToastrService,
     public dialogbox: MatDialogRef<InterventionsFormComponent>) {
   }
@@ -21,6 +25,9 @@ export class InterventionsFormComponent implements OnInit {
   ngOnInit(): void {
     this.resetForm();
     console.log(this.data.idengin);
+    this.enginService.getEngin(this.data.idengin).subscribe(res => {
+      this.currentEngin = res;
+    })
   }
 
   resetForm(form?: NgForm) {
