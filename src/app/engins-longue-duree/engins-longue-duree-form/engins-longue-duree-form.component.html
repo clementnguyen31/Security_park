@@ -99,7 +99,7 @@
     <div class="form-row">
         <div class="form-group col-md-4">
             <div class="form-group">
-                <label for="declarersortieSelect">Déclaré sortie assurance</label>
+                <label for="declarersortieSelect">Déclaré sortie ?</label>
                 <select class="form-control" name="EstDeclareSortie" #EstDeclareSortie="ngModel"
                     [(ngModel)]="enginService.formDataEngins.EstDeclareSortie" id="declarersortieSelect" required>
                     <option value="" disabled>Déclaré sortie ?</option>
@@ -109,7 +109,7 @@
             </div>
         </div>
         <div class="form-group col-md-4">
-            <label for="DateDeclarationSortie">Date déclaration sortie</label>
+            <label for="DateDeclarationSortie">Date sortie assurance</label>
             <input id="DateDeclarationSortie" type="date" name="DateDeclarationEntree" #DateDeclarationSortie="ngModel"
                 [(ngModel)]="enginService.formDataEngins.DateDeclarationSortie" class="form-control" required>
         </div>
