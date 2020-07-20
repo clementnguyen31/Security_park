@@ -147,22 +147,24 @@
         </div>
         <div class="form-group col-md-3">
             <label for="contratVGP">Contrat VGP</label>
-            <ng-container *ngIf="enginService.formDataEngins.TypeContrat=='LCD'; else second">
-                <select class="form-control" name="IdContratVgp" #IdContrat="ngModel"
-                    [(ngModel)]="enginService.formDataEngins.IdContratVgp" id="contratVGP" required>
-                    <option selected="selected" [ngValue]="null">Pas de VGP</option>
-                </select>
-            </ng-container>
-            <ng-template #second>
-                <select class="form-control" name="IdContratVgp" #IdContrat="ngModel"
-                    [(ngModel)]="enginService.formDataEngins.IdContratVgp" id="contratVGP" required>
-                    <option value="" disabled>Choisissez un contrat VGP</option>
-                    <option selected="selected" [ngValue]="null">Pas de VGP</option>
-                    <option *ngFor="let contratvgp of contratVGPService.contratsVGPListe"
-                        [ngValue]="contratvgp.IdContratVgp">{{contratvgp.NumVgp}}</option>
-                </select>
-            </ng-template>
-        </div>
+            <ng-container *ngIf="enginService.formDataEngins.TypeContrat=='LLD'; else second">
+               <select class="form-control" name="IdContratVgp" #IdContrat="ngModel"
+                   [(ngModel)]="enginService.formDataEngins.IdContratVgp" id="contratVGP" required>
+                   <option selected="selected" [ngValue]="null">Pas de VGP</option>
+                   <option *ngFor="let contratvgp of contratVGPService.contratsVGPListe"
+                       [ngValue]="contratvgp.IdContratVgp">{{contratvgp.NumVgp}}</option>
+               </select>
+           </ng-container>
+           <ng-template #second>
+               <select class="form-control" name="IdContratVgp" #IdContrat="ngModel"
+                   [(ngModel)]="enginService.formDataEngins.IdContratVgp" id="contratVGP" required>
+                   <option value="" disabled>Choisissez un contrat VGP</option>
+                   <option selected="selected" [ngValue]="null">Pas de VGP</option>
+                   <option *ngFor="let contratvgp of contratVGPService.contratsVGPListe"
+                       [ngValue]="contratvgp.IdContratVgp">{{contratvgp.NumVgp}}</option>
+               </select>
+           </ng-template>
+         </div>
 
         <div class="container">
             <div class="row">
