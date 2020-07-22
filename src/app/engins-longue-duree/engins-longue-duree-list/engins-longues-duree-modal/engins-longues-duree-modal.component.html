@@ -196,6 +196,7 @@
                         <th>Date de facture</th>
                         <th>Montant de facture</th>
                         <th>Date de validation de facture</th>
+                        <th>Modifier</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -209,6 +210,9 @@
                         <td>{{rep.DateFacture | date:'dd/MM/yyyy'}}</td>
                         <td>{{rep.MontantFacture}} €</td>
                         <td>{{rep.DateValidationFacture | date:'dd/MM/yyyy'}}</td>
+                        <td><button class="btn btn-transparent" (click)="modifierReparation(rep);">
+                            <mat-icon aria-hidden="false">edit</mat-icon>
+                        </button></td>
                     </tr>
                 </tbody>
             </table>

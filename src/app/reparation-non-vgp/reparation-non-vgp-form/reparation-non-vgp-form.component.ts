@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ReparationNonVgpFormComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data,
-  public reparationNonVgpService: ReparationNonvgpService,  
+    public reparationNonVgpService: ReparationNonvgpService,
     private toastr: ToastrService,
     public dialogbox: MatDialogRef<ReparationNonVgpFormComponent>) { }
 

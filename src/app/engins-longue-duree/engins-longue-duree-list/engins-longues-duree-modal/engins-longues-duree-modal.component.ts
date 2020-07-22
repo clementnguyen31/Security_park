@@ -103,5 +103,14 @@ export class EnginsLonguesDureeModalComponent implements OnInit {
     const dialogRef = this.dialog.open(ReparationNonVgpFormComponent, dialogConfig);
   }
 
+  modifierReparation(selectedRecord){
+    this.reparationnonvgpService.formDataReparationNonVgp = Object.assign({}, selectedRecord);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "100%";
+    const dialogRef = this.dialog.open(ReparationNonVgpFormComponent, dialogConfig);
+  }
+
 
 }

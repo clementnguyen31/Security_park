@@ -13,7 +13,7 @@
                 placeholder="Date de l'intervention">
         </div>
         <div class="form-group col-md-4">
-            <label for="raportrecu">Rapport reçu ?</label>
+            <label for="raportrecu">Rapport reçu ? <span class="text-danger">(*)</span></label>
             <select class="form-control" id="raportrecu" name="EstRapportRecu" #EstRapportRecu="ngModel"
                 [(ngModel)]="serviceIntervention.formDataInterventionVgps.EstRapportRecu" class="form-control" required>
                 <option [ngValue]="" disabled>Rapport reçu ?</option>
@@ -22,7 +22,7 @@
             </select>
         </div>
         <div class="form-group col-md-4">
-            <label for="EstSatisfaisant">Satisfaisant ?</label>
+            <label for="EstSatisfaisant">Satisfaisant ? <span class="text-danger">(*)</span></label>
             <select class="form-control" id="EstSatisfaisant" name="EstSatisfaisant" #EstSatisfaisant="ngModel"
                 [(ngModel)]="serviceIntervention.formDataInterventionVgps.EstSatisfaisant" class="form-control"
                 required>
@@ -43,7 +43,7 @@
             </select>
         </div>
         <div class="form-group col-md-4">
-            <label for="EstSuite">Devis d'intervention ?</label>
+            <label for="EstSuite">Devis d'intervention ? <span class="text-danger">(*)</span></label>
             <select id="EstSuite" name="EstSuite" #EstSuite="ngModel"
                 [(ngModel)]="serviceIntervention.formDataInterventionVgps.EstSuite" class="form-control"
                 placeholder="Suite ?">
