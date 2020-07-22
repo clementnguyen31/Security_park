@@ -17,20 +17,20 @@ import { MatPaginator } from '@angular/material/paginator';
 export class EcheanciersComponent implements OnInit {
 
   ELEMENT_DATA: Echeanciers[];
-  displayedColumns: string[] = ['Matricule', 'Date', 'Montant', "Lieu d'utilisation", "Date de début de contrat", "Durée du contrat"];
+  displayedColumns: string[] = ['Matricule', 'Date', 'Montant', "Lieu d'utilisation", "Date de début de contrat", "Durée du contrat", 'Modifier'];
   dataSource = new MatTableDataSource<Echeanciers>(this.ELEMENT_DATA);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data,
-  public echeancierService: EcheanciersService,
-  private toastr: ToastrService,
-  public enginService: EnginsService,
-  public dialogbox: MatDialogRef<EcheanciersComponent>) { }
+    public echeancierService: EcheanciersService,
+    private toastr: ToastrService,
+    public enginService: EnginsService,
+    public dialogbox: MatDialogRef<EcheanciersComponent>) { }
 
   echeanciersByIdEngin: Echeanciers[];
-  currentEngin: any= {};
+  currentEngin: any = {};
 
   ngOnInit(): void {
     this.resetFormEcheancier();
@@ -61,14 +61,29 @@ export class EcheanciersComponent implements OnInit {
       LieuUtilisation: this.data.lieu,
       DateDebutContrat: this.data.datedebut,
       DureeContrat: this.data.duree
-    } 
+    }
   }
 
   insertEcheancier(form: NgForm) {
     this.echeancierService.postEcheanciers().subscribe(
       res => {
         this.resetFormEcheancier(form);
-        this.toastr.success("Ajout réussi", 'Security Park');
+        this.toastr.success("L'ajout a été effectué", 'Security Park');
+        this.echeancierService.refreshListEcheanciers();
+      },
+      err => { console.log(err); }
+    )
+  }
+
+  populateForm(selectedRecord) {
+    this.echeancierService.formDataEcheancier = Object.assign({}, selectedRecord);
+  }
+
+  updateEcheancier(form: NgForm) {
+    this.echeancierService.putEcheanciers().subscribe(
+      res => {
+        this.resetFormEcheancier(form);
+        this.toastr.success("La modification a été effectuée", 'Security Park');
         this.echeancierService.refreshListEcheanciers();
       },
       err => { console.log(err); }
@@ -76,7 +91,11 @@ export class EcheanciersComponent implements OnInit {
   }
 
   onSubmitEcheancier(form: NgForm) {
-    this.insertEcheancier(form);
+    if (this.echeancierService.formDataEcheancier.IdEcheancier == 0) {
+      this.insertEcheancier(form);
+    } else {
+      this.updateEcheancier(form);
+    }
   }
 
 }
