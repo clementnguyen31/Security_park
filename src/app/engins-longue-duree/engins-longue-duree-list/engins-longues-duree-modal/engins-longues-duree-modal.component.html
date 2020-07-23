@@ -39,12 +39,7 @@
                             <ng-template #second>
                                 <td>Pas de date</td>
                             </ng-template>
-                            <ng-container *ngIf="currentEnginInfo.EstDeclareSortie==true; else third">
                                 <td>{{currentEnginInfo.DateDeclarationSortie | date:'dd/MM/yyyy'}}</td>
-                            </ng-container>
-                            <ng-template #third>
-                                <td>Pas de date</td>
-                            </ng-template>
                             <ng-container *ngIf="currentEnginInfo.EstArret==true; else fourth">
                                 <td>Oui</td>
                             </ng-container>
