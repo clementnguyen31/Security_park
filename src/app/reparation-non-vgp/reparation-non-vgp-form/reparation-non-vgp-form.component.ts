@@ -24,7 +24,6 @@ export class ReparationNonVgpFormComponent implements OnInit {
   updateForm(form: NgForm) {
     this.reparationNonVgpService.putReparationsNonVgp().subscribe(
       res => {
-        this.resetForm(form);
         this.toastr.success("La réparation a été correctement modifié", 'Security Park');
         this.reparationNonVgpService.refreshListReparationsNonVgp();
       }
