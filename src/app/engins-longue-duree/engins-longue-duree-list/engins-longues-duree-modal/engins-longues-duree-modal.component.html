@@ -116,7 +116,6 @@
                             <th>Prestataire de vérification</th>
                             <th>Satisfait ?</th>
                             <th>Suite ?</th>
-                            <th>Commentaire</th>
                             <th>Date de facture</th>
                             <th>Montant de facture</th>
                             <th>Date de validation de facture</th>
@@ -147,7 +146,6 @@
                             <ng-template #suiteNon>
                                 <td>Non</td>
                             </ng-template>
-                            <td>{{intervention.Commentaire}}</td>
                             <td>{{intervention.DateFacture | date:'dd/MM/yyyy'}}</td>
                             <td>{{intervention.MontantFacture}} €</td>
                             <td>{{intervention.DateValidationFacture | date:'dd/MM/yyyy'}}</td>
@@ -167,6 +165,10 @@
                         </tr>
                     </tbody>
                 </table>
+                <div>
+                    <h2 class="font-weight-bold">Commentaires interventions vgp :</h2>
+                    <p *ngFor="let intervention of interventionByIdEngin">Intervention du <span class="font-weight-bold">{{intervention.DateIntervention | date:'dd/MM/yyyy'}}</span>  : {{intervention.Commentaire}} </p>
+                </div>
             </div>
         </div>
         <h2 class="text-center font-weight-bold">Réparation (non liée à une VGP)</h2>

@@ -53,7 +53,6 @@ export class InterventionsFormComponent implements OnInit {
   updateForm(form: NgForm) {
     this.serviceIntervention.putInterventionVgps().subscribe(
       res => {
-        this.resetForm(form);
         this.toastr.success("L'intervention a été correctement modifié", 'Security Park');
         this.serviceIntervention.refreshListInterventionVgps();
       }
