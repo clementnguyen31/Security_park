@@ -213,7 +213,7 @@
             </table>
             <div>
                 <h2 class="font-weight-bold">Commentaires réparation :</h2>
-                <p *ngFor="let rep of reparationNonVgpByIdEngin">Réparation du <span class="font-weight-bold">{{rep.DateDevis | date:'dd/MM/yyyy'}}</span>  : {{rep.TypeIntervention}} </p>
+                <p *ngFor="let rep of reparationNonVgpByIdEngin">Réparation du <span class="font-weight-bold">{{rep.DateTravauxConformite | date:'dd/MM/yyyy'}}</span>  : {{rep.TypeIntervention}} </p>
             </div>
         </div>
         <div class="col-md-12">
