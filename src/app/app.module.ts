@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageContainerComponent } from './page-container/page-container.component';
-import { AdministrationComponent } from './administration/administration.component'
 import { EnginsCourteDureeComponent } from './engins-courte-duree/engins-courte-duree.component';
 import { EnginsLongueDureeComponent } from './engins-longue-duree/engins-longue-duree.component';
 import { InterventionsComponent } from './interventions/interventions.component';
@@ -53,7 +52,6 @@ import { ContratArchiveModalComponent } from './contrat-archive/contrat-archive-
   declarations: [
     AppComponent,
     PageContainerComponent,
-    AdministrationComponent,
     EnginsCourteDureeComponent,
     EnginsLongueDureeComponent,
     InterventionsComponent,

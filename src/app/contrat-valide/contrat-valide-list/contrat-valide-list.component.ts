@@ -18,7 +18,7 @@ import { ContratsModalComponent } from 'src/app/contrats/contrats-modal/contrats
 export class ContratValideListComponent implements OnInit {
 
   ELEMENT_DATA : Contrats[]
-  displayedColumns: string[] = ['NumContrat', 'DateEntree', 'DureeContrat', 'DateFinContrat', 'Matricule', 'Modifier', 'Details'];
+  displayedColumns: string[] = ['NumContrat', 'DateEntree', 'DureeContrat', 'DateFinContrat', 'Lieu', 'Matricule', 'Modifier', 'Details'];
   dataSource = new MatTableDataSource<Contrats>(this.ELEMENT_DATA);
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;

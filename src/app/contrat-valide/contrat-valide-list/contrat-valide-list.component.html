@@ -40,6 +40,15 @@
     </ng-container>
 
     <!-- Symbol Column -->
+    <ng-container matColumnDef="Lieu">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Lieu d'utilisation </th>
+        <td mat-cell *matCellDef="let element">
+            <div>
+                {{element.LieuUtilisation}} </div>
+        </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
     <ng-container matColumnDef="Matricule">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Matricule </th>
 

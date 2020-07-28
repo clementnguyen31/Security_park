@@ -4,7 +4,6 @@ import { PageContainerComponent } from './page-container/page-container.componen
 import { EnginsCourteDureeComponent } from './engins-courte-duree/engins-courte-duree.component';
 import { EnginsLongueDureeComponent } from './engins-longue-duree/engins-longue-duree.component';
 import { InterventionsComponent } from './interventions/interventions.component';
-import { AdministrationComponent } from './administration/administration.component';
 import { ContratsComponent } from './contrats/contrats.component';
 import { ExportXmlComponent } from './export-xml/export-xml.component';
 import { ContratVGPService } from './shared/contrat-vgp.service';

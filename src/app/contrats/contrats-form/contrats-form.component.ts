@@ -86,17 +86,4 @@ export class ContratsFormComponent implements OnInit {
     this.dialogbox.close();
   }
 
-  calculDateFin(dateDebut: Date, duree: number){
-    var jourDateDebut = new Date(dateDebut).getDay();
-    var moisDateDebut = new Date(dateDebut).getUTCMonth() + 1;
-    var anneeDateDebut = new Date(dateDebut).getUTCFullYear();
-    for(var i = 1; i <= duree; i++){
-      if(moisDateDebut == 12){
-        anneeDateDebut++;
-        moisDateDebut = 0;
-      }
-    }
-    return console.log(new Date(anneeDateDebut,moisDateDebut,jourDateDebut));
-  }
-
 }
