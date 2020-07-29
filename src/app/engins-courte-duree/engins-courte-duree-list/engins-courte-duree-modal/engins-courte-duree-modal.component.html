@@ -8,12 +8,15 @@
                     <thead class="table-irri">
                         <tr>
                             <th>Matricule</th>
-                            <th>NumSerie</th>
+                            <th>N° de série</th>
                             <th>Marque</th>
                             <th>Contrat</th>
                             <th>Type</th>
                             <th>Batterie</th>
+                            <th>Intervention en cours ?</th>
                             <th>A l'arrêt ?</th>
+                            <th>Date déclaration entrée (assurance)</th>
+                            <th>Date déclaration sortie (assurance)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -24,12 +27,20 @@
                             <td>{{currentEnginInfo.TypeContrat}}</td>
                             <td>{{currentEnginInfo.TypeEngin}}</td>
                             <td>{{currentEnginInfo.TypeBatterie}}</td>
-                            <ng-container *ngIf="currentEnginInfo.EstArret==true; else fourth">
+                            <ng-container *ngIf="currentEnginInfo.InterventionEnCours==true; else fourth">
                                 <td>Oui</td>
                             </ng-container>
                             <ng-template #fourth>
                                 <td>Non</td>
                             </ng-template>
+                            <ng-container *ngIf="currentEnginInfo.EstArret==true; else fifth">
+                                <td>Oui</td>
+                            </ng-container>
+                            <ng-template #fifth>
+                                <td>Non</td>
+                            </ng-template>
+                            <td>{{currentEnginInfo.DateDeclarationEntree | date:'dd/MM/yyyy'}}</td>
+                            <td>{{currentEnginInfo.DateDeclarationSortie | date:'dd/MM/yyyy'}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -51,8 +62,6 @@
                             <th>Date de signature Irrijardin</th>
                             <th>Date de signature du prestataire</th>
                             <th>Date de 1<sup>ère</sup> circulation</th>
-                            <th>Date déclaration entrée (assurance)</th>
-                            <th>Date déclaration sortie (assurance)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,8 +75,6 @@
                         <td>{{currentEnginContrat.DateSignatureIrrijardin | date:'dd/MM/yyyy'}}</td>
                         <td>{{currentEnginContrat.DateSignaturePrestataire | date:'dd/MM/yyyy'}}</td>
                         <td>{{currentEnginContrat.DateCirculation | date:'dd/MM/yyyy'}}</td>
-                        <td>{{currentEnginInfo.DateDeclarationEntree | date:'dd/MM/yyyy'}}</td>
-                        <td>{{currentEnginInfo.DateDeclarationSortie | date:'dd/MM/yyyy'}}</td>
                     </tbody>
                 </table>
             </div>

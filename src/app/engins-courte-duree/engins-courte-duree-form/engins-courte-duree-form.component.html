@@ -119,12 +119,7 @@
       </div>
    </div>
    <div class="form-row">
-      <div class="form-group col-md-3">
-         <label for="DateCirculation">Date de 1<sup>ère</sup> circulation</label>
-         <input id="DateCirculation" type="date" name="DateCirculation" #DateCirculation="ngModel"
-            [(ngModel)]="enginService.formDataEngins.DateCirculation" class="form-control">
-      </div>
-      <div class="form-group col-md-3">
+      <div class="form-group col-md-4">
          <label for="InterventionEnCours">Intervention en cours ? <span class="text-danger">(*)</span></label>
          <select class="form-control" name="InterventionEnCours" #InterventionEnCours="ngModel"
             [(ngModel)]="enginService.formDataEngins.InterventionEnCours" id="InterventionEnCours">
@@ -133,7 +128,7 @@
             <option [ngValue]="false">Non</option>
          </select>
       </div>
-      <div class="form-group col-md-3">
+      <div class="form-group col-md-4">
          <label for="contrat">Contrat <span class="text-danger">(*)</span></label>
          <select class="form-control" name="IdContrat" #IdContrat="ngModel"
             [(ngModel)]="enginService.formDataEngins.IdContrat" id="contrat">
@@ -143,7 +138,7 @@
             </option>
          </select>
       </div>
-      <div class="form-group col-md-3">
+      <div class="form-group col-md-4">
          <label for="contratVGP">Contrat VGP <span class="text-danger">(*)</span></label>
          <ng-container *ngIf="enginService.formDataEngins.TypeContrat=='LCD'; else second">
             <select class="form-control" name="IdContratVgp" #IdContrat="ngModel"
