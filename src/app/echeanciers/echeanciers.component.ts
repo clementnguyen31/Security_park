@@ -17,7 +17,7 @@ import { MatPaginator } from '@angular/material/paginator';
 export class EcheanciersComponent implements OnInit {
 
   ELEMENT_DATA: Echeanciers[];
-  displayedColumns: string[] = ['Matricule', 'Date', 'Montant', "Lieu d'utilisation", "Date de début de contrat", "Durée du contrat", 'Modifier'];
+  displayedColumns: string[] = ['Matricule', 'DateEcheancier', 'Montant', "Lieu d'utilisation", "DateDebutContrat", "Durée du contrat", 'Modifier'];
   dataSource = new MatTableDataSource<Echeanciers>(this.ELEMENT_DATA);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;

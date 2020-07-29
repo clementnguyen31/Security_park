@@ -4,7 +4,7 @@ export class Contrats {
     DateFinContrat: Date;
     DateEntree: Date;
     PrixLoyer: number;
-    LieuUtilisation: string;
+    LieuUtilisation: String;
     DateSignatureIrrijardin: Date;
     NumContrat: string;
     PrestataireLocation: string;

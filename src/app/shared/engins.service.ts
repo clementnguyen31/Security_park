@@ -27,7 +27,8 @@ export class EnginsService {
     IdContratVgp: 0,
     InterventionEnCours: false,
     EstArret: false,
-    DateProchaineVgp: null
+    DateProchaineVgp: null,
+    EstSortie: false
   };
   readonly rootURL = 'https://securityparkapi.azurewebsites.net/api';
   enginsListe: Engins[];

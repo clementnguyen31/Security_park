@@ -26,7 +26,6 @@
          <select class="form-control" name="TypeEngin" id="typeengin" #TypeEngin="ngModel"
             [(ngModel)]="enginService.formDataEngins.TypeEngin" class="form-control" placeholder="Type de l'engin">
             <option value="" disabled>Choisissez un type d'engin</option>
-            <option value="COMPACT10N">COMPACT10N</option>
             <option value="E 16C (386)">E 16C (386)</option>
             <option value="E 16C (EVO)">E 16C (EVO)</option>
             <option value="E 16">E 16</option>
@@ -35,6 +34,7 @@
             <option value="L12">L12</option>
             <option value="L12i">L12i</option>
             <option value="Nacelle compact 8m">Nacelle compact 8m</option>
+            <option value="COMPACT10N">Nacelle compact 10m</option>
             <option value="Nacelles">Nacelles</option>
             <option value="R14">R14</option>
             <option value="R14 HD 1120">R14 HD 1120</option>
@@ -119,7 +119,7 @@
       </div>
    </div>
    <div class="form-row">
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-3">
          <label for="InterventionEnCours">Intervention en cours ? <span class="text-danger">(*)</span></label>
          <select class="form-control" name="InterventionEnCours" #InterventionEnCours="ngModel"
             [(ngModel)]="enginService.formDataEngins.InterventionEnCours" id="InterventionEnCours">
@@ -128,7 +128,16 @@
             <option [ngValue]="false">Non</option>
          </select>
       </div>
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-3">
+         <label for="EstSortie">Sortie ? <span class="text-danger">(*)</span></label>
+         <select class="form-control" name="EstSortie" #EstSortie="ngModel"
+            [(ngModel)]="enginService.formDataEngins.EstSortie" id="EstSortie">
+            <option value="" disabled>Sortie ?</option>
+            <option [ngValue]="true">Oui</option>
+            <option [ngValue]="false">Non</option>
+         </select>
+      </div>
+      <div class="form-group col-md-3">
          <label for="contrat">Contrat <span class="text-danger">(*)</span></label>
          <select class="form-control" name="IdContrat" #IdContrat="ngModel"
             [(ngModel)]="enginService.formDataEngins.IdContrat" id="contrat">
@@ -138,7 +147,7 @@
             </option>
          </select>
       </div>
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-3">
          <label for="contratVGP">Contrat VGP <span class="text-danger">(*)</span></label>
          <ng-container *ngIf="enginService.formDataEngins.TypeContrat=='LCD'; else second">
             <select class="form-control" name="IdContratVgp" #IdContrat="ngModel"

@@ -20,7 +20,7 @@ export class EnginsLongueDureeFormComponent implements OnInit {
 
   constructor(public enginService: EnginsService, private toastr: ToastrService, private dialog: MatDialog, public dialogbox: MatDialogRef<EnginsLongueDureeFormComponent>, public contratService: ContratsService, public contratVGPService: ContratVGPService) { }
 
-  contratFilter: any = {EtatContrat: 'Valide'};
+  contratFilter: any = { EtatContrat: 'Valide' };
 
   ngOnInit(): void {
     this.contratService.refreshContratListe();
@@ -50,7 +50,8 @@ export class EnginsLongueDureeFormComponent implements OnInit {
       IdContratVgp: 0,
       InterventionEnCours: false,
       EstArret: false,
-      DateProchaineVgp: null
+      DateProchaineVgp: null,
+      EstSortie: false
     }
   }
 

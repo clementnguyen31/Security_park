@@ -5,7 +5,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ContratsFormComponent } from 'src/app/contrats/contrats-form/contrats-form.component';
 import { Contrats } from 'src/app/shared/contrats.model';
 import { MatTableDataSource } from '@angular/material/table';
-import {MatSort} from '@angular/material/sort';
+import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { ContratsModalComponent } from 'src/app/contrats/contrats-modal/contrats-modal.component';
 
@@ -17,12 +17,12 @@ import { ContratsModalComponent } from 'src/app/contrats/contrats-modal/contrats
 })
 export class ContratValideListComponent implements OnInit {
 
-  ELEMENT_DATA : Contrats[]
-  displayedColumns: string[] = ['NumContrat', 'DateEntree', 'DureeContrat', 'DateFinContrat', 'Lieu', 'Matricule', 'Modifier', 'Details'];
+  ELEMENT_DATA: Contrats[]
+  displayedColumns: string[] = ['NumContrat', 'Matricule', 'TypeEngin', 'LieuUtilisation', 'DateEntree', 'DureeContrat', 'DateFinContrat', 'Modifier', 'Details'];
   dataSource = new MatTableDataSource<Contrats>(this.ELEMENT_DATA);
 
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   currentContratInfo: any = {};
 
@@ -38,12 +38,12 @@ export class ContratValideListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.filterContrat('Valide');
   }
-  
-  filterContrat(val){
+
+  filterContrat(val) {
     this.dataSource.filter = val.trim().toLowerCase();
   }
 
-  getAllData(){
+  getAllData() {
     let resp = this.service.getContrats().subscribe(report => this.dataSource.data = report as Contrats[]);
   }
 

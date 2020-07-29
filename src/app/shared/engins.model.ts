@@ -19,13 +19,5 @@ export class Engins {
     InterventionEnCours: boolean;
     EstArret: boolean;
     DateProchaineVgp: Date;
-
-    /*public string Matricule1 { get; set; }
-    public string NumSerie1 { get; set; }
-    public string IdListe { get; set; }
-    public string CodeListe { get; set; }
-    public string CodeValeur { get; set; }
-    public short? IdInterventionVgp { get; set; }
-    public string IdContrat { get; set; }
-    public short? IdContratVgp { get; set; } */
+    EstSortie : boolean;
 }

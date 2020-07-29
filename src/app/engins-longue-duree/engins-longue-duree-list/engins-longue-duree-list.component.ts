@@ -26,7 +26,7 @@ import { EnginsLonguesDureeModalComponent } from './engins-longues-duree-modal/e
 export class EnginsLongueDureeListComponent implements OnInit {
 
   ELEMENT_DATA: Engins[];
-  displayedColumns = ['Matricule', 'TypeEngin', 'LieuUtilisation', 'DateProchaineVgp', 'InterventionEnCours', 'EstArret', 'Modifier', 'Details', 'Echeancier', 'Intervention'];
+  displayedColumns = ['Matricule', 'TypeEngin', 'LieuUtilisation', 'DateProchaineVgp', 'InterventionEnCours', 'EstArret' , 'EstSortie', 'Modifier', 'Details', 'Echeancier', 'Intervention'];
   dataSource = new MatTableDataSource<Engins>(this.ELEMENT_DATA);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;

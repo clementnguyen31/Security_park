@@ -28,7 +28,7 @@ import { EnginsCourteDureeModalComponent } from './engins-courte-duree-modal/eng
 export class EnginsCourteDureeListComponent implements OnInit {
 
   ELEMENT_DATA: Engins[];
-  displayedColumns: string[] = ['Matricule', 'TypeEngin', 'LieuUtilisation', 'DateProchaineVgp', 'InterventionEnCours', 'EstArret', 'Modifier', 'Details', 'Echeancier', 'Intervention'];
+  displayedColumns: string[] = ['Matricule', 'TypeEngin', 'LieuUtilisation', 'DateProchaineVgp', 'InterventionEnCours', 'EstArret', 'EstSortie', 'Modifier', 'Details', 'Echeancier', 'Intervention'];
   dataSource = new MatTableDataSource<Engins>(this.ELEMENT_DATA);
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -50,7 +50,9 @@ export class EnginsCourteDureeListComponent implements OnInit {
     this.interventionService.refreshListInterventionVgps();
     this.getAllData();
     this.dataSource.sort = this.sort;
+    this.sort.direction = 'asc';
     this.dataSource.paginator = this.paginator;
+    this.dataSource.data.unshift();
     this.applyFilter('LCD');
   }
 
