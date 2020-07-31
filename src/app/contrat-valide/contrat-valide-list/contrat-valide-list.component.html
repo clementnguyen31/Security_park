@@ -1,9 +1,8 @@
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
+    <!--- Tableau contrat valides -->
 
-    <!-- Position Column -->
+    <!-- Numero contrat -->
     <ng-container matColumnDef="NumContrat">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Numéro de contrat </th>
         <td mat-cell *matCellDef="let element">
@@ -12,7 +11,7 @@
         </td>
     </ng-container>
 
-    <!-- Symbol Column -->
+    <!-- Matricule -->
     <ng-container matColumnDef="Matricule">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Matricule </th>
 
@@ -24,7 +23,7 @@
         </td>
     </ng-container>
 
-    <!-- Symbol Column -->
+    <!-- Type engin -->
     <ng-container matColumnDef="TypeEngin">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Type d'engin </th>
 
@@ -35,7 +34,7 @@
     </ng-container>
 
 
-    <!-- Symbol Column -->
+    <!-- Lieu -->
     <ng-container matColumnDef="LieuUtilisation">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Lieu d'utilisation </th>
         <td mat-cell *matCellDef="let element">
@@ -45,7 +44,7 @@
     </ng-container>
 
 
-    <!-- Name Column -->
+    <!-- Date dentree -->
     <ng-container matColumnDef="DateEntree">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Date d'entrée </th>
         <td mat-cell *matCellDef="let element">
@@ -54,7 +53,7 @@
         </td>
     </ng-container>
 
-    <!-- Weight Column -->
+    <!-- Duree contrat -->
     <ng-container matColumnDef="DureeContrat">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Durée du contrat </th>
         <td mat-cell *matCellDef="let element">
@@ -63,7 +62,7 @@
         </td>
     </ng-container>
 
-    <!-- Symbol Column -->
+    <!-- Date fin de contrat -->
     <ng-container matColumnDef="DateFinContrat">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Date de fin de contrat </th>
         <td mat-cell *matCellDef="let element">
@@ -72,7 +71,7 @@
         </td>
     </ng-container>
 
-    <!-- Symbol Column -->
+    <!-- Modifier -->
     <ng-container matColumnDef="Modifier">
         <th mat-header-cell *matHeaderCellDef> Modifier </th>
         <td mat-cell *matCellDef="let element">
@@ -83,7 +82,7 @@
         </td>
     </ng-container>
 
-    <!-- Symbol Column -->
+    <!-- Details -->
     <ng-container matColumnDef="Details">
         <th mat-header-cell *matHeaderCellDef> Détails </th>
         <td mat-cell *matCellDef="let element">

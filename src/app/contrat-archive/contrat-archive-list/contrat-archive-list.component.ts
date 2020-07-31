@@ -36,14 +36,17 @@ export class ContratArchiveListComponent implements OnInit {
     this.filterContrat('Archive');
   }
   
+  //methode pour filtrer les contrats archives
   filterContrat(val){
     this.dataSource.filter = val.trim().toLowerCase();
   }
 
+  //methode pour obtenir tous les contrats
   getAllData(){
     let resp = this.service.getContrats().subscribe(report => this.dataSource.data = report as Contrats[]);
   }
 
+  //modal qui affiche le details des contrats, deux parametre : idcontrat et idengin
   detailsContrat(id, idengin) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
@@ -53,6 +56,7 @@ export class ContratArchiveListComponent implements OnInit {
     this.dialog.open(ContratArchiveModalComponent, dialogConfig);
   }
 
+  //formulaire de modification
   editForm(selectedRecord) {
     this.service.formDataContrat = Object.assign({}, selectedRecord);
     const dialogConfig = new MatDialogConfig();

@@ -18,6 +18,7 @@ export class ContratArchiveModalComponent implements OnInit {
     public enginservice: EnginsService,) { }
 
   ngOnInit(): void {
+    //on stocke dans les variables les info concernant les contrats et engins
     this.service.getContrat(this.data.id).subscribe(res => {
       this.currentContratInfo = res;
     });

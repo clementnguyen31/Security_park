@@ -1,9 +1,8 @@
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
+    <!--- tableau -->
 
-    <!-- Position Column -->
+    <!-- Numero contrat -->
     <ng-container matColumnDef="NumContrat">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Numéro de contrat </th>
         <td mat-cell *matCellDef="let element">
@@ -12,7 +11,7 @@
         </td>
     </ng-container>
 
-    <!-- Name Column -->
+    <!-- date entree -->
     <ng-container matColumnDef="DateEntree">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Date d'entrée </th>
         <td mat-cell *matCellDef="let element">
@@ -21,7 +20,7 @@
         </td>
     </ng-container>
 
-    <!-- Weight Column -->
+    <!-- duree contrat -->
     <ng-container matColumnDef="DureeContrat">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Duree du contrat </th>
         <td mat-cell *matCellDef="let element">
@@ -30,7 +29,7 @@
         </td>
     </ng-container>
 
-    <!-- Symbol Column -->
+    <!-- date de fin de contrat -->
     <ng-container matColumnDef="DateFinContrat">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Date de fin de contrat </th>
         <td mat-cell *matCellDef="let element">
@@ -39,7 +38,7 @@
         </td>
     </ng-container>
 
-    <!-- Symbol Column -->
+    <!-- matricule -->
     <ng-container matColumnDef="Matricule">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Matricule </th>
 
@@ -51,7 +50,7 @@
         </td>
     </ng-container>
 
-    <!-- Symbol Column -->
+    <!-- bouton modifier -->
     <ng-container matColumnDef="Modifier">
         <th mat-header-cell *matHeaderCellDef> Modifier </th>
         <td mat-cell *matCellDef="let element">
@@ -62,7 +61,7 @@
         </td>
     </ng-container>
 
-    <!-- Symbol Column -->
+    <!-- bouton details -->
     <ng-container matColumnDef="Details">
         <th mat-header-cell *matHeaderCellDef> Détails </th>
         <td mat-cell *matCellDef="let element">
